@@ -6,6 +6,8 @@ A webalkalmazás készítésekor az a célunk, hogy a felhasználók számára m
 
 ## 2. Jelenlegi helyzet
 
+Jelenleg a megrendelő papíron vezeti a pénzügyeit (bevételek, kiadások stb.), ami igen időigényes és gyakoriak a hibák. Ennek megkönnyítésére szeretne egy letisztult webalkalmazást.
+
 ## 3. Vágyálomrendszer
 
 A szoftver elkészítésével az a célunk, hogy létrehozzunk egy mindennapi használatra alkalmas webalkalmazást, amivel bárki, korosztálytól független, egyszerűen nyomon tudja követni kiadásait, bevételeit, megtakarításait, illetve kitűzhet magának mérföldköveket, egyfajta célokat, ami motivációként is szolgálhat a cél elérése érdekében. Egyebek mellett a felhasználó különféle statisztikákat tekinthet meg a pénzmozgásról.
