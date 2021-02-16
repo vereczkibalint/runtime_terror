@@ -12,6 +12,8 @@ Jelenleg a megrendelő papíron vezeti a pénzügyeit (bevételek, kiadások stb
 
 ## 4. Jelenlegi üzleti folyamatok modellje
 
+Manuálisan vezetni a pénzügyeket rengeteg idővel és energiával jár, ezen felül a hiba lehetősége rendkívül nagy. Ebből következik, hogy ha hiba van a kiadások, vagy a bevétel bevitelében (rossz összeget jegyez fel), a felhasználók abban a hitben élhetnek, hogy megengedhetnek maguknak valamit, amit valójában nem, és ebből komoly, hosszú távú problémák keletkezhetnek.
+
 ## 5. Igényelt üzleti folyamatok modellje
 
 ## 6. Követelménylista
