@@ -93,3 +93,7 @@ Célja a lefejlesztett funkciók tesztelése, mielőtt azok a felhasználók ál
 **Béta teszt:**
 
 Célfelhasználók által végzett tesztelés, időtartama egy hét. Tesztelés során a felhasználó a tapasztalt hibákról visszajelzést küld a fejlesztőknek képernyőképekkel és pontos leírással a hiba reprodukáláshoz, hogy azok a lehető leghatékonyabban javításra kerülhessenek.
+
+## 11. Telepítési terv
+
+Az alkalmazás használatához internetelérésen és a böngészőn kívül nincsen más külső szoftverre szükség.
