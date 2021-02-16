@@ -97,3 +97,7 @@ Célfelhasználók által végzett tesztelés, időtartama egy hét. Tesztelés 
 ## 11. Telepítési terv
 
 Az alkalmazás használatához internetelérésen és a böngészőn kívül nincsen más külső szoftverre szükség.
+
+## 12. Karbantartási terv
+
+A webalkalmazás karbantartása során alkalmazkodni kell az újabb böngésző kiadásokhoz, hibás megjelenés / működést javítani kell. A felhasználóbázis növekedésével ügyelni kell arra, hogy mind az adatbázis, mind a webszerver képes legyen a felhasználók gyors kiszolgálására, és az általuk felvitt adatok tárolására.
