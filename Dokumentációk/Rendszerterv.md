@@ -23,3 +23,14 @@ Weboldalunk a tárolt adatok érzékenysége miatt különös tekintettel odafig
 A szolgáltatás használatához a felhasználó azonosítása szükséges, így a regisztráció és a belépés folyamata elengedhetetlen, amely email cím és jelszó párosítással történik.
 
 Bejelentkezés után elérhetővé válik a felhasználó számára a vezérlőpult, ahol további menükön keresztül érheti el a fiókjait, a tranzakciók listázó oldalát, statisztikákat és a beállításait, ahol a jelszó módosításon kívül pénznem váltására is lehetősége van.
+
+## 6. Fizikai környezet
+
+A webalkalmazás mobile-first módszerrel készül, azaz teljes mértékben reszponzív, így asztali számítógépeken kívül mobiltelefonon is használható és elérhető egy böngésző segítségével.
+
+- Fejlesztő eszközök és technológiák:
+  - Visual Studio Code
+  - JetBrains WebStorm
+  - MongoDB
+  - NestJS
+  - React, Bootstrap
