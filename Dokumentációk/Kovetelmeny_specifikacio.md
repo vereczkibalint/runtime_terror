@@ -33,3 +33,5 @@ Egy 1000 résztvevőt magába foglaló kérdőíves felmérés rámutatott, hogy
 | K7  | Statisztikák  |       A felületen különböző szempontok alapján kerülnek megjelenítésre statisztikák, grafikonok.        |
 | K8  | Mérföldkövek  | A felhasználó ezen a felületen tudja kezelni és áttekinteni a mérföldköveit, illetve létrehozni azokat. |
 | K9  |  Beállítások  |                              A beállítások felülete kerül megjelenítésre.                               |
+
+## 7. Fogalomszótár
