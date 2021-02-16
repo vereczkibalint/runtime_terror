@@ -40,3 +40,9 @@ A webalkalmazás mobile-first módszerrel készül, azaz teljes mértékben resz
 Szerepek
 
 - Felhasználó: szoftvert használó személy, lehetősége van néhány, a regisztrációkor megadott adat módosítására, illetve a fiókjának törlésére.
+
+## 8. Architekturális terv
+
+A szerverkapacitás a felhasználók számának növekedésével folyamatosan fejlesztés alatt áll, hogy képes legyen kiszolgálni a kívánt igényeket.
+
+Felhasználó oldaláról az önként megadott adatok módosítására, illetve a fiók törlésére nyújt lehetőséget az oldal.
