@@ -4,7 +4,7 @@
 
 ## 2. Jelenlegi helyzet
 
-## 3. Terjedelem
+## 3. Vágyálomrendszer
 
 ## 4. Jelenlegi üzleti folyamatok modellje
 
