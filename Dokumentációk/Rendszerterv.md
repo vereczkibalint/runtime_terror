@@ -34,3 +34,9 @@ A webalkalmazás mobile-first módszerrel készül, azaz teljes mértékben resz
   - MongoDB
   - NestJS
   - React, Bootstrap
+
+## 7. Absztrakt Domain Modell
+
+Szerepek
+
+- Felhasználó: szoftvert használó személy, lehetősége van néhány, a regisztrációkor megadott adat módosítására, illetve a fiókjának törlésére.
