@@ -17,3 +17,9 @@ Egy 1000 résztvevőt magába foglaló kérdőíves felmérés rámutatott, hogy
 ## 4. Követelmények
 
 Weboldalunk a tárolt adatok érzékenysége miatt különös tekintettel odafigyel, hogy megfeleljen az adatvédelmi és GDRP előírásoknak.
+
+## 5. Funkcionális terv
+
+A szolgáltatás használatához a felhasználó azonosítása szükséges, így a regisztráció és a belépés folyamata elengedhetetlen, amely email cím és jelszó párosítással történik.
+
+Bejelentkezés után elérhetővé válik a felhasználó számára a vezérlőpult, ahol további menükön keresztül érheti el a fiókjait, a tranzakciók listázó oldalát, statisztikákat és a beállításait, ahol a jelszó módosításon kívül pénznem váltására is lehetősége van.
