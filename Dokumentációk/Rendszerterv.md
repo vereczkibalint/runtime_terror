@@ -14,3 +14,6 @@ Mérföldkövek: első és legfontosabb feladat a pontos dokumentáció elkész�
 
 Egy 1000 résztvevőt magába foglaló kérdőíves felmérés rámutatott, hogy szükség van egy ilyen alkalmazásra, melyet a legtöbb ember támogat, és szívesen használna is a mindennapokban.
 
+## 4. Követelmények
+
+Weboldalunk a tárolt adatok érzékenysége miatt különös tekintettel odafigyel, hogy megfeleljen az adatvédelmi és GDRP előírásoknak.
