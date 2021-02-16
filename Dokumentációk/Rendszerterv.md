@@ -10,3 +10,7 @@ Célunk, hogy mind a 4 csapattag aktívan kivegye részét a felmerülő problé
 
 Mérföldkövek: első és legfontosabb feladat a pontos dokumentáció elkészítése, és az alkalmazáshoz tartozó képernyőtervek, adatmodellek, adatbázisterv elkészítése. Ezek után kezdődik a fejlesztés, mely az előbb említett adatok segítségével sokkal könnyebb és hatékonyabb is lesz.
 
+## 3. Üzleti folyamatok modellje
+
+Egy 1000 résztvevőt magába foglaló kérdőíves felmérés rámutatott, hogy szükség van egy ilyen alkalmazásra, melyet a legtöbb ember támogat, és szívesen használna is a mindennapokban.
+
