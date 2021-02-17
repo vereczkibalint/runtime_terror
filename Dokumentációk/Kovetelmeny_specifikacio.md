@@ -35,3 +35,18 @@ Egy 1000 résztvevőt magába foglaló kérdőíves felmérés rámutatott, hogy
 | K9  |  Beállítások  |                              A beállítások felülete kerül megjelenítésre.                               |
 
 ## 7. Fogalomszótár
+
+[bug]: fejlesztési hiba ami által a program nem a várt eredményt hozza
+
+[main menu]: A fő menü, amely a weboldal/program indulásakor megjelenik
+
+[backend]: A kiszolgáló, ahonnan az alkalmazást el lehet érni. A háttérben működik, így a felhasználó nem láthatja.
+
+[frontend]: egy réteg ami feladata a rendszerből kijutó adatok prezentálása, illetve a bejövő adatok fogadása. Az a réteg, mely kapcsolatot teremt a felhasználó és a backend között.
+
+[web-service]:különböző programnyelveken írt és különböző platformokon futó szoftveralkalmazások interneten keresztül történő adatcseréjére használt webszolgáltatások.
+
+[multiplatform]: több környezetben futtatható alkalmazás
+
+[main menu]: A fő menü, amely a weboldal indulásakor megjelenik
+
