@@ -2,6 +2,8 @@
 
 ## 1. Bevezetés
 
+Mai világunkban a pénz az életünk központjában áll. A pénzhasználat elkerülhetetlen és szinte minden nap használjuk azt. Sokszor nem tudjuk mennyi bevételünk, és mennyi kiadásunk keletkezett egy adott időszak alatt. Gazdasági fejlődésünket, megtakarításainkat nagyban elősegíti ha rendelkezésünkre áll egy olyan rendszer, melyben időről időre feljegyezhetjük a pénz mozgását. 
+
 A webalkalmazás készítésekor az a célunk, hogy a felhasználók számára megkönnyítsük a pénzügyeik (kiadások, bevételek, mérföldkövek) nyomon követése. Saját tapasztalatainkból kiindulva, néha meglehetősen problémás lehet egyes pénzügyek kezelése, szükség van egy rendezett, átlátható és könnyen kezelhető szoftverre, ahol mindent láthatunk egy helyen, ha kell részletesen, illetve statisztikát készíthetünk ezekről.
 
 ## 2. Jelenlegi helyzet
