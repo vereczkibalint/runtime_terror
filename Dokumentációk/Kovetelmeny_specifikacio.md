@@ -28,6 +28,12 @@ Manuálisan vezetni a pénzügyeket rengeteg idővel és energiával jár, ezen 
 
 Egy 1000 résztvevőt magába foglaló kérdőíves felmérés rámutatott, hogy szükség van egy ilyen alkalmazásra, melyet a legtöbb ember támogat, és szívesen használna is a mindennapokban.
 
+A megrendelő elvárása, hogy az alkalmazást használva egy letisztult, mégis átlátható felülettel találkozzon. Az alkalmazás használatához a felhasználóknak regisztrálni kelljen magukat, majd később betudjanak jelentkezni. Erre azért is van szükség, hogy személyre szabott információkat kapjanak, és a számítások is a saját pénzügyeiket foglalja össze. A felhasználó beállíthat napi, heti, havi vagy évi rendszerességű kiadásokat, vagy bevételeket, így nem kell észben tartania őket, a rendszer automatikusan számol velük. 
+
+Az hosszú távú tervek, kitűzött célok elérését statisztika segítse, amellyel a felhasználó előre megtudhatja, mikor gyűjt össze annyi pénzt hogy egy célját megvalósíthassa, vagy éppen mikor telik le egy hosszabb távú kiadás sorozat, mint például egy kölcsön. 
+
+A beállítások menüponton belül akár testre is szabhatja az alkalmazást. 
+
 ## 6. Követelménylista
 
 | ID  |      Név      |                                                Kifejtés                                                 |
