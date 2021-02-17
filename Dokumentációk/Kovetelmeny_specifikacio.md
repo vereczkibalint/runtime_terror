@@ -4,11 +4,17 @@
 
 Mai világunkban a pénz az életünk központjában áll. A pénzhasználat elkerülhetetlen és szinte minden nap használjuk azt. Sokszor nem tudjuk mennyi bevételünk, és mennyi kiadásunk keletkezett egy adott időszak alatt. Gazdasági fejlődésünket, megtakarításainkat nagyban elősegíti ha rendelkezésünkre áll egy olyan rendszer, melyben időről időre feljegyezhetjük a pénz mozgását. 
 
-A webalkalmazás készítésekor az a célunk, hogy a felhasználók számára megkönnyítsük a pénzügyeik (kiadások, bevételek, mérföldkövek) nyomon követése. Saját tapasztalatainkból kiindulva, néha meglehetősen problémás lehet egyes pénzügyek kezelése, szükség van egy rendezett, átlátható és könnyen kezelhető szoftverre, ahol mindent láthatunk egy helyen, ha kell részletesen, illetve statisztikát készíthetünk ezekről.
+A webalkalmazás készítésekor az a célunk, hogy a felhasználók számára megkönnyítsük a pénzügyeik (kiadások, bevételek, mérföldkövek) nyomon követését. Saját tapasztalatainkból kiindulva, néha meglehetősen problémás lehet egyes pénzügyek kezelése, szükség van egy rendezett, átlátható és könnyen kezelhető szoftverre, ahol mindent láthatunk egy helyen, részletekre bontva, grafikonokkal ábrázolva. 
 
 ## 2. Jelenlegi helyzet
 
-Jelenleg a megrendelő papíron vezeti a pénzügyeit (bevételek, kiadások stb.), ami igen időigényes és gyakoriak a hibák. Ennek megkönnyítésére szeretne egy letisztult webalkalmazást.
+Jelenleg a megrendelő egyáltalán nem vezeti, vagy időnként papíron vezeti pénzügyeit (többek között bevételeit, kiadásait), ami idő igényes, hiszen számításokat kell elvégezni, emberi tulajdonságokból adódóan hibázhatunk, olykor átláthatatlan és koránt sem tekinthető egy biztonságos megoldásnak. Gondoljunk csak bele, ha egy adatot tartalmazó dokumentum elveszik, ráömlik a kávénk, vagy egyéb okból adódóan megsemmisül. 
+
+A módszert tekintve igen elavultnak tekinthető a XXI. században. Egyre kevesebb papírt használunk, és egyre inkább számítógépes rendszerekre bízzuk adataink nagy részét.
+
+Egy másik emberi tulajdonság a feledékenység, megrendelőnk elmondása szerint, gyakran megfeledkezik arról, hogy lejegyezze pénzügyeit, vagy megfeledkezik kitűzött céljairól, mérföldköveiről. 
+
+Az általunk fejlesztett szoftver értesítésekkel fenntartja a felhasználó érdeklődését és emlékezteti egyes feladataira.
 
 ## 3. Vágyálomrendszer
 
