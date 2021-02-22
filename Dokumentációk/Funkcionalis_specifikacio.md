@@ -52,6 +52,39 @@ A beállítások menüponton belül akár testre is szabhatja az alkalmazást.
 
 ## 8. Adatmodell
 
+- users: regisztrált felhasználók adatai
+  - lastName
+  - firstName
+  - email
+  - password
+  - createdAt
+  - lastLogin
+- accounts: felhasználókhoz köthető fiókok (bankfiókok, illetve készpénz)
+  - owner
+  - type [bank,cash]
+  - name
+  - color
+  - balance
+- milestones: felhasználók által létrehozott mérföldkövek
+  - owner
+  - name
+  - goalPrice
+  - deadline
+  - sources
+    - account
+    - amount
+    - createdAt
+- categories: tranzakcióhoz köthető kategóriák (mire irányult a költés)
+  - owner
+  - name
+  - color
+- transactions: a fiókokról történő tranzakciók adatai
+  - account
+  - amount
+  - category
+  - createdAt
+  - (isRepeating)
+
 ## 9. Használati esetek
 
 ![usecase](https://raw.githubusercontent.com/vereczkibalint/runtime_terror/main/Dokumentációk/Usecases/usecase.jpeg)
