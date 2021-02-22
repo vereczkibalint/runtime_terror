@@ -54,6 +54,8 @@ A beállítások menüponton belül akár testre is szabhatja az alkalmazást.
 
 ## 9. Használati esetek
 
+![usecase](https://raw.githubusercontent.com/vereczkibalint/runtime_terror/main/Dokumentációk/Usecases/usecase.jpeg)
+
 ## 10. Forgatókönyv
 
 ## 11. Fogalomszótár
