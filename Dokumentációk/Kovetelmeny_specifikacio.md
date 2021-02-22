@@ -50,6 +50,8 @@ A beállítások menüponton belül akár testre is szabhatja az alkalmazást.
 
 ## 7. Fogalomszótár
 
+[szoftver]:   elektronikus adatfeldolgozó berendezések (például számítógépek) memóriájában elhelyezkedő, azokat működtető programokat értünk.
+
 [bug]: fejlesztési hiba ami által a program nem a várt eredményt hozza
 
 [main menu]: A fő menü, amely a weboldal/program indulásakor megjelenik
@@ -62,5 +64,5 @@ A beállítások menüponton belül akár testre is szabhatja az alkalmazást.
 
 [multiplatform]: több környezetben futtatható alkalmazás
 
-[main menu]: A fő menü, amely a weboldal indulásakor megjelenik
+
 
