@@ -8,6 +8,7 @@ import { AccountsModule } from './accounts/accounts.module';
 import { SourcesModule } from './sources/sources.module';
 import { CategoriesModule } from "./categories/categories.module";
 import { MilestonesModule } from './milestones/milestones.module';
+import { TransactionsModule } from "./transactions/transactions.module";
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -17,7 +18,7 @@ import { MilestonesModule } from './milestones/milestones.module';
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useFindAndModify: false
-  }), UsersModule, AccountsModule, SourcesModule, CategoriesModule, MilestonesModule],
+  }), UsersModule, AccountsModule, SourcesModule, CategoriesModule, MilestonesModule, TransactionsModule],
   controllers: [AppController],
   providers: [AppService],
 })
