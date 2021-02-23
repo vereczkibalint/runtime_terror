@@ -5,6 +5,7 @@ import { TypegooseModule } from "nestjs-typegoose";
 import { ConfigModule } from "@nestjs/config";
 import { UsersModule } from './users/users.module';
 import { AccountsModule } from './accounts/accounts.module';
+import { SourcesModule } from './sources/sources.module';
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -14,7 +15,7 @@ import { AccountsModule } from './accounts/accounts.module';
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useFindAndModify: false
-  }), UsersModule, AccountsModule],
+  }), UsersModule, AccountsModule, SourcesModule],
   controllers: [AppController],
   providers: [AppService],
 })
