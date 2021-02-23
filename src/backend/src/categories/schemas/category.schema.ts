@@ -10,6 +10,7 @@ interface Category extends TimeStamps {}
 @plugin(autopopulate as any)
 class Category extends Base {
   @prop({
+    autopopulate: { select: '-password' },
     required: [true, 'Felhasználó megadása kötelező!'],
     ref: () => User
   })
