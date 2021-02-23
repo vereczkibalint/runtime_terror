@@ -50,6 +50,34 @@ A beállítások menüponton belül akár testre is szabhatja az alkalmazást.
 
 ## 7. Képernyőtervek
 
+Kezdőlap
+
+<img src="https://raw.githubusercontent.com/vereczkibalint/runtime_terror/main/Dokument%C3%A1ci%C3%B3k/K%C3%A9perny%C5%91tervek/Kezd%C5%91lap.png" alt="Kezdőlap" style="zoom: 33%;" />
+
+
+
+Kiadások
+
+<img src="https://raw.githubusercontent.com/vereczkibalint/runtime_terror/main/Dokument%C3%A1ci%C3%B3k/K%C3%A9perny%C5%91tervek/Kiadasok.png" alt="Kiadasok" style="zoom:33%;" />
+
+
+
+Mérföldkövek
+
+<img src="https://raw.githubusercontent.com/vereczkibalint/runtime_terror/main/Dokument%C3%A1ci%C3%B3k/K%C3%A9perny%C5%91tervek/Merfolkovek_full.png" style="zoom:33%;" />
+
+
+
+Havi statisztika
+
+<img src="https://raw.githubusercontent.com/vereczkibalint/runtime_terror/main/Dokument%C3%A1ci%C3%B3k/K%C3%A9perny%C5%91tervek/Stat_ez_a_honap.png" style="zoom:33%;" />
+
+
+
+Dátum szerinti szűrés
+
+<img src="https://raw.githubusercontent.com/vereczkibalint/runtime_terror/main/Dokument%C3%A1ci%C3%B3k/K%C3%A9perny%C5%91tervek/intervallum2.PNG" alt="Szűrés" style="zoom: 80%;" />
+
 ## 8. Adatmodell
 
 - users: regisztrált felhasználók adatai
@@ -90,6 +118,8 @@ A beállítások menüponton belül akár testre is szabhatja az alkalmazást.
 ![usecase](https://raw.githubusercontent.com/vereczkibalint/runtime_terror/main/Dokumentációk/Usecases/usecase.jpeg)
 
 ## 10. Forgatókönyv
+
+​	A felhasználó az alkalmazást megnyitva egy bejelentkezési felület tárul elé, enélkül nem használhatja az alkalmazást. Ha nincs még a felhasználó regisztrálva, akkor egy menüponttal, pár lépéssel regisztrálhat. Belépve egy letisztult kezdőoldal fogadja, amelyen a legszükségesebb információkkal találkozhat. A menü sávon különböző opciók közül választhat. Saját pénzügyi adatait szűrheti le megadott időtartam szerint, vagy mérföldköveit, kitűzött céljait tekintheti meg, továbbá létrehozhat egy újat. Az alkalmazás használatát követően a felhasználó várhatóan jobban fogja kezelni pénzügyeit és nagyobb rálátást kap pénzügyi helyzetére. 
 
 ## 11. Fogalomszótár
 
