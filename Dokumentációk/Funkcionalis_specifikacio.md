@@ -119,6 +119,8 @@ Dátum szerinti szűrés
 
 ## 10. Forgatókönyv
 
+​	A felhasználó az alkalmazást megnyitva egy bejelentkezési felület tárul elé, enélkül nem használhatja az alkalmazást. Ha nincs még a felhasználó regisztrálva, akkor egy menüponttal, pár lépéssel regisztrálhat. Belépve egy letisztult kezdőoldal fogadja, amelyen a legszükségesebb információkkal találkozhat. A menü sávon különböző opciók közül választhat. Saját pénzügyi adatait szűrheti le megadott időtartam szerint, vagy mérföldköveit, kitűzött céljait tekintheti meg, továbbá létrehozhat egy újat. Az alkalmazás használatát követően a felhasználó várhatóan jobban fogja kezelni pénzügyeit és nagyobb rálátást kap pénzügyi helyzetére. 
+
 ## 11. Fogalomszótár
 
 [szoftver]:   elektronikus adatfeldolgozó berendezések (például számítógépek) memóriájában elhelyezkedő, azokat működtető programokat értünk.
