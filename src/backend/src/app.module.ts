@@ -6,6 +6,7 @@ import { ConfigModule } from "@nestjs/config";
 import { UsersModule } from './users/users.module';
 import { AccountsModule } from './accounts/accounts.module';
 import { SourcesModule } from './sources/sources.module';
+import { CategoriesModule } from "./categories/categories.module";
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -15,7 +16,7 @@ import { SourcesModule } from './sources/sources.module';
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useFindAndModify: false
-  }), UsersModule, AccountsModule, SourcesModule],
+  }), UsersModule, AccountsModule, SourcesModule, CategoriesModule],
   controllers: [AppController],
   providers: [AppService],
 })
