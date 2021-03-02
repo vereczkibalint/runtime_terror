@@ -7,6 +7,7 @@ import User from "./schemas/user.schema";
 @Module({
   imports: [TypegooseModule.forFeature([User])],
   providers: [UsersService],
-  controllers: [UsersController]
+  controllers: [UsersController],
+  exports: [UsersService]
 })
 export class UsersModule {}
