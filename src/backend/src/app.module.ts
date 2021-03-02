@@ -9,6 +9,7 @@ import { SourcesModule } from './sources/sources.module';
 import { CategoriesModule } from "./categories/categories.module";
 import { MilestonesModule } from './milestones/milestones.module';
 import { TransactionsModule } from "./transactions/transactions.module";
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -18,7 +19,7 @@ import { TransactionsModule } from "./transactions/transactions.module";
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useFindAndModify: false
-  }), UsersModule, AccountsModule, SourcesModule, CategoriesModule, MilestonesModule, TransactionsModule],
+  }), UsersModule, AccountsModule, SourcesModule, CategoriesModule, MilestonesModule, TransactionsModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
