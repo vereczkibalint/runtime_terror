@@ -5,6 +5,7 @@ import { AuthLoginDto } from './dto/AuthLoginDto';
 import { UserDto } from './dto/UserDto';
 import { AuthenticatedDto } from './dto/AuthenticatedDto';
 import * as bcrypt from 'bcryptjs';
+import { AuthRegisterDto } from "./dto/AuthRegisterDto";
 
 @Injectable()
 export class AuthService {
@@ -34,6 +35,27 @@ export class AuthService {
     };
 
     const token = this._createToken(userDto);
+
+    return {
+      token,
+      user: userDto
+    }
+  }
+
+  async register(authRegisterDto: AuthRegisterDto) : Promise<AuthenticatedDto> {
+    let registeredUser = await this.userService.registerUser(authRegisterDto);
+
+    const userDto: UserDto = {
+      _id: registeredUser._id,
+      lastName: registeredUser.lastName,
+      firstName: registeredUser.firstName,
+      email: registeredUser.email,
+      lastLogin: registeredUser.lastLogin,
+      createdAt: registeredUser.createdAt,
+      updatedAt: registeredUser.updatedAt
+    };
+
+    let token = this._createToken(userDto);
 
     return {
       token,
