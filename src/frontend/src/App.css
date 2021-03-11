@@ -1,0 +1,11 @@
+#sidebar {
+  width: 250px;
+  min-height: 100vh;
+  /* position: fixed;
+  top: 0;
+  left: 0; */
+}
+
+#sidebar ul li a {
+  color: #fff;
+}
