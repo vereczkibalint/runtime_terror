@@ -6,36 +6,40 @@ const Navbar = () => {
   return (
     <nav id='sidebar' className='bg-primary text-light'>
       <div class='sidebar-header'>
-        <h3>Bootstrap Sidebar</h3>
+        <h3>Menü</h3>
       </div>
 
-      <ul class='list-unstyled components'>
+      
+      <ul id="menulist" class='list-unstyled components'>
         <p>Dummy Heading</p>
-        <li class='active'>
+        <div class="btn-group-vertical">
+        <li id="menubutton" class='btn btn-dark'>
           <Link to={`${PREFIX}/`}>Kezdőlap</Link>
+          
         </li>
-        <li>
+        
+        <li id="menubutton" class='btn btn-dark'>
           <Link to={`${PREFIX}/accounts`}>Számlák</Link>
         </li>
-        <li>
+        <li class='btn btn-dark'>
           <Link to={`${PREFIX}/expenditures`}>Kiadás</Link>
         </li>
-        <li>
+        <li class='btn btn-dark'>
           <Link to={`${PREFIX}/income`}>Bevétel</Link>
         </li>
-        <li>
+        <li class='btn btn-dark'>
           <Link to={`${PREFIX}/stats`}>Statisztika</Link>
         </li>
-        <li>
+        <li class='btn btn-dark'>
           <Link to={`${PREFIX}/milestones`}>Mérföldkövek</Link>
         </li>
-        <li>
+        <li class='btn btn-dark'>
           <Link to={`${PREFIX}/register`}>Regisztráció</Link>
         </li>
-        <li>
+        <li class='btn btn-dark'>
           <Link to={`${PREFIX}/login`}>Bejelentkezés</Link>
         </li>
-        <li>
+        <li class='btn btn-dark'>
           <Link to={`${PREFIX}/settings`}>Beállítások</Link>
         </li>
         {/* <a
@@ -88,7 +92,9 @@ const Navbar = () => {
         <li>
           <a href='#'>Contact</a>
         </li> */}
+        </div>
       </ul>
+      
     </nav>
   );
 };
