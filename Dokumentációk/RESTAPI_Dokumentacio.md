@@ -13,7 +13,7 @@
 ***
 * **URL**
 
-  _auth/login_
+  _/auth/login_
 
 * **Method:**
 
@@ -74,7 +74,7 @@
 ***
 * **URL**
 
-  _auth/register_
+  _/auth/register_
 
 * **Method:**
 
@@ -130,6 +130,295 @@
 
 ## <a name="users"></a> Felhasználók
 ## <a name="accounts"></a> Fiókok
+**Fiókok lekérdezése**
+***
+* **URL**
+
+  _/accounts_
+
+* **Method:**
+
+  `GET`
+
+* **Success Response:**
+    
+    * **Code:** 200 <br />
+      **Content:**
+      ```json
+        [
+          {
+              "type": "cash",
+              "color": "#ffffff",
+              "_id": "6050d5a8ea2e48109ca0dd92",
+              "name": "jani",
+              "balance": 10000,
+              "owner": {
+              "_id": "6050c937f4af872fd8bd69bb",
+              "lastName": "teszt",
+              "firstName": "elek",
+              "email": "teszt@elek.com",
+              "lastLogin": "2021-03-16T15:05:27.823Z",
+              "__v": 0
+          },
+          "__v": 0
+          }, ...
+      ]
+      ```
+
+* **Error Response:**
+    * **Code:** 401 UNAUTHORIZED <br />
+      **Content:**
+      ```json
+        {
+          "statusCode": 401,
+          "message": "Unauthorized"
+        }
+      ```
+* **Notes:**
+
+  _If no account is associated with the user, an empty array will be returned._
+
+
+**Fiók lekérdezése azonosítója alapján**
+***
+* **URL**
+
+  _/accounts/:accountId_
+
+* **URL parameters**
+  
+    `accountId`
+
+* **Method:**
+
+  `GET`
+
+* **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:**
+      ```json
+        {
+          "type": "cash",
+          "color": "#ffffff",
+          "_id": "6050d5a8ea2e48109ca0dd92",
+          "name": "jani",
+          "balance": 10000,
+          "owner": {
+              "_id": "6050c937f4af872fd8bd69bb",
+              "lastName": "teszt",
+              "firstName": "elek",
+              "email": "teszt@elek.com",
+              "lastLogin": "2021-03-16T15:05:27.823Z",
+              "__v": 0
+          },
+          "__v": 0
+        }
+      ```
+
+* **Error Response:**
+    * **Code:** 401 UNAUTHORIZED <br />
+      **Content:**
+      ```json
+        {
+          "statusCode": 401,
+          "message": "Unauthorized"
+        }
+      ```
+
+* **Notes:**
+
+  _If no account was found with the given data, an empty array will be returned._
+
+
+**Fiók létrehozása**
+***
+* **URL**
+
+  _/accounts/create_
+
+* **Method:**
+
+  `POST`
+
+* **Data Params**
+
+  ```json
+    {
+        "name": "My Bank Account",
+        "type": "bank",
+        "balance": 10000,
+        "color": "#ffffff",
+        "owner": "6050c937f4af872fd8bd69bb"
+    }
+  ```
+
+* **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:**
+      ```json
+        {
+          "_id": "6050d715ea2e48109ca0dd93",
+          "type": "bank",
+          "color": "#ffffff",
+          "name": "My Bank Account",
+          "balance": 10000,
+          "owner": {
+              "_id": "6050c937f4af872fd8bd69bb",
+              "lastName": "teszt",
+              "firstName": "elek",
+              "email": "teszt@elek.com",
+              "lastLogin": "2021-03-16T15:05:27.823Z",
+              "__v": 0
+          },
+          "__v": 0
+        }
+      ```
+
+* **Error Response:**
+    * **Code:** 400 Bad Request <br />
+      **Content:**
+      ```json
+        {
+          "errors": [
+            {
+              "path": "errorPath",
+              "message": "errorMessage"
+            }
+          ]
+        }
+      ```
+
+  OR
+
+    * **Code:** 401 UNAUTHORIZED <br />
+      **Content:**
+      ```json
+        {
+          "statusCode": 401,
+          "message": "Unauthorized"
+        }
+      ```
+
+**Fiók frissítése**
+***
+* **URL**
+
+  _/accounts/:accountId_
+  
+* **URL parameters**
+
+  `accountId`
+
+* **Method:**
+
+  `PUT`
+
+* **Data Params**
+
+  ```json
+    {
+        "name": "My Updated Account Name",
+        "type": "bank",
+        "color": "#000000"
+    }
+  ```
+
+* **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:**
+      ```json
+        {
+          "_id": "6050d715ea2e48109ca0dd93",
+          "type": "bank",
+          "color": "#000000",
+          "name": "My Updated Account Name",
+          "balance": 10000,
+          "owner": {
+              "_id": "6050c937f4af872fd8bd69bb",
+              "lastName": "teszt",
+              "firstName": "elek",
+              "email": "teszt@elek.com",
+              "lastLogin": "2021-03-16T15:05:27.823Z",
+              "__v": 0
+          },
+          "__v": 0
+        }
+      ```
+
+* **Error Response:**
+    * **Code:** 400 Bad Request <br />
+      **Content:**
+      ```json
+        {
+          "errors": [
+            {
+              "path": "errorPath",
+              "message": "errorMessage"
+            }
+          ]
+        }
+      ```
+
+  OR
+
+    * **Code:** 401 UNAUTHORIZED <br />
+      **Content:**
+      ```json
+        {
+          "statusCode": 401,
+          "message": "Unauthorized"
+        }
+      ```
+
+**Fiók törlése**
+***
+* **URL**
+
+  _/accounts/:accountId_
+
+* **URL parameters**
+
+  `accountId`
+
+* **Method:**
+
+  `DELETE`
+
+* **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:**
+      ```json
+        {
+          "_id": "6050d715ea2e48109ca0dd93",
+          "type": "bank",
+          "color": "#000000",
+          "name": "My Updated Account Name",
+          "balance": 10000,
+          "owner": "6050c937f4af872fd8bd69bb",
+          "__v": 0
+        }
+      ```
+
+* **Error Response:**
+  * **Code:** 401 UNAUTHORIZED <br />
+      **Content:**
+      ```json
+        {
+          "statusCode": 401,
+          "message": "Unauthorized"
+        }
+      ```
+    
+* **Notes:**
+
+  _If no account was found with the given data, an empty array will be returned._
+
+    
+
 ## <a name="transactions"></a> Tranzakciók
 ## <a name="milestones"></a> Mérföldkövek
 ## <a name="sources"></a> Bevételi források
