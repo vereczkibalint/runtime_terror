@@ -19,9 +19,6 @@ export class UsersService {
         throw new BadRequestException("A két jelszó nem egyezik meg!");
     }
 
-    let passwordSalt = bcrypt.genSaltSync(10);
-    let passwordHash = bcrypt.hashSync(authRegisterDto.password, passwordSalt);
-
     let registeredUser = await this.userModel.create({
       lastName: authRegisterDto.lastName,
       firstName: authRegisterDto.firstName,
