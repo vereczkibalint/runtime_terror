@@ -3,8 +3,6 @@ import User from "./schemas/user.schema";
 import { InjectModel } from "nestjs-typegoose";
 import { ReturnModelType } from "@typegoose/typegoose";
 import { AuthRegisterDto } from "../auth/dto/AuthRegisterDto";
-import * as bcrypt from "bcryptjs";
-import { UserDto } from "../auth/dto/UserDto";
 
 @Injectable()
 export class UsersService {
