@@ -423,3 +423,276 @@
 ## <a name="milestones"></a> Mérföldkövek
 ## <a name="sources"></a> Bevételi források
 ## <a name="categories"></a> Kategóriák
+**Kategóriák lekérdezése**
+***
+* **URL**
+
+  _/categories_
+
+* **Method:**
+
+  `GET`
+
+* **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:**
+      ```json
+        [
+            {
+            "color": "#e6e6e6",
+            "_id": "6050df6c121a2e31f49e62f6",
+            "owner": {
+                "_id": "6050c937f4af872fd8bd69bb",
+                "lastName": "teszt",
+                "firstName": "elek",
+                "email": "teszt@elek.com",
+                "lastLogin": "2021-03-16T15:05:27.823Z",
+                "__v": 0
+            },
+            "name": "Kategória",
+            "__v": 0
+            }, ...
+        ]
+      ```
+
+* **Error Response:**
+    * **Code:** 401 UNAUTHORIZED <br />
+      **Content:**
+      ```json
+        {
+          "statusCode": 401,
+          "message": "Unauthorized"
+        }
+      ```
+* **Notes:**
+
+  _If no category is associated with the user, an empty array will be returned._
+
+
+**Kategória lekérdezése azonosítója alapján**
+***
+* **URL**
+
+  _/categories/:categoryId_
+
+* **URL parameters**
+
+  `categoryId`
+
+* **Method:**
+
+  `GET`
+
+* **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:**
+      ```json
+        {
+            "color": "#e6e6e6",
+            "_id": "6050df6c121a2e31f49e62f6",
+            "owner": {
+                "_id": "6050c937f4af872fd8bd69bb",
+                "lastName": "teszt",
+                "firstName": "elek",
+                "email": "teszt@elek.com",
+                "lastLogin": "2021-03-16T15:05:27.823Z",
+                "__v": 0
+            },
+            "name": "Kategória",
+            "__v": 0
+        }
+      ```
+
+* **Error Response:**
+    * **Code:** 401 UNAUTHORIZED <br />
+      **Content:**
+      ```json
+        {
+          "statusCode": 401,
+          "message": "Unauthorized"
+        }
+      ```
+
+* **Notes:**
+
+  _If no category was found with the given data, an empty array will be returned._
+
+
+**Kategória létrehozása**
+***
+* **URL**
+
+  _/categories/create_
+
+* **Method:**
+
+  `POST`
+
+* **Data Params**
+
+  ```json
+    {
+      "owner": "6050c937f4af872fd8bd69bb",
+      "name": "Kategória",
+      "color": "#e6e6e6"
+    }
+  ```
+
+* **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:**
+      ```json
+        {
+            "_id": "6050df6c121a2e31f49e62f6",
+            "color": "#e6e6e6",
+            "owner": {
+                "_id": "6050c937f4af872fd8bd69bb",
+                "lastName": "teszt",
+                "firstName": "elek",
+                "email": "teszt@elek.com",
+                "lastLogin": "2021-03-16T15:05:27.823Z",
+                "__v": 0
+            },
+            "name": "Kategória",
+            "__v": 0
+        }
+      ```
+
+* **Error Response:**
+    * **Code:** 400 Bad Request <br />
+      **Content:**
+      ```json
+        {
+          "errors": [
+            {
+              "path": "errorPath",
+              "message": "errorMessage"
+            }
+          ]
+        }
+      ```
+
+  OR
+
+    * **Code:** 401 UNAUTHORIZED <br />
+      **Content:**
+      ```json
+        {
+          "statusCode": 401,
+          "message": "Unauthorized"
+        }
+      ```
+
+**Kategória frissítése**
+***
+* **URL**
+
+  _/categories/:categoryId_
+
+* **URL parameters**
+
+  `categoryId`
+
+* **Method:**
+
+  `PUT`
+
+* **Data Params**
+
+  ```json
+    {
+        "name": "My Updated Category Name",
+        "color": "#aaaaaa"
+    }
+  ```
+
+* **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:**
+      ```json
+            {
+                "color": "#aaaaaa",
+                "_id": "6050df6c121a2e31f49e62f6",
+                "owner": {
+                    "_id": "6050c937f4af872fd8bd69bb",
+                    "lastName": "teszt",
+                    "firstName": "elek",
+                    "email": "teszt@elek.com",
+                    "lastLogin": "2021-03-16T15:05:27.823Z",
+                    "__v": 0
+                },
+                "name": "My Updated Category Name",
+                "__v": 0
+            }
+      ```
+
+* **Error Response:**
+    * **Code:** 400 Bad Request <br />
+      **Content:**
+      ```json
+        {
+          "errors": [
+            {
+              "path": "errorPath",
+              "message": "errorMessage"
+            }
+          ]
+        }
+      ```
+
+  OR
+
+    * **Code:** 401 UNAUTHORIZED <br />
+      **Content:**
+      ```json
+        {
+          "statusCode": 401,
+          "message": "Unauthorized"
+        }
+      ```
+
+**Kategória törlése**
+***
+* **URL**
+
+  _/categories/:categoryId_
+
+* **URL parameters**
+
+  `categoryId`
+
+* **Method:**
+
+  `DELETE`
+
+* **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:**
+      ```json
+            {
+                "color": "#e6e6e6",
+                "_id": "6050df6c121a2e31f49e62f6",
+                "owner": "6050c937f4af872fd8bd69bb",
+                "name": "Kategória",
+                "__v": 0
+            }
+      ```
+
+* **Error Response:**
+    * **Code:** 401 UNAUTHORIZED <br />
+      **Content:**
+        ```json
+          {
+            "statusCode": 401,
+            "message": "Unauthorized"
+          }
+        ```
+
+* **Notes:**
+
+  _If no category was found with the given data, an empty array will be returned._
