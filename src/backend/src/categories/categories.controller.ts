@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from "@nestjs/common";
 import { CategoriesService } from "./categories.service";
 import Category from "./schemas/category.schema";
 import { AuthGuard } from "@nestjs/passport";
@@ -32,7 +32,7 @@ export class CategoriesController {
   }
 
   @UseGuards(AuthGuard('jwt'))
-  @Patch('/:categoryId')
+  @Put('/:categoryId')
   async updateCategory(@ReqUser('_id') userId: string, @Param('categoryId') categoryId: string, @Body() updateCategoryDto: UpdateCategoryDto) : Promise<Category>{
     return await this.categoryService.updateCategory(Types.ObjectId(userId), Types.ObjectId(categoryId), updateCategoryDto);
   }
