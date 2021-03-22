@@ -1,3 +1,6 @@
+import { setLoading } from './milestoneAction';
+
+export const SET_LOADING = 'SET_LOADING';
 export const SET_ALERT = 'SET_ALERT';
 export const REMOVE_ALERT = 'REMOVE_ALERT';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
@@ -10,3 +13,12 @@ export const LOGOUT = 'LOGOUT';
 export const GET_PROFILE = 'GET_PROFILE';
 export const PROFILE_ERROR = 'PROFILE_ERROR';
 export const CLEAR_PROFILE = 'CLEAR_PROFILE';
+
+export const GET_MILESTONES = 'GET_MILESTONES';
+export const ADD_MILESTONE = 'ADD_MILESTONE';
+export const UPDATE_MILESTONE = 'UPDATE_MILESTONE';
+export const DELETE_MILESTONE = 'DELETE_MILESTONE';
+export const SET_CURRENT_MILESTONE = 'SET_CURRENT_MILESTONE';
+export const CLEAR_CURRENT_MILESTONE = 'CLEAR_CURRENT_MILESTONE';
+export const MILESTONE_ERROR = 'MILESTONE_ERROR';
+export const SEARCH_MILESTONE = 'SEARCH_MILESTONE';
