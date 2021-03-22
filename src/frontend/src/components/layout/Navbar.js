@@ -5,44 +5,42 @@ import { PREFIX } from '../../config';
 const Navbar = () => {
   return (
     <nav id='sidebar' className='bg-primary text-light'>
-      <div class='sidebar-header'>
+      <div className='sidebar-header'>
         <h3>Menü</h3>
       </div>
 
-      
-      <ul id="menulist" class='list-unstyled components'>
+      <ul id='menulist' className='list-unstyled components'>
         <p>Dummy Heading</p>
-        <div class="btn-group-vertical">
-        <li id="menubutton" class='btn btn-dark'>
-          <Link to={`${PREFIX}/`}>Kezdőlap</Link>
-          
-        </li>
-        
-        <li id="menubutton" class='btn btn-dark'>
-          <Link to={`${PREFIX}/accounts`}>Számlák</Link>
-        </li>
-        <li class='btn btn-dark'>
-          <Link to={`${PREFIX}/expenditures`}>Kiadás</Link>
-        </li>
-        <li class='btn btn-dark'>
-          <Link to={`${PREFIX}/income`}>Bevétel</Link>
-        </li>
-        <li class='btn btn-dark'>
-          <Link to={`${PREFIX}/stats`}>Statisztika</Link>
-        </li>
-        <li class='btn btn-dark'>
-          <Link to={`${PREFIX}/milestones`}>Mérföldkövek</Link>
-        </li>
-        <li class='btn btn-dark'>
-          <Link to={`${PREFIX}/register`}>Regisztráció</Link>
-        </li>
-        <li class='btn btn-dark'>
-          <Link to={`${PREFIX}/login`}>Bejelentkezés</Link>
-        </li>
-        <li class='btn btn-dark'>
-          <Link to={`${PREFIX}/settings`}>Beállítások</Link>
-        </li>
-        {/* <a
+        <div className='btn-group-vertical'>
+          <li id='menubutton' className='btn btn-dark'>
+            <Link to={`${PREFIX}/`}>Kezdőlap</Link>
+          </li>
+
+          <li id='menubutton' className='btn btn-dark'>
+            <Link to={`${PREFIX}/accounts`}>Számlák</Link>
+          </li>
+          <li className='btn btn-dark'>
+            <Link to={`${PREFIX}/expenditures`}>Kiadás</Link>
+          </li>
+          <li className='btn btn-dark'>
+            <Link to={`${PREFIX}/income`}>Bevétel</Link>
+          </li>
+          <li className='btn btn-dark'>
+            <Link to={`${PREFIX}/stats`}>Statisztika</Link>
+          </li>
+          <li className='btn btn-dark'>
+            <Link to={`${PREFIX}/milestones`}>Mérföldkövek</Link>
+          </li>
+          <li className='btn btn-dark'>
+            <Link to={`${PREFIX}/register`}>Regisztráció</Link>
+          </li>
+          <li className='btn btn-dark'>
+            <Link to={`${PREFIX}/login`}>Bejelentkezés</Link>
+          </li>
+          <li className='btn btn-dark'>
+            <Link to={`${PREFIX}/settings`}>Beállítások</Link>
+          </li>
+          {/* <a
             href='#homeSubmenu'
             data-toggle='collapse'
             aria-expanded='false'
@@ -94,7 +92,6 @@ const Navbar = () => {
         </li> */}
         </div>
       </ul>
-      
     </nav>
   );
 };
