@@ -95,3 +95,35 @@ export const addMilestone = (milestone) => async (dispatch) => {
     });
   }
 };
+
+export const deleteMilestone = (id) => async (dispatch) => {
+  try {
+    setLoading();
+    const data = id;
+    dispatch({
+      type: DELETE_MILESTONE,
+      payload: data
+    });
+  } catch (err) {
+    dispatch({
+      type: MILESTONE_ERROR,
+      payload: err.response.statusText
+    });
+  }
+};
+
+export const updateMilestone = (milestone) => async (dispatch) => {
+  try {
+    setLoading();
+    const data = milestone;
+    dispatch({
+      type: UPDATE_MILESTONE,
+      payload: data
+    });
+  } catch (err) {
+    dispatch({
+      type: MILESTONE_ERROR,
+      payload: err.response.statusText
+    });
+  }
+};
