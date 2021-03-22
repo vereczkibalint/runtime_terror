@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import auth from './auth';
+import milestoneReducer from './milestoneReducer';
 
 export default combineReducers({
-  auth
+  milestone: milestoneReducer
 });
