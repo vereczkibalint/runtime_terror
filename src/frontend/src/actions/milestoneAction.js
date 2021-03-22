@@ -63,3 +63,35 @@ let data = {
     }
   ]
 };
+
+export const getMilestones = () => async (dispatch) => {
+  try {
+    setLoading();
+    const { milestones } = data;
+    dispatch({
+      type: GET_MILESTONES,
+      payload: milestones
+    });
+  } catch (err) {
+    dispatch({
+      type: MILESTONE_ERROR,
+      payload: err.response.statusText
+    });
+  }
+};
+
+export const addMilestone = (milestone) => async (dispatch) => {
+  try {
+    setLoading();
+    const data = milestone;
+    dispatch({
+      type: ADD_MILESTONE,
+      payload: data
+    });
+  } catch (err) {
+    dispatch({
+      type: MILESTONE_ERROR,
+      payload: err.response.statusText
+    });
+  }
+};
