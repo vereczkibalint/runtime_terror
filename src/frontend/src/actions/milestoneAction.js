@@ -127,3 +127,22 @@ export const updateMilestone = (milestone) => async (dispatch) => {
     });
   }
 };
+
+export const setCurrent = (milestone) => {
+  return {
+    type: SET_CURRENT_MILESTONE,
+    payload: milestone
+  };
+};
+
+export const clearCurrent = () => {
+  return {
+    type: CLEAR_CURRENT_MILESTONE
+  };
+};
+
+export const setLoading = () => {
+  return {
+    type: SET_LOADING
+  };
+};
