@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, Put, UseFilters, UseGuards } from "@nestjs/common";
 import { CategoriesService } from "./categories.service";
 import Category from "./schemas/category.schema";
 import { AuthGuard } from "@nestjs/passport";
@@ -7,9 +7,15 @@ import { Types } from "mongoose";
 import { ApiTags } from "@nestjs/swagger";
 import { CreateCategoryDto } from "./dto/CreateCategoryDto";
 import { UpdateCategoryDto } from "./dto/UpdateCategoryDto";
+import { CastErrorExceptionFilter } from "../exceptions/castError-exception.filter";
+import { ValidationExceptionFilter } from "../exceptions/validation-exception.filter";
+import { ApiErrorExceptionFilter } from "../exceptions/ApiError-exception.filter";
 
 @Controller('categories')
 @ApiTags('categories')
+@UseFilters(new CastErrorExceptionFilter())
+@UseFilters(new ValidationExceptionFilter())
+@UseFilters(new ApiErrorExceptionFilter())
 export class CategoriesController {
   constructor(private readonly categoryService : CategoriesService) {}
 

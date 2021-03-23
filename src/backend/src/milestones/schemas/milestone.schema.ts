@@ -3,7 +3,7 @@ import { Base, TimeStamps } from "@typegoose/typegoose/lib/defaultClasses";
 import User from "../../users/schemas/user.schema";
 import * as autopopulate from 'mongoose-autopopulate';
 import * as Validator from './validators/milestone.validator';
-import Source from "../../sources/schemas/source.schema";
+import Source from "./source.schema";
 
 let milestoneValidator = new Validator.MilestoneValidator();
 
@@ -51,3 +51,5 @@ class Milestone extends Base {
   })
   sources?: Ref<Source>[];
 }
+
+export default Milestone;
