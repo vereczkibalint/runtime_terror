@@ -420,6 +420,299 @@
     
 
 ## <a name="transactions"></a> Tranzakciók
+**Tranzakciók lekérdezése**
+***
+* **URL**
+
+  _/transactions/:accountId_
+
+* **URL parameters**
+
+    `:accountId`
+
+* **Method:**
+
+  `GET`
+
+* **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:**
+      ```json
+        {
+          "_id": "605a128d22919c2364753d33",
+          "isPeriodic": true,
+          "account": {
+          "type": "cash",
+          "color": "#ffffff",
+          "_id": "6050d5a8ea2e48109ca0dd92",
+          "name": "jani",
+          "balance": 10000,
+          "owner": {
+              "_id": "6050c937f4af872fd8bd69bb",
+              "lastName": "teszt",
+              "firstName": "elek",
+              "email": "teszt@elek.com",
+              "lastLogin": "2021-03-16T15:05:27.823Z",
+              "__v": 0
+          },
+          "__v": 0
+          },
+              "amount": 50000,
+              "category": {
+              "color": "#e6e6e6",
+              "_id": "6050e0e3121a2e31f49e62f7",
+              "owner": {
+                  "_id": "6050c937f4af872fd8bd69bb",
+                  "lastName": "teszt",
+                  "firstName": "elek",
+                  "email": "teszt@elek.com",
+                  "lastLogin": "2021-03-16T15:05:27.823Z",
+                  "__v": 0
+          },
+          "name": "Kategória",
+          "__v": 0
+          },
+          "__v": 0
+        }
+      ```
+
+* **Error Response:**
+    * **Code:** 401 UNAUTHORIZED <br />
+      **Content:**
+      ```json
+        {
+          "statusCode": 401,
+          "message": "Unauthorized"
+        }
+      ```
+* **Notes:**
+
+  _If no category is associated with the account, an empty array will be returned._
+
+
+**Tranzakció létrehozása**
+***
+* **URL**
+
+  _/transactions/create_
+
+* **Method:**
+
+  `POST`
+
+* **Data Params**
+
+  ```json
+    {
+        "account": "6050d5a8ea2e48109ca0dd92",
+        "amount": "50000",
+        "category": "6050e0e3121a2e31f49e62f7",
+        "isPeriodic": "true"
+    }
+  ```
+
+* **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:**
+      ```json
+        {
+          "_id": "605a128d22919c2364753d33",
+          "isPeriodic": true,
+          "account": {
+              "type": "cash",
+              "color": "#ffffff",
+              "_id": "6050d5a8ea2e48109ca0dd92",
+              "name": "jani",
+              "balance": 10000,
+              "owner": {
+                  "_id": "6050c937f4af872fd8bd69bb",
+                  "lastName": "teszt",
+                  "firstName": "elek",
+                  "email": "teszt@elek.com",
+                  "lastLogin": "2021-03-16T15:05:27.823Z",
+                  "__v": 0
+          },
+          "__v": 0
+          },
+          "amount": 50000,
+          "category": {
+              "color": "#e6e6e6",
+              "_id": "6050e0e3121a2e31f49e62f7",
+              "owner": {
+                  "_id": "6050c937f4af872fd8bd69bb",
+                  "lastName": "teszt",
+                  "firstName": "elek",
+                  "email": "teszt@elek.com",
+                  "lastLogin": "2021-03-16T15:05:27.823Z",
+                  "__v": 0
+          },
+          "name": "Kategória",
+          "__v": 0
+          },
+          "__v": 0
+      }
+      ```
+
+* **Error Response:**
+    * **Code:** 400 Bad Request <br />
+      **Content:**
+      ```json
+        {
+          "errors": [
+            {
+              "path": "errorPath",
+              "message": "errorMessage"
+            }
+          ]
+        }
+      ```
+
+  OR
+
+    * **Code:** 401 UNAUTHORIZED <br />
+      **Content:**
+      ```json
+        {
+          "statusCode": 401,
+          "message": "Unauthorized"
+        }
+      ```
+
+**Tranzakció frissítése**
+***
+* **URL**
+
+  _/transactions/:transactionId_
+
+* **URL parameters**
+
+  `transactionId`
+
+* **Method:**
+
+  `PUT`
+
+* **Data Params**
+
+  ```json
+        {
+            "amount": "25000",
+            "isPeriodic": true
+        }
+  ```
+
+* **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:**
+      ```json
+            {
+              "isPeriodic": true,
+              "_id": "605a128d22919c2364753d33",
+              "account": {
+                  "type": "cash",
+                  "color": "#ffffff",
+                  "_id": "6050d5a8ea2e48109ca0dd92",
+                  "name": "jani",
+                  "balance": 60000,
+                  "owner": {
+                      "_id": "6050c937f4af872fd8bd69bb",
+                      "lastName": "teszt",
+                      "firstName": "elek",
+                      "email": "teszt@elek.com",
+                      "lastLogin": "2021-03-16T15:05:27.823Z",
+                      "__v": 0
+              },
+              "__v": 0
+              },
+              "amount": 25000,
+              "category": {
+                  "color": "#e6e6e6",
+                  "_id": "6050e0e3121a2e31f49e62f7",
+                  "owner": {
+                      "_id": "6050c937f4af872fd8bd69bb",
+                      "lastName": "teszt",
+                      "firstName": "elek",
+                      "email": "teszt@elek.com",
+                      "lastLogin": "2021-03-16T15:05:27.823Z",
+                      "__v": 0
+              },
+              "name": "Kategória",
+              "__v": 0
+              },
+              "__v": 0
+          }
+      ```
+
+* **Error Response:**
+    * **Code:** 400 Bad Request <br />
+      **Content:**
+      ```json
+        {
+          "errors": [
+            {
+              "path": "errorPath",
+              "message": "errorMessage"
+            }
+          ]
+        }
+      ```
+
+  OR
+
+    * **Code:** 401 UNAUTHORIZED <br />
+      **Content:**
+      ```json
+        {
+          "statusCode": 401,
+          "message": "Unauthorized"
+        }
+      ```
+
+**Tranzakció törlése**
+***
+* **URL**
+
+  _/transactions/:transactionId_
+
+* **URL parameters**
+
+  `transactionId`
+
+* **Method:**
+
+  `DELETE`
+
+* **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:**
+      ```json
+        {
+            "isPeriodic": true,
+            "_id": "605a14eef1206308b0b80b84",
+            "account": "6050d5a8ea2e48109ca0dd92",
+            "amount": 50000,
+            "category": "6050e0e3121a2e31f49e62f7",
+            "__v": 0
+        }
+      ```
+
+* **Error Response:**
+    * **Code:** 401 UNAUTHORIZED <br />
+      **Content:**
+        ```json
+          {
+            "statusCode": 401,
+            "message": "Unauthorized"
+          }
+        ```
+
+* **Notes:**
+
+  _The balance of the transaction's account will be updated after the creation of a new transaction._
 ## <a name="milestones"></a> Mérföldkövek
 ## <a name="sources"></a> Bevételi források
 ## <a name="categories"></a> Kategóriák
