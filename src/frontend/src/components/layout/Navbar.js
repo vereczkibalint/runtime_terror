@@ -1,133 +1,113 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { PREFIX } from '../../config';
-import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
+import React, { Fragment, useState } from "react";
+import { NavLink, Link } from "react-router-dom";
+import { PREFIX } from "../../config";
+import {
+  MDBDropdown,
+  MDBDropdownToggle,
+  MDBDropdownMenu,
+  MDBDropdownItem,
+} from "mdbreact";
+import { Button } from "react-bootstrap";
 
 const Navbar = () => {
+  const [expenditures, setExpenditure] = useState(false);
+  const [incomes, setIncomes] = useState(false);
+
   return (
-    
-    
-    <nav id='sidebar' className='bg-primary text-light'>
-      <div className='sidebar-header'>
+    <nav id="sidebar" className="bg-primary text-light">
+      <div className="sidebar-header">
         <h3>Menü</h3>
       </div>
 
-      <ul id='menulist' className='list-unstyled components'>
-        <p>Dummy Heading</p>
-        <div className='btn-group-vertical'>
-          <li id='menubutton' className='btn btn-dark'>
-            <Link to={`${PREFIX}/`}>Kezdőlap</Link>
-          </li>
+      <div className="d-flex flex-column">
+        <Button className="my-1" as={NavLink} to={`${PREFIX}/`} exact>
+          Kezdőlap
+        </Button>
+        <Button className="my-1" as={NavLink} to={`${PREFIX}/accounts`} exact>
+          Számlák
+        </Button>
+        <Button
+          className="my-1"
+          onClick={() => setExpenditure(!expenditures)}
+          active={expenditures}
+        >
+          Kiadás <i className="fas fa-caret-down"></i>
+        </Button>
+        {expenditures && (
+          <div className="d-flex flex-column bg-dark">
+            <Button
+              variant="dark"
+              as={NavLink}
+              exact
+              to={`${PREFIX}/expenditures`}
+            >
+              Mindent megjelenít
+            </Button>
+            <Button
+              variant="dark"
+              as={NavLink}
+              exact
+              to={`${PREFIX}/expenditures/b`}
+            >
+              Futó hónap
+            </Button>
+            <Button
+              variant="dark"
+              as={NavLink}
+              exact
+              to={`${PREFIX}/expenditures/c`}
+            >
+              Előző hónap
+            </Button>
+          </div>
+        )}
 
-          <li id='menubutton' className='btn btn-dark'>
-            <Link to={`${PREFIX}/accounts`}>Számlák</Link>
-          </li>
-          
-          <li className='btn btn-dark'>
-            {/*
-            <Link to={`${PREFIX}/expenditures`}>Kiadás</Link>
-            <ul>
-              <li>
-              <Link to={`${PREFIX}/expenditures`}>Összes kiadás</Link>
-              
-              </li>
-            </ul>
-          */}
-
-            <MDBDropdown>
-              <MDBDropdownToggle  caret color="" className="text-white">
-                Kiadás
-              </MDBDropdownToggle>
-              <MDBDropdownMenu  className='p-3 mb-2 bg-dark text-white'>
-                  <MDBDropdownItem className="text-white"><Link to={`${PREFIX}/expenditures`}>Mindent megjelenít</Link></MDBDropdownItem>
-                  <MDBDropdownItem className="text-white">Futó hónap</MDBDropdownItem>
-                  <MDBDropdownItem className="text-white">Előző hónap</MDBDropdownItem>
-              </MDBDropdownMenu>
-            </MDBDropdown>
-          </li>
-          
-          
-          
-          
-          <li className='btn btn-dark'>
-          <MDBDropdown>
-              <MDBDropdownToggle  caret color="" className="text-white">
-                Bevétel
-              </MDBDropdownToggle>
-              <MDBDropdownMenu  className='p-3 mb-2 bg-dark text-white'>
-                  <MDBDropdownItem className="text-white"><Link to={`${PREFIX}/incomes`}>Mindent megjelenít</Link></MDBDropdownItem>
-                  <MDBDropdownItem className="text-white">Futó hónap</MDBDropdownItem>
-                  <MDBDropdownItem className="text-white">Előző hónap</MDBDropdownItem>
-              </MDBDropdownMenu>
-            </MDBDropdown>
-          </li>
-          <li className='btn btn-dark'>
-            <Link to={`${PREFIX}/stats`}>Statisztika</Link>
-          </li>
-          <li className='btn btn-dark'>
-            <Link to={`${PREFIX}/milestones`}>Mérföldkövek</Link>
-          </li>
-          <li className='btn btn-dark'>
-            <Link to={`${PREFIX}/register`}>Regisztráció</Link>
-          </li>
-          <li className='btn btn-dark'>
-            <Link to={`${PREFIX}/login`}>Bejelentkezés</Link>
-          </li>
-          <li className='btn btn-dark'>
-            <Link to={`${PREFIX}/settings`}>Beállítások</Link>
-          </li>
-          {/* <a
-            href='#homeSubmenu'
-            data-toggle='collapse'
-            aria-expanded='false'
-            class='dropdown-toggle'
-          >
-            Home
-          </a>
-          <ul class='collapse list-unstyled' id='homeSubmenu'>
-            <li>
-              <a href='#'>Home 1</a>
-            </li>
-            <li>
-              <a href='#'>Home 2</a>
-            </li>
-            <li>
-              <a href='#'>Home 3</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href='#'>About</a>
-        </li>
-        <li>
-          <a
-            href='#pageSubmenu'
-            data-toggle='collapse'
-            aria-expanded='false'
-            class='dropdown-toggle'
-          >
-            Pages
-          </a>
-          <ul class='collapse list-unstyled' id='pageSubmenu'>
-            <li>
-              <a href='#'>Page 1</a>
-            </li>
-            <li>
-              <a href='#'>Page 2</a>
-            </li>
-            <li>
-              <a href='#'>Page 3</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href='#'>Portfolio</a>
-        </li>
-        <li>
-          <a href='#'>Contact</a>
-        </li> */}
-        </div>
-      </ul>
+        <Button
+          className="my-1"
+          active={incomes}
+          onClick={() => setIncomes(!incomes)}
+        >
+          Bevétel <i className="fas fa-caret-down"></i>
+        </Button>
+        {incomes && (
+          <div className="d-flex flex-column bg-dark">
+            <Button variant="dark" as={NavLink} exact to={`${PREFIX}/incomes`}>
+              Mindent megjelenít
+            </Button>
+            <Button
+              variant="dark"
+              as={NavLink}
+              exact
+              to={`${PREFIX}/incomes/b`}
+            >
+              Futó hónap
+            </Button>
+            <Button
+              variant="dark"
+              as={NavLink}
+              exact
+              to={`${PREFIX}/incomes/c`}
+            >
+              Előző hónap
+            </Button>
+          </div>
+        )}
+        <Button className="my-1" as={NavLink} to={`${PREFIX}/stats`} exact>
+          Statisztika
+        </Button>
+        <Button className="my-1" as={NavLink} to={`${PREFIX}/milestones`} exact>
+          Mérföldkövek
+        </Button>
+        <Button className="my-1" as={NavLink} to={`${PREFIX}/register`} exact>
+          Regisztráció
+        </Button>
+        <Button className="my-1" as={NavLink} to={`${PREFIX}/login`} exact>
+          Bejelentkezés
+        </Button>
+        <Button className="my-1" as={NavLink} to={`${PREFIX}/settings`} exact>
+          Beállítások
+        </Button>
+      </div>
     </nav>
   );
 };
