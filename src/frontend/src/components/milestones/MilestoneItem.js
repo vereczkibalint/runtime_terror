@@ -6,7 +6,7 @@ const MilestoneItem = ({ milestone }) => {
   const { name, goalPrice } = milestone;
   return (
     <li>
-      Név: {name} || Gaol price: {goalPrice}
+      Név: {name} || Goal price: {goalPrice}
     </li>
   );
 };
