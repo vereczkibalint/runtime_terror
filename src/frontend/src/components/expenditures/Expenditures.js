@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import ExpenditureItem from './ExpenditureItem';
 import { connect } from 'react-redux';
-import { getMilestones } from '../../actions/expenditureAction';
+import { getExpenditures } from '../../actions/expenditureAction';
 import PropTypes from 'prop-types';
 
 const Expenditures = ({ expenditure: { expenditures, loading }, getExpenditures }) => {
@@ -13,7 +13,7 @@ const Expenditures = ({ expenditure: { expenditures, loading }, getExpenditures 
     return(
         <div>
       <div className='d-flex justify-content-between'>
-        <h1>Expenditures</h1>
+        <h1>Kiadások</h1>
       </div>
       <button>Kiadás rögzítése</button>
 

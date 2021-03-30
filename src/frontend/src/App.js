@@ -10,6 +10,8 @@ import { PersistGate } from 'redux-persist/integration/react';
 import Home from './components/pages/Home';
 import Navbar from './components/layout/Navbar';
 import Milestones from './components/milestones/Milestones';
+import Expenditures from './components/expenditures/Expenditures';
+import Incomes from './components/incomes/Incomes';
 
 const App = () => {
   return (
@@ -23,8 +25,8 @@ const App = () => {
               <Switch>
                 <Route exact path={`${PREFIX}/`} component={Home} />
                 <Route exact path={`${PREFIX}/accounts`} component={Home} />
-                <Route exact path={`${PREFIX}/expenditures`} component={Home} />
-                <Route exact path={`${PREFIX}/income`} component={Home} />
+                <Route exact path={`${PREFIX}/expenditures`} component={Expenditures} />
+                <Route exact path={`${PREFIX}/incomes`} component={Incomes} />
                 <Route exact path={`${PREFIX}/stats`} component={Home} />
                 <Route
                   exact
