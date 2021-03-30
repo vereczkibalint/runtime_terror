@@ -1,12 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { PREFIX } from "../../config";
-import {
-  MDBDropdown,
-  MDBDropdownToggle,
-  MDBDropdownMenu,
-  MDBDropdownItem,
-} from "mdbreact";
 import { Button } from "react-bootstrap";
 
 const Navbar = () => {
