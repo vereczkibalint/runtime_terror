@@ -35,23 +35,31 @@ const Navbar = () => {
           */}
 
             <MDBDropdown>
-      <MDBDropdownToggle  caret color="" className="text-white">
-      Kiadás
-      </MDBDropdownToggle>
-      <MDBDropdownMenu  className='p-3 mb-2 bg-dark text-white'>
-        <MDBDropdownItem className="text-white"><Link to={`${PREFIX}/expenditures`}>Összes kiadás</Link></MDBDropdownItem>
-        <MDBDropdownItem className="text-white">Mindent megjelenít</MDBDropdownItem>
-        <MDBDropdownItem className="text-white">Futó hónap</MDBDropdownItem>
-        <MDBDropdownItem className="text-white">Előző hónap</MDBDropdownItem>
-      </MDBDropdownMenu>
-    </MDBDropdown>
+              <MDBDropdownToggle  caret color="" className="text-white">
+                Kiadás
+              </MDBDropdownToggle>
+              <MDBDropdownMenu  className='p-3 mb-2 bg-dark text-white'>
+                  <MDBDropdownItem className="text-white"><Link to={`${PREFIX}/expenditures`}>Mindent megjelenít</Link></MDBDropdownItem>
+                  <MDBDropdownItem className="text-white">Futó hónap</MDBDropdownItem>
+                  <MDBDropdownItem className="text-white">Előző hónap</MDBDropdownItem>
+              </MDBDropdownMenu>
+            </MDBDropdown>
           </li>
           
           
           
           
           <li className='btn btn-dark'>
-            <Link to={`${PREFIX}/income`}>Bevétel</Link>
+          <MDBDropdown>
+              <MDBDropdownToggle  caret color="" className="text-white">
+                Bevétel
+              </MDBDropdownToggle>
+              <MDBDropdownMenu  className='p-3 mb-2 bg-dark text-white'>
+                  <MDBDropdownItem className="text-white"><Link to={`${PREFIX}/incomes`}>Mindent megjelenít</Link></MDBDropdownItem>
+                  <MDBDropdownItem className="text-white">Futó hónap</MDBDropdownItem>
+                  <MDBDropdownItem className="text-white">Előző hónap</MDBDropdownItem>
+              </MDBDropdownMenu>
+            </MDBDropdown>
           </li>
           <li className='btn btn-dark'>
             <Link to={`${PREFIX}/stats`}>Statisztika</Link>
