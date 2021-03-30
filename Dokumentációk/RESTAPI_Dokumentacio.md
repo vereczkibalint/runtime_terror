@@ -989,3 +989,176 @@
 * **Notes:**
 
   _If no category was found with the given data, an empty array will be returned._
+
+## <a name="milestones"></a> Mérföldkövek
+**Mérföldkő létrehozása**
+***
+* **URL**
+
+  _/milestones/create_
+
+* **Method:**
+
+  `POST`
+
+* **Data Params**
+
+  ```json
+  {
+    "owner": "6050c8697d036c0b9052262e",
+    "name": "Mérföldkő címe",
+    "goalPrice": "1000",
+    "deadline": "2021-04-01T12:00:00"
+  }
+  ```
+
+* **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:**
+      ```json
+        {
+          "_id": "60632bc1774f252c6ce8de94",
+          "sources": [],
+          "owner": {
+              "_id": "6050c8697d036c0b9052262e",
+              "lastName": "string",
+              "firstName": "string",
+              "email": "string@string.com",
+              "lastLogin": "2021-03-16T15:02:01.198Z",
+              "__v": 0
+          },
+          "name": "Teszt",
+          "goalPrice": 1000,
+          "deadline": "2021-04-01T10:00:00.000Z",
+          "__v": 0
+        }
+      ```
+
+* **Error Response:**
+    * **Code:** 401 UNAUTHORIZED <br />
+      **Content:**
+      ```json
+          {
+            "statusCode": 401,
+            "message": "Unauthorized"
+          }
+        ```
+
+  OR
+
+    * **Code:** 400 Bad Request <br />
+      **Content:**
+      ```json
+          {
+            "errors": [
+              {
+                "path": "errorPath",
+                "message": "errorMessage"
+              }
+            ]
+          }
+      ```
+
+**Mérföldkő frissítése**
+***
+* **URL**
+
+  _/milestones/:milestoneId_
+
+* **Method:**
+
+  `PUT`
+
+* **Data Params**
+
+  ```json
+    {
+        "name": "Updated cím",
+        "goalPrice": "300"
+    }
+  ```
+
+* **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:**
+      ```json
+        {
+          "sources": [],
+          "_id": "60632b90c8d07b131065d659",
+          "owner": {
+              "_id": "6050c8697d036c0b9052262e",
+              "lastName": "string",
+              "firstName": "string",
+              "email": "string@string.com",
+              "lastLogin": "2021-03-16T15:02:01.198Z",
+              "__v": 0
+          },
+          "name": "Updated teszt",
+          "goalPrice": 300,
+          "deadline": "2021-04-01T10:00:00.000Z",
+          "__v": 0
+        }
+      ```
+
+* **Error Response:**
+    * **Code:** 401 UNAUTHORIZED <br />
+      **Content:**
+      ```json
+          {
+            "statusCode": 401,
+            "message": "Unauthorized"
+          }
+        ```
+
+  OR
+
+    * **Code:** 400 Bad Request <br />
+      **Content:**
+      ```json
+          {
+            "errors": [
+              {
+                "path": "errorPath",
+                "message": "errorMessage"
+              }
+            ]
+          }
+      ```
+
+**Mérföldkő törlése**
+***
+* **URL**
+
+  _/milestones/:milestoneId_
+
+* **Method:**
+
+  `DELETE`
+
+* **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:**
+      ```json
+        {
+          "sources": [],
+          "_id": "60632bc1774f252c6ce8de94",
+          "owner": "6050c8697d036c0b9052262e",
+          "name": "Teszt",
+          "goalPrice": 1000,
+          "deadline": "2021-04-01T10:00:00.000Z",
+          "__v": 0
+        }
+      ```
+
+* **Error Response:**
+    * **Code:** 401 UNAUTHORIZED <br />
+      **Content:**
+      ```json
+          {
+            "statusCode": 401,
+            "message": "Unauthorized"
+          }
+        ```
