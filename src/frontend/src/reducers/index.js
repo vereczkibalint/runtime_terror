@@ -1,12 +1,23 @@
-import { combineReducers } from 'redux';
-import milestoneReducer from './milestoneReducer';
-import expendureReducer from './expenditureReducer';
-import incomeReducer from './incomeReducer';
-import auth from './auth';
+import { combineReducers } from "redux";
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage"; // I want to use local storage as my default storage
 
-export default combineReducers({
+import auth from "./auth";
+import milestoneReducer from "./milestoneReducer";
+import expenditureReducer from "./expenditureReducer";
+import incomeReducer from "./incomeReducer";
+
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["auth"],
+};
+
+const rootReducer = combineReducers({
+  auth,
   milestone: milestoneReducer,
-  expenditure:expendureReducer,
-  income:incomeReducer,
-  auth:auth
+  expenditure: expenditureReducer,
+  income: incomeReducer,
 });
+
+export default persistReducer(persistConfig, rootReducer);
