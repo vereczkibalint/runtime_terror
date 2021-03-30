@@ -17,6 +17,7 @@ const App = () => {
       <PersistGate loading={null} persistor={persistor}>
         <Router>
           <div className='d-flex align-items-stretch w-100'>
+         
             <Navbar />
             <Container fluid>
               <Switch>

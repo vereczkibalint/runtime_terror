@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PREFIX } from '../../config';
+import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
 
 const Navbar = () => {
   return (
+    
+    
     <nav id='sidebar' className='bg-primary text-light'>
       <div className='sidebar-header'>
         <h3>Menü</h3>
@@ -19,9 +22,35 @@ const Navbar = () => {
           <li id='menubutton' className='btn btn-dark'>
             <Link to={`${PREFIX}/accounts`}>Számlák</Link>
           </li>
+          
           <li className='btn btn-dark'>
+            {/*
             <Link to={`${PREFIX}/expenditures`}>Kiadás</Link>
+            <ul>
+              <li>
+              <Link to={`${PREFIX}/expenditures`}>Összes kiadás</Link>
+              
+              </li>
+            </ul>
+          */}
+
+            <MDBDropdown>
+      <MDBDropdownToggle  caret color="">
+      <Link to={`${PREFIX}/expenditures`}>Kiadás</Link>
+      </MDBDropdownToggle>
+      <MDBDropdownMenu  className='bg-dark'>
+        <MDBDropdownItem ><Link to={`${PREFIX}/expenditures`}>Összes kiadás</Link></MDBDropdownItem>
+        <MDBDropdownItem>Another Action</MDBDropdownItem>
+        <MDBDropdownItem>Something else here</MDBDropdownItem>
+        <MDBDropdownItem divider />
+        <MDBDropdownItem>Separated link</MDBDropdownItem>
+      </MDBDropdownMenu>
+    </MDBDropdown>
           </li>
+          
+          
+          
+          
           <li className='btn btn-dark'>
             <Link to={`${PREFIX}/income`}>Bevétel</Link>
           </li>
