@@ -40,3 +40,13 @@ export const SET_CURRENT_INCOME = 'SET_CURRENT_INCOME';
 export const CLEAR_CURRENT_INCOME = 'CLEAR_CURRENT_INCOME';
 export const INCOME_ERROR = 'INCOME_ERROR';
 export const SEARCH_INCOME = 'SEARCH_INCOME';
+
+
+
+
+
+
+
+
+
+
