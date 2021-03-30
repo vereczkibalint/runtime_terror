@@ -35,15 +35,14 @@ const Navbar = () => {
           */}
 
             <MDBDropdown>
-      <MDBDropdownToggle  caret color="">
-      <Link to={`${PREFIX}/expenditures`}>Kiadás</Link>
+      <MDBDropdownToggle  caret color="" className="text-white">
+      Kiadás
       </MDBDropdownToggle>
-      <MDBDropdownMenu  className='bg-dark'>
-        <MDBDropdownItem ><Link to={`${PREFIX}/expenditures`}>Összes kiadás</Link></MDBDropdownItem>
-        <MDBDropdownItem>Another Action</MDBDropdownItem>
-        <MDBDropdownItem>Something else here</MDBDropdownItem>
-        <MDBDropdownItem divider />
-        <MDBDropdownItem>Separated link</MDBDropdownItem>
+      <MDBDropdownMenu  className='p-3 mb-2 bg-dark text-white'>
+        <MDBDropdownItem className="text-white"><Link to={`${PREFIX}/expenditures`}>Összes kiadás</Link></MDBDropdownItem>
+        <MDBDropdownItem className="text-white">Mindent megjelenít</MDBDropdownItem>
+        <MDBDropdownItem className="text-white">Futó hónap</MDBDropdownItem>
+        <MDBDropdownItem className="text-white">Előző hónap</MDBDropdownItem>
       </MDBDropdownMenu>
     </MDBDropdown>
           </li>
