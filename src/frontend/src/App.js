@@ -12,6 +12,8 @@ import Navbar from './components/layout/Navbar';
 import Milestones from './components/milestones/Milestones';
 import Expenditures from './components/expenditures/Expenditures';
 import Incomes from './components/incomes/Incomes';
+import Register from './components/auth/register';
+import Login from './components/auth/Login';
 
 const App = () => {
   return (
@@ -33,8 +35,8 @@ const App = () => {
                   path={`${PREFIX}/milestones`}
                   component={Milestones}
                 />
-                <Route exact path={`${PREFIX}/register`} component={Home} />
-                <Route exact path={`${PREFIX}/login`} component={Home} />
+                <Route exact path={`${PREFIX}/register`} component={Register} />
+                <Route exact path={`${PREFIX}/login`} component={Login} />
                 <Route exact path={`${PREFIX}/settings`} component={Home} />
               </Switch>
             </Container>
