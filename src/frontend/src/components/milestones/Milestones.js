@@ -16,7 +16,7 @@ const Milestones = ({ milestone: { milestones, loading }, getMilestones }) => {
       <div className='d-flex justify-content-between'>
         <h1>Mérföldkövek</h1>
       </div>
-      <button>Cél kitűzése</button>
+      <button className="btn btn-primary">Cél kitűzése</button>
 
       {loading || milestones === null ? (
         <h1>Töltés...</h1>
