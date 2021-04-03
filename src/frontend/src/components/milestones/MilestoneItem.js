@@ -5,9 +5,17 @@ import React from 'react';
 const MilestoneItem = ({ milestone }) => {
   const { name, goalPrice } = milestone;
   return (
-    <li>
-      Név: {name} || Goal price: {goalPrice}
-    </li>
+    <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>{name}</td>
+              <td>{goalPrice}</td>
+              <td>....</td>
+            </tr>
+          </tbody>
+    /*<li>
+      Név: {name} || Cél: {goalPrice}
+    </li>*/
   );
 };
 
