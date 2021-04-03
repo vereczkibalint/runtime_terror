@@ -13,6 +13,7 @@ const Navbar = () => {
   const [expenditures, setExpenditure] = useState(false);
   const [incomes, setIncomes] = useState(false);
   const [stats,setStats] =useState(false);
+  const [milestones,setMilestone]=useState(false);
 
   return (
     <nav id="sidebar" className="bg-primary text-light">
@@ -94,7 +95,7 @@ const Navbar = () => {
           </div>
         )}
 
-<Button
+        <Button
           className="my-1"
           active={stats}
           onClick={() => setStats(!stats)}
@@ -117,10 +118,10 @@ const Navbar = () => {
 )}
 
         
-        <Button className="my-1" as={NavLink} to={`${PREFIX}/milestones`} exact>
+        <Button active={milestones}  onClick={() => setMilestone(!milestones)} className="my-1" as={NavLink} to={`${PREFIX}/milestones`} exact>
           Mérföldkövek
         </Button>
-        <Button className="my-1" as={NavLink} to={`${PREFIX}/register`} exact>
+        <Button  className="my-1" as={NavLink} to={`${PREFIX}/register`} exact>
           Regisztráció
         </Button>
         <Button className="my-1" as={NavLink} to={`${PREFIX}/login`} exact>
