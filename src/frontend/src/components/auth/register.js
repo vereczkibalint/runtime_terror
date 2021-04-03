@@ -43,7 +43,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
                         
                         <Form.Group>
                             <input
-                                className={"form-control"}
+                                className={"form-control text-center"}
                                 type={"text"}
                                 placeholder={"Vezetéknév"}
                                 name={"last_name"}
@@ -53,7 +53,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
                         </Form.Group>
                         <Form.Group>
                             <input
-                                className={"form-control"}
+                                className={"form-control text-center"}
                                 type={"text"}
                                 placeholder={"Keresztnév"}
                                 name={"first_name"}
@@ -63,7 +63,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
                         </Form.Group>
                         <Form.Group>
                             <input
-                                className={"form-control"}
+                                className={"form-control text-center"}
                                 type={"email"}
                                 placeholder={"Email cím"}
                                 name={"email"}
@@ -75,7 +75,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
                         </Form.Group>
                         <Form.Group>
                             <input
-                                className={"form-control"}
+                                className={"form-control text-center"}
                                 type={"password"}
                                 placeholder={"Jelszó"}
                                 name={"password"}
@@ -86,7 +86,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
                         </Form.Group>
                         <Form.Group>
                             <input
-                                className={"form-control"}
+                                className={"form-control text-center"}
                                 type={"password"}
                                 placeholder={"Jelszó megerősítése"}
                                 name={"password2"}
