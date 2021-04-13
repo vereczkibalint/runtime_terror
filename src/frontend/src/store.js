@@ -6,11 +6,11 @@ import { persistStore } from "redux-persist";
 
 const middleware = [thunk];
 
-const store = createStore(
+export const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(...middleware))
 );
 
-const persistor = persistStore(store);
+export const persistor = persistStore(store);
 
 export default { store, persistor };
