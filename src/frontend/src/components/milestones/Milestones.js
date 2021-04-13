@@ -14,22 +14,43 @@ const Milestones = ({ milestone: { milestones, loading }, getMilestones }) => {
   return (
     <div>
       <div className='d-flex justify-content-between'>
-        <h1>Milestones</h1>
+        <h1>Mérföldkövek</h1>
       </div>
-      <button>Cél kitűzése</button>
+      <button className="btn btn-primary">Cél kitűzése</button>
 
       {loading || milestones === null ? (
-        <h1>Loading...</h1>
+        <h1>Töltés...</h1>
       ) : (
-        <ul>
+        <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr className="bg-primary text-light">
+              <th scope="col">#</th>
+              <th scope="col">Megnevezés</th>
+              <th scope="col">Ár</th>
+              <th scope="col">...</th>
+            </tr>
+          </thead>
           {milestones !== null && milestones.length !== 0 ? (
             milestones.map((milestone) => (
               <MilestoneItem key={milestone.id} milestone={milestone} />
+            
             ))
           ) : (
-            <h3>Adjon hozzá új célt</h3>
+            <h3>Adjon hozzá új célt!</h3>
           )}
-        </ul>
+        </table>
+        {/*<ul>
+          {milestones !== null && milestones.length !== 0 ? (
+            milestones.map((milestone) => (
+              <MilestoneItem key={milestone.id} milestone={milestone} />
+            
+            ))
+          ) : (
+            <h3>Adjon hozzá új célt!</h3>
+          )}
+          </ul>*/}
+        </div>
       )}
     </div>
   );
