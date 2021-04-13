@@ -4,16 +4,21 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./custom.scss";
+import { Router } from "react-router-dom";
 
 import { Provider } from "react-redux";
 import { store, persistor } from "./store";
 import { PersistGate } from "redux-persist/integration/react";
+import { createBrowserHistory } from "history";
+export const history = createBrowserHistory();
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <App />
+        <Router history={history}>
+          <App />
+        </Router>
       </PersistGate>
     </Provider>
   </React.StrictMode>,
