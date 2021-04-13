@@ -1,7 +1,7 @@
 import React from "react";
 import { checkIsAuthenticated } from "../../utils/authentication";
 const Home = () => {
-  if (checkIsAuthenticated)
+  if (!checkIsAuthenticated)
     return (
       <div>
         <div className="d-flex justify-content-between">
