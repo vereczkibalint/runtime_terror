@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { PREFIX } from "../../config";
 import { Button } from "react-bootstrap";
 import { connect } from "react-redux";
@@ -12,6 +12,12 @@ const Navbar = ({ auth, logout }) => {
   const [incomes, setIncomes] = useState(false);
   const [stats, setStats] = useState(false);
   const [milestones, setMilestone] = useState(false);
+  const history = useHistory();
+
+  const onLogout = () => {
+    logout();
+    history.push(`${PREFIX}/login`);
+  };
 
   return (
     <nav id="sidebar" className="bg-primary text-light">
@@ -160,7 +166,7 @@ const Navbar = ({ auth, logout }) => {
             >
               Beállítások
             </Button>
-            <Button className="my-1" onClick={logout}>
+            <Button className="my-1" onClick={onLogout}>
               Kijelentkezés <i class="fas fa-sign-out-alt"></i>
             </Button>
           </Fragment>
