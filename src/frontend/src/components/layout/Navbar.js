@@ -12,6 +12,8 @@ import { Button } from "react-bootstrap";
 const Navbar = () => {
   const [expenditures, setExpenditure] = useState(false);
   const [incomes, setIncomes] = useState(false);
+  const [stats,setStats] =useState(false);
+  const [milestones,setMilestone]=useState(false);
 
   return (
     <nav id="sidebar" className="bg-primary text-light">
@@ -92,13 +94,34 @@ const Navbar = () => {
             </Button>
           </div>
         )}
-        <Button className="my-1" as={NavLink} to={`${PREFIX}/stats`} exact>
-          Statisztika
+
+        <Button
+          className="my-1"
+          active={stats}
+          onClick={() => setStats(!stats)}
+        >
+          Statisztika <i className="fas fa-caret-down"></i>
         </Button>
-        <Button className="my-1" as={NavLink} to={`${PREFIX}/milestones`} exact>
+        {stats && (
+          <div className="d-flex flex-column bg-dark">
+             <Button variant="dark" as={NavLink} exact to={`${PREFIX}/stats`}>
+              Futó hónap
+            </Button>
+            <Button variant="dark" as={NavLink} exact to={`${PREFIX}/stats/previousmonth`}>
+              Előző hónap
+            </Button>
+
+            <Button variant="dark" as={NavLink} exact to={`${PREFIX}/stats/other`}>
+              Egyéb
+            </Button>
+          </div>
+)}
+
+        
+        <Button active={milestones}  onClick={() => setMilestone(!milestones)} className="my-1" as={NavLink} to={`${PREFIX}/milestones`} exact>
           Mérföldkövek
         </Button>
-        <Button className="my-1" as={NavLink} to={`${PREFIX}/register`} exact>
+        <Button  className="my-1" as={NavLink} to={`${PREFIX}/register`} exact>
           Regisztráció
         </Button>
         <Button className="my-1" as={NavLink} to={`${PREFIX}/login`} exact>
