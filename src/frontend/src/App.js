@@ -8,7 +8,7 @@ import Navbar from "./components/layout/Navbar";
 import Milestones from "./components/milestones/Milestones";
 import Expenditures from "./components/expenditures/Expenditures";
 import Incomes from "./components/incomes/Incomes";
-import Register from "./components/auth/register";
+import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 
 const App = () => {
