@@ -15,20 +15,39 @@ const Incomes = ({ income: { incomes, loading }, getIncomes }) => {
       <div className='d-flex justify-content-between'>
         <h1>Bevételek</h1>
       </div>
-      <button>Bevétel rögzítése</button>
+      
+      <button className="btn btn-primary">Bevétel rögzítése</button>
 
       {loading || incomes === null ? (
         <h1>Loading...</h1>
       ) : (
-        <ul>
+        
+        <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr className="bg-primary text-light">
+              <th scope="col">Jogosult</th>
+              <th scope="col">Megnevezés</th>
+              <th scope="col">Összeg</th>
+              <th scope="col">...</th>
+            </tr>
+          </thead>
           {incomes !== null && incomes.length !== 0 ? (
             incomes.map((income) => (
               <IncomeItem key={income.id} income={income} />
+            
             ))
           ) : (
             <h3>Adjon hozzá új bevételt!</h3>
           )}
-        </ul>
+        </table>
+        
+        </div>
+
+       
+        
+
+        
       )}
     </div>
     );

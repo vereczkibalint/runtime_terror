@@ -1,11 +1,21 @@
 import React from 'react';
 
 const ExpenditureItem= ({expenditure}) =>{
-    const {name,price} =expenditure;
+    const {owner,name,price} =expenditure;
     return(
-        <li>
+
+        <tbody>
+        <tr>
+          <th scope="row">{owner}</th>
+          <td>{name}</td>
+          <td>{price}</td>
+          <td>....</td>
+        </tr>
+      </tbody>
+
+        /*<li>
             Név: {name} || Érték: {price}
-        </li>
+        </li>*/
     );
 };
 export default ExpenditureItem;

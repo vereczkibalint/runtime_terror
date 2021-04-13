@@ -15,22 +15,41 @@ const Expenditures = ({ expenditure: { expenditures, loading }, getExpenditures 
       <div className='d-flex justify-content-between'>
         <h1>Kiadások</h1>
       </div>
-      <button>Kiadás rögzítése</button>
+      <button className="btn btn-primary">Kiadás rögzítése</button>
 
       {loading || expenditures === null ? (
         <h1>Loading...</h1>
       ) : (
-        <ul>
+        <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr className="bg-primary text-light">
+              <th scope="col">Személy</th>
+              <th scope="col">Megnevezés</th>
+              <th scope="col">Összeg</th>
+              <th scope="col">...</th>
+            </tr>
+          </thead>
           {expenditures !== null && expenditures.length !== 0 ? (
             expenditures.map((expenditure) => (
               <ExpenditureItem key={expenditure.id} expenditure={expenditure} />
+            
             ))
           ) : (
             <h3>Adjon hozzá új kiadást!</h3>
           )}
-        </ul>
+        </table>
+        
+        </div>
+
+       
+        
+
+        
       )}
     </div>
+       
+    
     );
 };
 
