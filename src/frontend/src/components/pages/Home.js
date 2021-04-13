@@ -1,7 +1,10 @@
 import React from "react";
 import { checkIsAuthenticated } from "../../utils/authentication";
-const Home = () => {
-  if (!checkIsAuthenticated)
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+
+const Home = ({ auth }) => {
+  if (!checkIsAuthenticated(auth))
     return (
       <div>
         <div className="d-flex justify-content-between">
@@ -53,4 +56,12 @@ const Home = () => {
   );
 };
 
-export default Home;
+Home.propTypes = {
+  auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps)(Home);
