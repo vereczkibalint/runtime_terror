@@ -167,7 +167,7 @@ const Navbar = ({ auth, logout }) => {
               Beállítások
             </Button>
             <Button className="my-1" onClick={onLogout}>
-              Kijelentkezés <i class="fas fa-sign-out-alt"></i>
+              Kijelentkezés <i className="fas fa-sign-out-alt"></i>
             </Button>
           </Fragment>
         ) : (

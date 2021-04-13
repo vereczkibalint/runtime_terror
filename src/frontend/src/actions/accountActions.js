@@ -1,4 +1,5 @@
 import {
+  GET_ACCOUNT,
   GET_ACCOUNTS,
   ADD_ACCOUNT,
   UPDATE_ACCOUNT,
@@ -6,24 +7,16 @@ import {
   SET_CURRENT_ACCOUNT,
   CLEAR_CURRENT_ACCOUNT,
   ACCOUNT_ERROR,
-  SEARCH_ACCOUNT,
   SET_LOADING,
 } from "./types";
+import axios from "axios";
 
 export const getAccounts = () => async (dispatch) => {
   try {
-    setLoading();
-    const res = await fetch(`/questions`);
-    const data = await res.json();
-    dispatch({
-      type: GET_ACCOUNTS,
-      payload: data,
-    });
+    const res = await axios.get("/accounts");
+    dispatch({ type: GET_ACCOUNTS, payload: res.data });
   } catch (err) {
-    dispatch({
-      type: ACCOUNT_ERROR,
-      payload: err.response.statusText,
-    });
+    dispatch({ type: ACCOUNT_ERROR, payload: err.response.msg });
   }
 };
 

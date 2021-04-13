@@ -8,7 +8,7 @@ import {
   CLEAR_CURRENT_ACCOUNT,
   ACCOUNT_ERROR,
   SET_LOADING,
-} from "./types";
+} from "../actions/types";
 
 const initialState = {
   accounts: [],
@@ -53,7 +53,13 @@ export default (state = initialState, action) => {
         ),
         loading: false,
       };
-    case CLEAR_CURRENT:
+    case SET_CURRENT_ACCOUNT:
+      return {
+        ...state,
+        current: action.payload,
+        loading: false,
+      };
+    case CLEAR_CURRENT_ACCOUNT:
       return {
         ...state,
         current: null,
