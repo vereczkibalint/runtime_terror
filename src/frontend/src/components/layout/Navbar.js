@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { checkIsAuthenticated } from "../../utils/authentication";
-import { logout } from "../../actions/auth";
+import { logout } from "../../actions/authActions";
 
 const Navbar = ({ auth, logout }) => {
   const [expenditures, setExpenditure] = useState(false);
