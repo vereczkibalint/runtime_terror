@@ -24,6 +24,7 @@ const Accounts = ({ accounts: { accounts, current }, getAccounts }) => {
           Add Account
         </Button>
       </div>
+      <hr />
 
       <AccountForm show={showForm} handleClose={handleClose} />
 
@@ -42,7 +43,6 @@ const Accounts = ({ accounts: { accounts, current }, getAccounts }) => {
       ) : (
         <h3>No account to show</h3>
       )}
-      <hr />
       <AccountForm />
     </div>
   );
