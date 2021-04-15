@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // I want to use local storage as my default storage
 
-import auth from "./auth";
+import auth from "./authReducer";
 import milestoneReducer from "./milestoneReducer";
 import expenditureReducer from "./expenditureReducer";
 import incomeReducer from "./incomeReducer";

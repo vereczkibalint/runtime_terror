@@ -1,5 +1,5 @@
 import axios from "axios";
-import { setAlert } from "./alert";
+import { setAlert } from "./alertActions";
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
