@@ -1,13 +1,16 @@
-import React, { Fragment, useEffect } from "react";
-import AccountItem from "./AccountItem";
+import React, { Fragment, useEffect, useState } from "react";
 import AccountForm from "./AccountForm";
 import { connect } from "react-redux";
 import { getAccounts } from "../../actions/accountActions";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import { PREFIX } from "../../config";
+import { Button } from "react-bootstrap";
 
 const Accounts = ({ accounts: { accounts, current }, getAccounts }) => {
+  const [showForm, setShowForm] = useState(false);
+
+  const handleClose = () => setShowForm(false);
+  const handleShow = () => setShowForm(true);
+
   useEffect(() => {
     getAccounts();
     //eslint-disable-next-line
@@ -15,8 +18,16 @@ const Accounts = ({ accounts: { accounts, current }, getAccounts }) => {
 
   return (
     <div>
-      <h1>Accounts</h1>
-      {accounts ? (
+      <div className="d-flex justify-content-between my-3">
+        <h1>Accounts</h1>
+        <Button variant="success" onClick={handleShow}>
+          Add Account
+        </Button>
+      </div>
+
+      <AccountForm show={showForm} handleClose={handleClose} />
+
+      {accounts && accounts.length > 0 ? (
         <ul>
           {accounts.map((account) => (
             <Fragment>
@@ -29,7 +40,7 @@ const Accounts = ({ accounts: { accounts, current }, getAccounts }) => {
           ))}
         </ul>
       ) : (
-        <h1>No account to show</h1>
+        <h3>No account to show</h3>
       )}
       <hr />
       <AccountForm />
