@@ -12,11 +12,14 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./routing/PrivateRoute";
 import Accounts from "./components/accounts/Accounts";
-import setAuthToken from "./utils/setAuthToken";
+import { connect } from "react-redux";
+import api from "./utils/api";
 
-setAuthToken();
+const App = ({ auth: { isAuthenticated, token } }) => {
+  if (isAuthenticated) {
+    api.defaults.headers.Authorization = `Bearer ${token}`;
+  }
 
-const App = () => {
   return (
     <Fragment>
       <div className="d-flex align-items-stretch w-100">
@@ -55,4 +58,8 @@ const App = () => {
   );
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps)(App);
