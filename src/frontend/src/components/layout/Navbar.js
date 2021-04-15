@@ -11,12 +11,19 @@ const Navbar = ({ auth, logout }) => {
   const [expenditures, setExpenditure] = useState(false);
   const [incomes, setIncomes] = useState(false);
   const [stats, setStats] = useState(false);
-  const [milestones, setMilestone] = useState(false);
+  const [milestones, setMilestones] = useState(false);
   const history = useHistory();
 
   const onLogout = () => {
     logout();
     history.push(`${PREFIX}/login`);
+  };
+
+  const setToggleMenuStatesToFalse = () => {
+    setExpenditure(false);
+    setIncomes(false);
+    setStats(false);
+    setMilestones(false);
   };
 
   return (
@@ -41,7 +48,10 @@ const Navbar = ({ auth, logout }) => {
             </Button>
             <Button
               className="my-1"
-              onClick={() => setExpenditure(!expenditures)}
+              onClick={() => {
+                setToggleMenuStatesToFalse();
+                setExpenditure(!expenditures);
+              }}
               active={expenditures}
             >
               Kiadás <i className="fas fa-caret-down"></i>
@@ -78,7 +88,10 @@ const Navbar = ({ auth, logout }) => {
             <Button
               className="my-1"
               active={incomes}
-              onClick={() => setIncomes(!incomes)}
+              onClick={() => {
+                setToggleMenuStatesToFalse();
+                setIncomes(!incomes);
+              }}
             >
               Bevétel <i className="fas fa-caret-down"></i>
             </Button>
@@ -114,7 +127,10 @@ const Navbar = ({ auth, logout }) => {
             <Button
               className="my-1"
               active={stats}
-              onClick={() => setStats(!stats)}
+              onClick={() => {
+                setToggleMenuStatesToFalse();
+                setStats(!stats);
+              }}
             >
               Statisztika <i className="fas fa-caret-down"></i>
             </Button>
@@ -150,7 +166,10 @@ const Navbar = ({ auth, logout }) => {
 
             <Button
               active={milestones}
-              onClick={() => setMilestone(!milestones)}
+              onClick={() => {
+                setToggleMenuStatesToFalse();
+                setMilestones(!milestones);
+              }}
               className="my-1"
               as={NavLink}
               to={`${PREFIX}/milestones`}
