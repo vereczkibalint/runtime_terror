@@ -10,44 +10,37 @@ import {
   LOGOUT,
 } from "./types";
 import setAuthToken from "../utils/setAuthToken";
+import { persistor } from "../store";
+import api from "../utils/api";
 
 // Load user
-export const loadUser = () => (dispatch) => {
-  if (localStorage.token) {
-    setAuthToken(localStorage.token);
-  }
-
-  if (localStorage.user) {
-    dispatch({
-      type: USER_LOADED,
-      payload: localStorage.user,
-    });
-  } else {
-    dispatch({
-      type: AUTH_ERROR,
-    });
-  }
+export const loadUser = () => {
+  setAuthToken();
 };
 
 // Register User
-export const register = ({ firstName, lastName, email, password }) => async (
-  dispatch
-) => {
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
+export const register = ({
+  lastName,
+  firstName,
+  email,
+  password,
+  passwordConfirm,
+}) => async (dispatch) => {
+  const body = JSON.stringify({
+    lastName,
+    firstName,
+    email,
+    password,
+    passwordConfirm,
+  });
 
-  const body = JSON.stringify({ firstName, lastName, email, password });
   try {
-    const res = await axios.post("/auth/register", body, config);
+    const res = await api.post("/auth/register", body);
     dispatch({
       type: REGISTER_SUCCESS,
       payload: res.data,
     });
     dispatch(setAlert("User added successfully", "success"));
-    dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
@@ -61,21 +54,18 @@ export const register = ({ firstName, lastName, email, password }) => async (
 
 // Login User
 export const login = (email, password) => async (dispatch) => {
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
-
   const body = JSON.stringify({ email, password });
   try {
-    const res = await axios.post("/auth/login", body, config);
+    const res = await api.post("/auth/login", body);
+
+    localStorage.setItem("token", res.data.token);
+    localStorage.setItem("user", JSON.stringify(res.data.user));
+
     dispatch({
       type: LOGIN_SUCCESS,
       payload: res.data,
     });
     dispatch(setAlert("Logged in", "success"));
-    //dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
@@ -90,4 +80,9 @@ export const login = (email, password) => async (dispatch) => {
 // Logout - Clear Profile
 export const logout = () => (dispatch) => {
   dispatch({ type: LOGOUT });
+  localStorage.clear();
+  setTimeout(() => {
+    persistor.purge();
+    setAuthToken();
+  }, 200);
 };
