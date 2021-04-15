@@ -17,7 +17,7 @@ const initialState = {
   error: null,
 };
 
-export default (state = initialState, action) => {
+const accountReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ACCOUNT:
       return {
@@ -79,3 +79,5 @@ export default (state = initialState, action) => {
       return state;
   }
 };
+
+export default accountReducer;

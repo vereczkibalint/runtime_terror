@@ -1,21 +1,17 @@
-import axios from "axios";
 import { setAlert } from "./alertActions";
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
-  USER_LOADED,
-  AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
 } from "./types";
-import setAuthToken from "../utils/setAuthToken";
 import { persistor } from "../store";
 import api from "../utils/api";
 
-// Load user
-export const loadUser = () => {
-  setAuthToken();
+const saveTokenAndUserInLocalStorage = (token, user) => {
+  localStorage.setItem("token", token);
+  localStorage.setItem("user", JSON.stringify(user));
 };
 
 // Register User
@@ -36,6 +32,7 @@ export const register = ({
 
   try {
     const res = await api.post("/auth/register", body);
+    saveTokenAndUserInLocalStorage(res.data.token, res.data.user);
     dispatch({
       type: REGISTER_SUCCESS,
       payload: res.data,
@@ -58,8 +55,7 @@ export const login = (email, password) => async (dispatch) => {
   try {
     const res = await api.post("/auth/login", body);
 
-    localStorage.setItem("token", res.data.token);
-    localStorage.setItem("user", JSON.stringify(res.data.user));
+    saveTokenAndUserInLocalStorage(res.data.token, res.data.user);
 
     dispatch({
       type: LOGIN_SUCCESS,
@@ -83,6 +79,5 @@ export const logout = () => (dispatch) => {
   localStorage.clear();
   setTimeout(() => {
     persistor.purge();
-    setAuthToken();
   }, 200);
 };

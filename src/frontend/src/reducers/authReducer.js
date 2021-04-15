@@ -1,7 +1,6 @@
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
-  USER_LOADED,
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
@@ -18,13 +17,6 @@ const initialState = {
 const authReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case USER_LOADED:
-      return {
-        ...state,
-        isAuthenticated: true,
-        loading: false,
-        user: payload,
-      };
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
       // unnecessary because of persist
@@ -34,6 +26,7 @@ const authReducer = (state = initialState, action) => {
         ...payload,
         isAuthenticated: true,
         loading: false,
+        user: payload,
       };
     case REGISTER_FAIL:
     case AUTH_ERROR:
@@ -44,7 +37,7 @@ const authReducer = (state = initialState, action) => {
         user: null,
         isAuthenticated: false,
         loading: false,
-        token: localStorage.getItem("token"),
+        token: null,
       };
     default:
       return state;
