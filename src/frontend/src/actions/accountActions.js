@@ -9,11 +9,11 @@ import {
   ACCOUNT_ERROR,
   SET_LOADING,
 } from "./types";
-import axios from "axios";
+import api from "../utils/api";
 
 export const getAccounts = () => async (dispatch) => {
   try {
-    const res = await axios.get("/accounts");
+    const res = await api.get("/accounts");
     dispatch({ type: GET_ACCOUNTS, payload: res.data });
   } catch (err) {
     dispatch({ type: ACCOUNT_ERROR, payload: err.response.msg });
