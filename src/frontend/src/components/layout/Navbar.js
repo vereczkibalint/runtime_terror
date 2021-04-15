@@ -97,7 +97,7 @@ const Navbar = ({ auth, logout }) => {
                 to={`${PREFIX}/register`}
                 exact
               >
-                Regisztráció <i class="far fa-plus-square"></i>
+                Regisztráció <i className="far fa-plus-square"></i>
               </Button>
               <Button
                 className="my-1"
@@ -105,7 +105,7 @@ const Navbar = ({ auth, logout }) => {
                 to={`${PREFIX}/login`}
                 exact
               >
-                Bejelentkezés <i class="fas fa-sign-in-alt"></i>
+                Bejelentkezés <i className="fas fa-sign-in-alt"></i>
               </Button>
             </Fragment>
           )}
