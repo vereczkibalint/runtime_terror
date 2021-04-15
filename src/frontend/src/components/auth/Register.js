@@ -8,30 +8,30 @@ import PropTypes from "prop-types";
 
 const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
-    first_name: "",
-    last_name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
-    password2: "",
+    passwordConfirm: "",
   });
 
-  const { first_name, last_name, email, password, password2 } = formData;
+  const { firstName, lastName, email, password, passwordConfirm } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (password !== password2) {
+    if (password !== passwordConfirm) {
       setAlert("Password do not match", "danger");
     } else {
-      register({ first_name, last_name, email, password });
+      register({ firstName, lastName, email, password, passwordConfirm });
     }
   };
 
   // Redirect if registered in
   if (isAuthenticated) {
-    return <Redirect to={"/dashboard"} />;
+    return <Redirect to={"/"} />;
   }
 
   return (
@@ -51,8 +51,8 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                 className={"form-control text-center"}
                 type={"text"}
                 placeholder={"Vezetéknév"}
-                name={"last_name"}
-                value={last_name}
+                name={"lastName"}
+                value={lastName}
                 onChange={(e) => onChange(e)}
               />
             </Form.Group>
@@ -61,8 +61,8 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                 className={"form-control text-center"}
                 type={"text"}
                 placeholder={"Keresztnév"}
-                name={"first_name"}
-                value={first_name}
+                name={"firstName"}
+                value={firstName}
                 onChange={(e) => onChange(e)}
               />
             </Form.Group>
@@ -91,8 +91,8 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                 className={"form-control text-center"}
                 type={"password"}
                 placeholder={"Jelszó megerősítése"}
-                name={"password2"}
-                value={password2}
+                name={"passwordConfirm"}
+                value={passwordConfirm}
                 onChange={(e) => onChange(e)}
               />
             </Form.Group>
