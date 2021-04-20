@@ -30,16 +30,16 @@ const Login = ({ login, isAuthenticated }) => {
     <Fragment>
       <Row>
         <Col xs={12} md={8} lg={6} className={"mx-auto"}>
-          <h1 className={"text-primary text-justify text-center"}>Sign In</h1>
+          <h1 className={"text-primary text-justify text-center"}>Bejelentkezés</h1>
           <p className={"lead"}>
-            <i className={"fas fa-user"} /> Sign Into Your Account
+            <i className={"fas fa-user"} /> Jelentkezz be a fiókodba!
           </p>
           <Form action={"create-profile.html"} onSubmit={(e) => onSubmit(e)}>
             <Form.Group>
               <input
                 className={"form-control"}
                 type={"email"}
-                placeholder={"Email Address"}
+                placeholder={"Email cím"}
                 name={"email"}
                 value={email}
                 onChange={(e) => onChange(e)}
@@ -50,7 +50,7 @@ const Login = ({ login, isAuthenticated }) => {
               <input
                 className={"form-control"}
                 type={"password"}
-                placeholder={"Password"}
+                placeholder={"Jelszó"}
                 name={"password"}
                 minLength={"6"}
                 value={password}
@@ -62,14 +62,14 @@ const Login = ({ login, isAuthenticated }) => {
               <input
                 type={"submit"}
                 className={"btn btn-primary btn-block"}
-                value={"Login"}
+                value={"Bejelentkezés"}
               />
             </Form.Group>
           </Form>
           <p className={"my-1"}>
-            Don't have an account?{" "}
+            Nem rendelkezel fiókkal?{" "}
             <Link to={"/register"} className={"text-info font-weight-bold"}>
-              Sign Up
+              Regisztráció
             </Link>
           </p>
         </Col>
