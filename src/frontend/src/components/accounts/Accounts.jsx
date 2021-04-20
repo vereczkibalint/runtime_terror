@@ -19,9 +19,9 @@ const Accounts = ({ accounts: { accounts, current }, getAccounts }) => {
   return (
     <div>
       <div className="d-flex justify-content-between my-3">
-        <h1>Accounts</h1>
+        <h1>Számlák</h1>
         <Button variant="success" onClick={handleShow}>
-          Add Account
+          Számla hozzáadása
         </Button>
       </div>
       <hr />
@@ -41,7 +41,7 @@ const Accounts = ({ accounts: { accounts, current }, getAccounts }) => {
           ))}
         </ul>
       ) : (
-        <h3>No account to show</h3>
+        <h3>Nincs megjelenítendő számla</h3>
       )}
       <AccountForm />
     </div>

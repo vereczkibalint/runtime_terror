@@ -64,22 +64,22 @@ const AccountForm = ({
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Add new account</Modal.Title>
+        <Modal.Title>Számla hozzáadása</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
           <Form.Group controlId="name">
-            <Form.Label>Name</Form.Label>
+            <Form.Label>Név</Form.Label>
             <Form.Control type="text" placeholder="Name" />
           </Form.Group>
 
           <Form.Group controlId="color">
-            <Form.Label>Color</Form.Label>
+            <Form.Label>Szín</Form.Label>
             <Form.Control type="color" title="Choose your color" />
           </Form.Group>
 
           <Form.Group controlId="balance">
-            <Form.Label>Balance</Form.Label>
+            <Form.Label>Egyenleg</Form.Label>
             <Form.Control type="number" value="0" />
           </Form.Group>
 
@@ -87,10 +87,10 @@ const AccountForm = ({
 
           <div className="d-flex justify-content-between">
             <Button variant="secondary" onClick={handleClose}>
-              Close
+              Bezárás
             </Button>
             <Button variant="primary" type="submit">
-              Submit
+              Mentés
             </Button>
           </div>
         </Form>
