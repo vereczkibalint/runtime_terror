@@ -8,7 +8,7 @@ const Home = ({ auth }) => {
     return (
       <div>
         <div className="d-flex justify-content-between">
-          <h1>Kezdőlap</h1>
+          <h1>Jelentkezz be!</h1>
         </div>
       </div>
     );
