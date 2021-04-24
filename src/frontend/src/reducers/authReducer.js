@@ -1,4 +1,5 @@
 import {
+  SET_LOADING,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   AUTH_ERROR,
@@ -38,6 +39,11 @@ const authReducer = (state = initialState, action) => {
         isAuthenticated: false,
         loading: false,
         token: null,
+      };
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: true,
       };
     default:
       return state;

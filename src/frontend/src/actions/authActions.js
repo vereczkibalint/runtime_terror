@@ -1,5 +1,6 @@
 import { setAlert } from "./alertActions";
 import {
+  SET_LOADING,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   LOGIN_SUCCESS,
@@ -31,6 +32,7 @@ export const register = ({
   });
 
   try {
+    setLoading();
     const res = await api.post("/auth/register", body);
     saveTokenAndUserInLocalStorage(res.data.token, res.data.user);
     dispatch({
@@ -39,10 +41,8 @@ export const register = ({
     });
     dispatch(setAlert("User added successfully", "success"));
   } catch (err) {
-    const errors = err.response.data.errors;
-    if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
-    }
+    const error = err.response.data.message;
+    dispatch(setAlert(error, "danger"));
     dispatch({
       type: REGISTER_FAIL,
     });
@@ -53,6 +53,7 @@ export const register = ({
 export const login = (email, password) => async (dispatch) => {
   const body = JSON.stringify({ email, password });
   try {
+    setLoading();
     const res = await api.post("/auth/login", body);
 
     saveTokenAndUserInLocalStorage(res.data.token, res.data.user);
@@ -63,10 +64,8 @@ export const login = (email, password) => async (dispatch) => {
     });
     dispatch(setAlert("Logged in", "success"));
   } catch (err) {
-    const errors = err.response.data.errors;
-    if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
-    }
+    const error = err.response.data.message;
+    dispatch(setAlert(error, "danger"));
     dispatch({
       type: LOGIN_FAIL,
     });
@@ -80,4 +79,11 @@ export const logout = () => (dispatch) => {
   setTimeout(() => {
     persistor.purge();
   }, 200);
+};
+
+// set loading to true
+export const setLoading = () => {
+  return {
+    type: SET_LOADING,
+  };
 };
