@@ -11,7 +11,7 @@ const Login = ({ login, isAuthenticated, loading, errors }) => {
   const [formData, setFormData] = useState({ email: "", password: "" });
 
   const handleFormSubmit = (values) => {
-    login(values.email, values.password);
+    login(values);
     setFormData({ email: values.email, password: "" });
   };
 

@@ -7,6 +7,7 @@ import { Button } from "react-bootstrap";
 
 const Accounts = ({ accounts: { accounts, current }, getAccounts }) => {
   const [showForm, setShowForm] = useState(false);
+  const [formTitle, setFormTitle] = useState("");
 
   const handleClose = () => setShowForm(false);
   const handleShow = () => setShowForm(true);
@@ -16,17 +17,26 @@ const Accounts = ({ accounts: { accounts, current }, getAccounts }) => {
     //eslint-disable-next-line
   }, []);
 
+  const showAddAccountModal = () => {
+    setFormTitle("Új számla hozzáadása");
+    handleShow();
+  };
+
   return (
     <div>
       <div className="d-flex justify-content-between my-3">
         <h1>Számlák</h1>
-        <Button variant="success" onClick={handleShow}>
+        <Button variant="success" onClick={showAddAccountModal}>
           Számla hozzáadása
         </Button>
       </div>
       <hr />
 
-      <AccountForm show={showForm} handleClose={handleClose} />
+      <AccountForm
+        show={showForm}
+        handleClose={handleClose}
+        title={formTitle}
+      />
 
       {accounts && accounts.length > 0 ? (
         <ul>
@@ -43,7 +53,6 @@ const Accounts = ({ accounts: { accounts, current }, getAccounts }) => {
       ) : (
         <h3>Nincs megjelenítendő számla</h3>
       )}
-      <AccountForm />
     </div>
   );
 };

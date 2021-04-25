@@ -50,7 +50,7 @@ export const register = ({
 };
 
 // Login User
-export const login = (email, password) => async (dispatch) => {
+export const login = ({ email, password }) => async (dispatch) => {
   const body = JSON.stringify({ email, password });
   try {
     setLoading();
