@@ -28,10 +28,10 @@ const AccountForm = ({
 
   const [account, setAccount] = useState({
     owner: userId,
-    type: 0,
+    type: "cash",
     name: "",
     color: randomColor(),
-    balance: 0,
+    balance: 1,
   });
 
   useEffect(() => {
@@ -40,19 +40,18 @@ const AccountForm = ({
     } else {
       setAccount({
         owner: userId,
-        type: 0,
+        type: "cash",
         name: "",
         color: randomColor(),
-        balance: 0,
+        balance: 1,
       });
     }
   }, [current, show, userId]);
 
   const handleFormSubmit = (values) => {
-    console.log(values);
     const newAccount = {
       owner: userId,
-      type: 0,
+      type: values.type,
       name: values.name,
       color: values.color,
       balance: values.balance,
@@ -68,7 +67,10 @@ const AccountForm = ({
   const validationSchema = yup.object({
     name: yup.string().required("A név megadása kötelező"),
     color: yup.string().required("A szín megadása kötelező"),
-    balance: yup.number().required("Az egyenleg megadása kötelező"),
+    balance: yup
+      .number()
+      .positive("Az egyenlegnek 0-nál nagyobbnak kell lennie")
+      .required("Az egyenleg megadása kötelező"),
   });
 
   return (
@@ -110,6 +112,19 @@ const AccountForm = ({
                 <Form.Control.Feedback type="invalid">
                   {errors.name}
                 </Form.Control.Feedback>
+              </Form.Group>
+
+              <Form.Group>
+                <Form.Label>Típus</Form.Label>
+                <Form.Control
+                  as="select"
+                  name={"type"}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="cash">Készpénz</option>
+                  <option value="bank">Bank</option>
+                </Form.Control>
               </Form.Group>
 
               <Form.Group>

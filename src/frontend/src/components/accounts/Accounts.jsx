@@ -41,12 +41,12 @@ const Accounts = ({ accounts: { accounts, current }, getAccounts }) => {
       {accounts && accounts.length > 0 ? (
         <ul>
           {accounts.map((account) => (
-            <Fragment>
-              <li>ID: ${account._id}</li>
-              <li>Type: ${account.type}</li>
-              <li>Color: ${account.color}</li>
-              <li>Name: ${account.name}</li>
-              <li>Balance: ${account.balance}</li>
+            <Fragment key={account._id}>
+              <li>ID: {account._id}</li>
+              <li>Type: {account.type}</li>
+              <li>Color: {account.color}</li>
+              <li>Name: {account.name}</li>
+              <li>Balance: {account.balance}</li>
             </Fragment>
           ))}
         </ul>

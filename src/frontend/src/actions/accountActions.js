@@ -22,28 +22,24 @@ export const getAccounts = () => async (dispatch) => {
 };
 
 export const addAccount = (account) => async (dispatch) => {
-  console.log("add");
+  const body = JSON.stringify(account);
   try {
     setLoading();
-    const res = await fetch(`/accounts/create`, {
-      method: "POST",
-      body: JSON.stringify(account),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await res.json();
+    const res = await api.post(`/accounts/create`, body);
+    const data = await res.data;
+    console.log(data);
     dispatch({
       type: ADD_ACCOUNT,
       payload: data,
     });
     dispatch(setAlert("Számla hozzáadva", "success"));
   } catch (err) {
+    console.log(err);
     dispatch({
       type: ACCOUNT_ERROR,
-      payload: err.response.statusText,
+      payload: err.response.errors,
     });
-    dispatch(setAlert(err, "danger"));
+    dispatch(setAlert("Hibás adat", "danger"));
   }
 };
 
