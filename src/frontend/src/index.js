@@ -13,15 +13,13 @@ import { createBrowserHistory } from "history";
 export const history = createBrowserHistory();
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate persistor={persistor}>
-        <Router history={history}>
-          <App />
-        </Router>
-      </PersistGate>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <PersistGate persistor={persistor}>
+      <Router history={history}>
+        <App />
+      </Router>
+    </PersistGate>
+  </Provider>,
   document.getElementById("root")
 );
 

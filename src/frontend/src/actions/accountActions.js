@@ -10,6 +10,7 @@ import {
   SET_LOADING,
 } from "./types";
 import api from "../utils/api";
+import { setAlert } from "./alertActions";
 
 export const getAccounts = () => async (dispatch) => {
   try {
@@ -21,6 +22,7 @@ export const getAccounts = () => async (dispatch) => {
 };
 
 export const addAccount = (account) => async (dispatch) => {
+  console.log("add");
   try {
     setLoading();
     const res = await fetch(`/accounts/create`, {
@@ -35,11 +37,13 @@ export const addAccount = (account) => async (dispatch) => {
       type: ADD_ACCOUNT,
       payload: data,
     });
+    dispatch(setAlert("Számla hozzáadva", "success"));
   } catch (err) {
     dispatch({
       type: ACCOUNT_ERROR,
       payload: err.response.statusText,
     });
+    dispatch(setAlert(err, "danger"));
   }
 };
 
@@ -77,11 +81,13 @@ export const updateAccount = (account) => async (dispatch) => {
       type: UPDATE_ACCOUNT,
       payload: account,
     });
+    dispatch(setAlert("Számla módosítva", "success"));
   } catch (err) {
     dispatch({
       type: ACCOUNT_ERROR,
       payload: err.response.statusText,
     });
+    dispatch(setAlert(err, "danger"));
   }
 };
 

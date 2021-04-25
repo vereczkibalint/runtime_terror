@@ -18,6 +18,7 @@ const AccountForm = ({
   clearCurrent,
   current,
   title,
+  userId,
 }) => {
   const randomColor = () =>
     "#" +
@@ -26,7 +27,7 @@ const AccountForm = ({
       .padStart(0, 6);
 
   const [account, setAccount] = useState({
-    owner: "",
+    owner: userId,
     type: 0,
     name: "",
     color: randomColor(),
@@ -38,17 +39,30 @@ const AccountForm = ({
       setAccount(current);
     } else {
       setAccount({
-        owner: "",
+        owner: userId,
         type: 0,
         name: "",
         color: randomColor(),
         balance: 0,
       });
     }
-  }, [current, show]);
+  }, [current, show, userId]);
 
   const handleFormSubmit = (values) => {
-    addAccount(values);
+    console.log(values);
+    const newAccount = {
+      owner: userId,
+      type: 0,
+      name: values.name,
+      color: values.color,
+      balance: values.balance,
+    };
+    if (current) {
+      updateAccount(newAccount);
+    } else {
+      addAccount(newAccount);
+    }
+    handleClose();
   };
 
   const validationSchema = yup.object({
@@ -79,7 +93,7 @@ const AccountForm = ({
             isValid,
             errors,
           }) => (
-            <Form>
+            <Form onSubmit={handleSubmit} noValidate>
               <Form.Group controlId="name">
                 <Form.Label>Név</Form.Label>
                 <Form.Control
@@ -134,11 +148,15 @@ const AccountForm = ({
                 <Button
                   variant="secondary"
                   onClick={handleClose}
-                  disabled={isSubmitting || !dirty || !isValid}
+                  disabled={isSubmitting}
                 >
                   Bezárás
                 </Button>
-                <Button variant="primary" type="submit">
+                <Button
+                  variant="primary"
+                  type="submit"
+                  disabled={isSubmitting || !dirty || !isValid}
+                >
                   Mentés
                 </Button>
               </div>
@@ -157,10 +175,12 @@ AccountForm.propTypes = {
   updateAccount: PropTypes.func.isRequired,
   clearCurrent: PropTypes.func.isRequired,
   current: PropTypes.object,
+  userId: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   current: state.accounts.current,
+  userId: state.auth.user.user._id,
 });
 
 export default connect(mapStateToProps, {
