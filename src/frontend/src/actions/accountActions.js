@@ -46,19 +46,18 @@ export const addAccount = (account) => async (dispatch) => {
 export const deleteAccount = (id) => async (dispatch) => {
   try {
     setLoading();
-    await fetch(`/accounts/${id}`, {
-      method: "DELETE",
-    });
-
+    await api.delete(`/accounts/${id}`);
     dispatch({
       type: DELETE_ACCOUNT,
       payload: id,
     });
+    dispatch(setAlert("Számla törölve", "success"));
   } catch (err) {
     dispatch({
       type: ACCOUNT_ERROR,
       payload: err.response.statusText,
     });
+    dispatch(setAlert("Hiba a számla törlése közben", "danger"));
   }
 };
 

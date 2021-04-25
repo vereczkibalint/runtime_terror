@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { getAccounts } from "../../actions/accountActions";
 import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
+import AccountList from "./AccountList";
 
 const Accounts = ({ accounts: { accounts, current }, getAccounts }) => {
   const [showForm, setShowForm] = useState(false);
@@ -30,7 +31,6 @@ const Accounts = ({ accounts: { accounts, current }, getAccounts }) => {
           Számla hozzáadása
         </Button>
       </div>
-      <hr />
 
       <AccountForm
         show={showForm}
@@ -39,17 +39,7 @@ const Accounts = ({ accounts: { accounts, current }, getAccounts }) => {
       />
 
       {accounts && accounts.length > 0 ? (
-        <ul>
-          {accounts.map((account) => (
-            <Fragment key={account._id}>
-              <li>ID: {account._id}</li>
-              <li>Type: {account.type}</li>
-              <li>Color: {account.color}</li>
-              <li>Name: {account.name}</li>
-              <li>Balance: {account.balance}</li>
-            </Fragment>
-          ))}
-        </ul>
+        <AccountList accounts={accounts} />
       ) : (
         <h3>Nincs megjelenítendő számla</h3>
       )}

@@ -40,8 +40,8 @@ const accountReducer = (state = initialState, action) => {
     case DELETE_ACCOUNT:
       return {
         ...state,
-        account: state.accounts.filter(
-          (account) => account.id !== action.payload
+        accounts: state.accounts.filter(
+          (account) => account._id !== action.payload
         ),
         loading: false,
       };
