@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { Col, Form, Row } from "react-bootstrap";
+import { Col, Form, Row, Button, Spinner } from "react-bootstrap";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -57,6 +57,7 @@ const Login = ({ login, isAuthenticated, loading, errors }) => {
               handleBlur,
               values,
               touched,
+              dirty,
               isSubmitting,
               isValid,
               errors,
@@ -70,7 +71,7 @@ const Login = ({ login, isAuthenticated, loading, errors }) => {
                     value={values.email}
                     onChange={handleChange}
                     isValid={touched.email && !errors.email}
-                    isInvalid={touched.email && errors.email}
+                    isInvalid={errors.email}
                     autoComplete="off"
                     required
                   />
@@ -87,7 +88,8 @@ const Login = ({ login, isAuthenticated, loading, errors }) => {
                     value={values.password}
                     onChange={handleChange}
                     isValid={touched.password && !errors.password}
-                    isInvalid={touched.password && errors.password}
+                    isInvalid={errors.password}
+                    autoComplete="off"
                     required
                   />
                   <Form.Control.Feedback type="invalid">
@@ -95,11 +97,13 @@ const Login = ({ login, isAuthenticated, loading, errors }) => {
                   </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group>
-                  <input
+                  <Button
                     type={"submit"}
                     className={"btn btn-primary btn-block"}
-                    value={"Bejelentkezés"}
-                  />
+                    disabled={isSubmitting || !dirty || !isValid}
+                  >
+                    Login
+                  </Button>
                 </Form.Group>
               </Form>
             )}
