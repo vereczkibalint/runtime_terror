@@ -1,38 +1,37 @@
-.cardcell{
+.cardcell {
   margin-right: 20%;
 }
-.cardcollector{
+.cardcollector {
   margin: 0 auto;
   text-align: center;
-  width:90%;
+  width: 90%;
 }
 
-
-
 #sidebar {
-  
   width: 250px;
   min-height: 100vh;
   /* position: fixed;
   top: 0;
   left: 0; */
-  
 }
-.sidebar-header{
+.sidebar-header {
   text-align: center;
 }
 
 #sidebar ul li a {
   color: #fff;
 }
-#menulist{
+#menulist {
   text-align: center;
-  
-  
 }
 
-#dropdownmenu{
+#dropdownmenu {
   background-color: black;
 }
 
-
+.no-vertical-border.table-bordered > tbody > tr > td,
+.no-vertical-border.table-bordered > thead > tr > th,
+.no-vertical-border.table-bordered {
+  border-left: 0;
+  border-right: 0;
+}
