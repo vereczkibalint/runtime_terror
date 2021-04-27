@@ -9,121 +9,95 @@ import {
   SET_LOADING
 } from './types';
 
-// Dummy Data
-//TODO: Delete when backend is finished
-let data = {
-  milestones: [
-    {
-      id: 1,
-      owner: 'Feri',
-      name: 'PS5',
-      goalPrice: 185000,
-      deadLine: new Date().setFullYear(2022),
-      sources: [
-        {
-          account: 'main',
-          amount: 3000,
-          createdAt: new Date().setMonth(3)
-        },
-        {
-          account: 'second',
-          amount: 2000,
-          createdAt: new Date().setMonth(1)
-        },
-        {
-          account: 'asdfasdfasdf',
-          amount: 30000000,
-          createdAt: new Date().setMonth(11)
-        }
-      ]
-    },
-    {
-      id: 2,
-      owner: 'Zsolt',
-      name: 'PC',
-      goalPrice: 200000,
-      deadLine: new Date().setFullYear(2023),
-      sources: [
-        {
-          account: '123',
-          amount: 2222,
-          createdAt: new Date().setMonth(1)
-        },
-        {
-          account: 'xyz',
-          amount: 1111,
-          createdAt: new Date().setMonth(1)
-        },
-        {
-          account: 'asdfasdfasdf',
-          amount: 4444,
-          createdAt: new Date().setMonth(4)
-        }
-      ]
-    }
-  ]
-};
+import api from "../utils/api";
+import { setAlert } from "./alertActions";
 
 export const getMilestones = () => async (dispatch) => {
   try {
-    setLoading();
-    const { milestones } = data;
-    dispatch({
-      type: GET_MILESTONES,
-      payload: milestones
-    });
+    const res = await api.get("/milestones");
+    dispatch({ type: GET_MILESTONES, payload: res.data });
   } catch (err) {
-    dispatch({
-      type: MILESTONE_ERROR,
-      payload: err.response.statusText
-    });
+    dispatch({ type: MILESTONE_ERROR, payload: err.response.msg });
   }
 };
 
 export const addMilestone = (milestone) => async (dispatch) => {
+  const body = JSON.stringify(milestone);
   try {
     setLoading();
-    const data = milestone;
+    const res = await api.post(`/milestones/create`, body);
+    const data = await res.data;
+    console.log(data);
     dispatch({
       type: ADD_MILESTONE,
-      payload: data
+      payload: data,
     });
+    dispatch(setAlert("Mérföldkő hozzáadva", "success"));
   } catch (err) {
+    console.log(err);
     dispatch({
       type: MILESTONE_ERROR,
-      payload: err.response.statusText
+      payload: err.response.errors,
     });
+    dispatch(setAlert("Hibás adat", "danger"));
   }
 };
 
 export const deleteMilestone = (id) => async (dispatch) => {
   try {
     setLoading();
-    const data = id;
+    await api.delete(`/milestones/${id}`);
     dispatch({
       type: DELETE_MILESTONE,
-      payload: data
+      payload: id,
     });
+    dispatch(setAlert("Mérföldkő törölve", "success"));
   } catch (err) {
     dispatch({
       type: MILESTONE_ERROR,
-      payload: err.response.statusText
+      payload: err.response.statusText,
     });
+    dispatch(setAlert("Hiba a mérföldkő törlése közben", "danger"));
   }
 };
 
 export const updateMilestone = (milestone) => async (dispatch) => {
   try {
     setLoading();
-    const data = milestone;
+    const res = await fetch(`/milestones/${milestone.id}`, {
+      method: "PUT",
+      body: JSON.stringify(milestone),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
     dispatch({
       type: UPDATE_MILESTONE,
-      payload: data
+      payload: milestone,
+    });
+    dispatch(setAlert("Mérföldkő módosítva", "success"));
+  } catch (err) {
+    dispatch({
+      type: MILESTONE_ERROR,
+      payload: err.response.statusText,
+    });
+    dispatch(setAlert(err, "danger"));
+  }
+};
+
+export const getMilestone = (id) => async (dispatch) => {
+  try {
+    const res = await fetch(`/milestones/${id}`);
+    const data = await res.json();
+    dispatch({
+      type: GET_MILESTONES,
+      payload: data,
     });
   } catch (err) {
     dispatch({
       type: MILESTONE_ERROR,
-      payload: err.response.statusText
+      payload: err.response.statusText,
     });
   }
 };
@@ -131,18 +105,18 @@ export const updateMilestone = (milestone) => async (dispatch) => {
 export const setCurrent = (milestone) => {
   return {
     type: SET_CURRENT_MILESTONE,
-    payload: milestone
+    payload: milestone,
   };
 };
 
 export const clearCurrent = () => {
   return {
-    type: CLEAR_CURRENT_MILESTONE
+    type: CLEAR_CURRENT_MILESTONE,
   };
 };
 
 export const setLoading = () => {
   return {
-    type: SET_LOADING
+    type: SET_LOADING,
   };
 };

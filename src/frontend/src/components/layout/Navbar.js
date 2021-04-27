@@ -54,7 +54,7 @@ const Navbar = ({ auth, logout }) => {
                 title="Bevétel"
                 id="bg-vertical-dropdown-1"
               >
-                <Dropdown.Item eventKey="1">Mindent megjelenít</Dropdown.Item>
+                <Dropdown.Item as={Link} to="/incomes" eventKey="1">Mindent megjelenít</Dropdown.Item>
                 <Dropdown.Item eventKey="2">Futó hónap</Dropdown.Item>
                 <Dropdown.Item eventKey="3">Előző hónap</Dropdown.Item>
               </DropdownButton>
@@ -65,7 +65,7 @@ const Navbar = ({ auth, logout }) => {
                 title="Statisztika"
                 id="bg-vertical-dropdown-1"
               >
-                <Dropdown.Item eventKey="2">Futó hónap</Dropdown.Item>
+                <Dropdown.Item  eventKey="2">Futó hónap</Dropdown.Item>
                 <Dropdown.Item eventKey="3">Előző hónap</Dropdown.Item>
                 <Dropdown.Item eventKey="3">Egyéb</Dropdown.Item>
               </DropdownButton>
