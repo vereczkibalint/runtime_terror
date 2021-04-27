@@ -5,33 +5,52 @@ import { Link, Redirect } from "react-router-dom";
 import { setAlert } from "../../actions/alertActions";
 import { register } from "../../actions/authActions";
 import PropTypes from "prop-types";
+import { Formik, validateYupSchema } from "formik";
+import * as yup from "yup";
 
 const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
-    first_name: "",
-    last_name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
-    password2: "",
+    passwordConfirm: "",
   });
 
-  const { first_name, last_name, email, password, password2 } = formData;
-
-  const onChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    if (password !== password2) {
-      setAlert("Password do not match", "danger");
-    } else {
-      register({ first_name, last_name, email, password });
-    }
+  const handleFormSubmit=(values) =>{
+    register(values.firstName,values.lastName,values.email,
+            values.password,values.passwordConfirm);
+    setFormData({firstName:values.firstName, lastName:values.lastName,
+              email:values.email,password:"",passwordConfirm:""});
   };
+  const validationSchema=yup.object({
+    firstName: yup
+      .string()
+      .required("A vezetéknév kitöltése kötelező!"),
+    lastName: yup
+      .string()
+      .required("A keresztnév megadása kötelező!"),
+    
+      email: yup
+      .string()
+      .email("Hibás email formátum")
+      .required("Az email cím megadása kötelező"),
+    password: yup
+      .string()
+      .min(6, "A jeszónak legalább 6 karakterből kell állnia")
+      .required("A jelszó megadása kötelező"),
 
+    passwordConfirm: yup.string()
+         .oneOf([yup.ref('password'), null], 'A két jelszó nem egyezik!')
+  });
+
+  const { firstName, lastName, email, password, passwordConfirm } = formData;
+
+  
+ 
   // Redirect if registered in
   if (isAuthenticated) {
-    return <Redirect to={"/dashboard"} />;
+    return <Redirect to={"/"} />;
   }
 
   return (
@@ -45,36 +64,74 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             <i className={"fas fa-user"} />
             Készítsd el fiókodat!
           </p>
-          <Form action={"create-profile.html"} onSubmit={(e) => onSubmit(e)}>
+          <Formik
+            validationSchema={validationSchema}
+            onSubmit={(values, { resetForm }) => {
+              handleFormSubmit(values);
+              resetForm({
+                values: { ...formData },
+              });
+            }}
+            initialValues={formData}
+          >
+            {({
+              handleSubmit,
+              handleChange,
+              handleBlur,
+              values,
+              touched,
+              dirty,
+              isSubmitting,
+              isValid,
+              errors,
+            }) => (
+          <Form action={"create-profile.html"} onSubmit={handleSubmit} noValidate>
             <Form.Group>
               <input
                 className={"form-control text-center"}
                 type={"text"}
                 placeholder={"Vezetéknév"}
-                name={"last_name"}
-                value={last_name}
-                onChange={(e) => onChange(e)}
+                name={"lastName"}
+                value={values.lastName}
+                onChange={handleChange}
+                isValid={touched.lastName &&!errors.lastName}
+                isInvalid={errors.lastName}
               />
+              <Form.Control.Feedback type="invalid">
+                    {errors.lastName}
+              </Form.Control.Feedback>
             </Form.Group>
             <Form.Group>
               <input
                 className={"form-control text-center"}
                 type={"text"}
                 placeholder={"Keresztnév"}
-                name={"first_name"}
-                value={first_name}
-                onChange={(e) => onChange(e)}
+                name={"firstName"}
+                value={values.firstName}
+                onChange={handleChange}
+                isValid={touched.firstName &&!errors.firstName}
+                isInvalid={errors.firstName}
+                
               />
+              <Form.Control.Feedback type="invalid">
+                    {errors.firstName}
+              </Form.Control.Feedback>
             </Form.Group>
+            
             <Form.Group>
               <input
                 className={"form-control text-center"}
                 type={"email"}
                 placeholder={"Email cím"}
                 name={"email"}
-                value={email}
-                onChange={(e) => onChange(e)}
+                value={values.email}
+                onChange={handleChange}
+                isValid={touched.email &&!errors.email}
+                isInvalid={errors.email}
               />
+              <Form.Control.Feedback type="invalid">
+                    {errors.email}
+              </Form.Control.Feedback>
             </Form.Group>
             <Form.Group>
               <input
@@ -82,20 +139,31 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                 type={"password"}
                 placeholder={"Jelszó"}
                 name={"password"}
-                value={password}
-                onChange={(e) => onChange(e)}
+                value={values.password}
+                onChange={handleChange}
+                isValid={touched.password &&!errors.password}
+                isInvalid={errors.password}
               />
+              <Form.Control.Feedback type="invalid">
+                    {errors.password}
+              </Form.Control.Feedback>
             </Form.Group>
             <Form.Group>
               <input
                 className={"form-control text-center"}
                 type={"password"}
                 placeholder={"Jelszó megerősítése"}
-                name={"password2"}
-                value={password2}
-                onChange={(e) => onChange(e)}
+                name={"passwordConfirm"}
+                value={values.passwordConfirm}
+                onChange={handleChange}
+                isValid={touched.passwordConfirm &&!errors.passwordConfirm}
+                isInvalid={errors.passwordConfirm}
               />
+              <Form.Control.Feedback type="invalid">
+                    {errors.passwordConfirm}
+              </Form.Control.Feedback>
             </Form.Group>
+            
             <Form.Group>
               <input
                 type={"submit"}
@@ -104,6 +172,8 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               />
             </Form.Group>
           </Form>
+            )}
+            </Formik>
           <p className={"my-1"}>
             Már rendelkezel fiókkal?{" "}
             <Link to={"/login"} className={"text-info font-weight-bold"}>

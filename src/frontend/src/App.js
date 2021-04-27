@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
-import { Container } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import { PREFIX } from "./config";
 import Home from "./components/pages/Home";
 import Navbar from "./components/layout/Navbar";
@@ -12,16 +12,23 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./routing/PrivateRoute";
 import Accounts from "./components/accounts/Accounts";
-import setAuthToken from "./utils/setAuthToken";
+import Alerts from "./components/layout/Alerts";
+import { connect } from "react-redux";
+import api from "./utils/api";
 
-setAuthToken();
+const App = ({ auth: { isAuthenticated, token } }) => {
+  if (isAuthenticated) {
+    api.defaults.headers.Authorization = `Bearer ${token}`;
+  }
 
-const App = () => {
   return (
     <Fragment>
       <div className="d-flex align-items-stretch w-100">
         <Navbar />
         <Container fluid>
+          <div className="my-1">
+            <Alerts />
+          </div>
           <Switch>
             <Route exact path={`${PREFIX}/`} component={Home} />
             <PrivateRoute
@@ -55,4 +62,8 @@ const App = () => {
   );
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps)(App);

@@ -8,12 +8,14 @@ import {
   CLEAR_CURRENT_ACCOUNT,
   ACCOUNT_ERROR,
   SET_LOADING,
+  SET_ACCOUNT_MODAL,
 } from "./types";
-import axios from "axios";
+import api from "../utils/api";
+import { setAlert } from "./alertActions";
 
 export const getAccounts = () => async (dispatch) => {
   try {
-    const res = await axios.get("/accounts");
+    const res = await api.get("/accounts");
     dispatch({ type: GET_ACCOUNTS, payload: res.data });
   } catch (err) {
     dispatch({ type: ACCOUNT_ERROR, payload: err.response.msg });
@@ -21,67 +23,63 @@ export const getAccounts = () => async (dispatch) => {
 };
 
 export const addAccount = (account) => async (dispatch) => {
+  const body = JSON.stringify(account);
   try {
     setLoading();
-    const res = await fetch(`/accounts/create`, {
-      method: "POST",
-      body: JSON.stringify(account),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await res.json();
+    const res = await api.post(`/accounts/create`, body);
+    const data = await res.data;
+    console.log(data);
     dispatch({
       type: ADD_ACCOUNT,
       payload: data,
     });
+    dispatch(setAlert("Számla hozzáadva", "success"));
   } catch (err) {
+    console.log(err);
     dispatch({
       type: ACCOUNT_ERROR,
-      payload: err.response.statusText,
+      payload: err.response.errors,
     });
+    dispatch(setAlert("Hibás adat", "danger"));
   }
 };
 
 export const deleteAccount = (id) => async (dispatch) => {
   try {
     setLoading();
-    await fetch(`/accounts/${id}`, {
-      method: "DELETE",
-    });
-
+    await api.delete(`/accounts/${id}`);
     dispatch({
       type: DELETE_ACCOUNT,
       payload: id,
     });
+    dispatch(setAlert("Számla törölve", "success"));
   } catch (err) {
     dispatch({
       type: ACCOUNT_ERROR,
       payload: err.response.statusText,
     });
+    dispatch(setAlert("Hiba a számla törlése közben", "danger"));
   }
 };
 
 export const updateAccount = (account) => async (dispatch) => {
+  const body = JSON.stringify(account);
   try {
     setLoading();
-    const res = await fetch(`/accounts/${account.id}`, {
-      method: "PUT",
-      body: JSON.stringify(account),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    console.log(body);
+    await api.put(`/accounts/${account._id}`, body);
 
     dispatch({
       type: UPDATE_ACCOUNT,
       payload: account,
     });
+    dispatch(setAlert("Számla módosítva", "success"));
   } catch (err) {
     dispatch({
       type: ACCOUNT_ERROR,
       payload: err.response.statusText,
     });
+    dispatch(setAlert("Hiba a számla frissítése közben", "danger"));
   }
 };
 
@@ -117,5 +115,19 @@ export const clearCurrent = () => {
 export const setLoading = () => {
   return {
     type: SET_LOADING,
+  };
+};
+
+export const setAccountModal = (modal) => {
+  return {
+    type: SET_ACCOUNT_MODAL,
+    payload: modal,
+  };
+};
+
+export const closeAccountModal = () => {
+  return {
+    type: SET_ACCOUNT_MODAL,
+    payload: { title: "", open: false },
   };
 };

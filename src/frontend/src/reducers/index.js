@@ -7,6 +7,7 @@ import milestoneReducer from "./milestoneReducer";
 import expenditureReducer from "./expenditureReducer";
 import incomeReducer from "./incomeReducer";
 import accountReducer from "./accountReducer";
+import alertReducer from "./alertReducer";
 
 const persistConfig = {
   key: "root",
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   expenditure: expenditureReducer,
   income: incomeReducer,
   accounts: accountReducer,
+  alerts: alertReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);

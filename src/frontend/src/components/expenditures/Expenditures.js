@@ -23,8 +23,8 @@ const Expenditures = ({
       {loading || expenditures === null ? (
         <h1>Loading...</h1>
       ) : (
-        <div class="table-responsive">
-          <table class="table table-hover">
+        <div className="table-responsive">
+          <table className="table table-hover">
             <thead>
               <tr className="bg-primary text-light">
                 <th scope="col">Személy</th>
