@@ -35,6 +35,7 @@ export class AccountsService {
     account.type = updateAccountDto.type ? updateAccountDto.type.toString() : account.type;
     account.name = updateAccountDto.name ? updateAccountDto.name : account.name;
     account.color = updateAccountDto.color ? updateAccountDto.color : account.color;
+    account.balance = updateAccountDto.balance ? updateAccountDto.balance : account.balance;
     await account.save();
 
     return account;

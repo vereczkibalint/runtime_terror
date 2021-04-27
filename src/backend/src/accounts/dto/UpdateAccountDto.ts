@@ -12,4 +12,6 @@ export class UpdateAccountDto {
   name?: string;
   @ApiProperty()
   color?: string;
+  @ApiProperty()
+  balance?: number;
 }
