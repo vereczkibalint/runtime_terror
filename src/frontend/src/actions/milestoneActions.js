@@ -6,8 +6,8 @@ import {
   SET_CURRENT_MILESTONE,
   CLEAR_CURRENT_MILESTONE,
   MILESTONE_ERROR,
-  SET_LOADING
-} from './types';
+  SET_LOADING,
+} from "./types";
 
 import api from "../utils/api";
 import { setAlert } from "./alertActions";
@@ -23,12 +23,12 @@ export const getMilestones = () => async (dispatch) => {
 
 export const addMilestone = (milestone) => async (dispatch) => {
   //const body = JSON.stringify(milestone);
- const body=JSON.stringify({
+  const body = JSON.stringify({
     owner: "6063570f325f8331d0d2d4dc",
     name: "string",
     goalPrice: -5000,
-    deadline: "2021-06-27T13:44:21.395Z"
- });
+    deadline: "2021-06-27T13:44:21.395Z",
+  });
   try {
     setLoading();
     const res = await api.post(`/milestones/create`, body);
@@ -43,12 +43,11 @@ export const addMilestone = (milestone) => async (dispatch) => {
     console.log(err);
     dispatch({
       type: MILESTONE_ERROR,
-      payload: err.response.errors,
+      payload: err.response.data.errors,
     });
-    err.response.errors.forEach(error => {
+    err.response.data.errors.forEach((error) => {
       dispatch(setAlert(error.message, "danger"));
     });
-    //dispatch(setAlert("Hibás adat", "danger"));
   }
 };
 
