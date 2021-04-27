@@ -3,34 +3,33 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import { Modal, Button, Form } from "react-bootstrap";
 import { connect } from "react-redux";
+import { getRandomColor } from "../../utils/randomColor";
 import PropTypes from "prop-types";
 import {
   addAccount,
   updateAccount,
   clearCurrent,
+  setAccountModal,
+  closeAccountModal,
 } from "../../actions/accountActions";
 
 const AccountForm = ({
-  show,
-  handleClose,
   addAccount,
   updateAccount,
   clearCurrent,
   current,
   title,
   userId,
+  modal,
+  setAccountModal,
+  closeAccountModal,
 }) => {
-  const randomColor = () =>
-    "#" +
-    Math.floor(Math.random() * 2 ** 24)
-      .toString(16)
-      .padStart(0, 6);
-
   const [account, setAccount] = useState({
+    _id: null,
     owner: userId,
     type: "cash",
     name: "",
-    color: randomColor(),
+    color: getRandomColor(),
     balance: 1,
   });
 
@@ -42,14 +41,15 @@ const AccountForm = ({
         owner: userId,
         type: "cash",
         name: "",
-        color: randomColor(),
+        color: getRandomColor(),
         balance: 1,
       });
     }
-  }, [current, show, userId]);
+  }, [current, modal, userId]);
 
   const handleFormSubmit = (values) => {
     const newAccount = {
+      _id: values._id ?? null,
       owner: userId,
       type: values.type,
       name: values.name,
@@ -61,7 +61,7 @@ const AccountForm = ({
     } else {
       addAccount(newAccount);
     }
-    handleClose();
+    setAccountModal({ title: "", open: false });
   };
 
   const validationSchema = yup.object({
@@ -74,15 +74,15 @@ const AccountForm = ({
   });
 
   return (
-    <Modal show={show} onHide={handleClose}>
+    <Modal show={modal.open} onHide={closeAccountModal} onExited={clearCurrent}>
       <Modal.Header closeButton>
-        <Modal.Title>{title}</Modal.Title>
+        <Modal.Title>{modal.title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Formik
           validationSchema={validationSchema}
           onSubmit={(values) => handleFormSubmit(values)}
-          initialValues={account}
+          initialValues={current ?? account}
         >
           {({
             handleSubmit,
@@ -96,7 +96,7 @@ const AccountForm = ({
             errors,
           }) => (
             <Form onSubmit={handleSubmit} noValidate>
-              <Form.Group controlId="name">
+              <Form.Group>
                 <Form.Label>Név</Form.Label>
                 <Form.Control
                   type="text"
@@ -157,12 +157,16 @@ const AccountForm = ({
                   {errors.balance}
                 </Form.Control.Feedback>
               </Form.Group>
+
+              <Form.Group>
+                <Form.Control type="text" value={values._id} readOnly />
+              </Form.Group>
               <hr />
 
               <div className="d-flex justify-content-between">
                 <Button
                   variant="secondary"
-                  onClick={handleClose}
+                  onClick={closeAccountModal}
                   disabled={isSubmitting}
                 >
                   Bezárás
@@ -184,16 +188,18 @@ const AccountForm = ({
 };
 
 AccountForm.propTypes = {
-  show: PropTypes.bool,
-  handleClose: PropTypes.func,
   addAccount: PropTypes.func.isRequired,
   updateAccount: PropTypes.func.isRequired,
   clearCurrent: PropTypes.func.isRequired,
+  setAccountModal: PropTypes.func.isRequired,
+  closeAccountModal: PropTypes.func.isRequired,
   current: PropTypes.object,
   userId: PropTypes.string.isRequired,
+  modal: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
+  modal: state.accounts.modal,
   current: state.accounts.current,
   userId: state.auth.user.user._id,
 });
@@ -202,4 +208,6 @@ export default connect(mapStateToProps, {
   addAccount,
   updateAccount,
   clearCurrent,
+  setAccountModal,
+  closeAccountModal,
 })(AccountForm);

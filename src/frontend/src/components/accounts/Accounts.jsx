@@ -1,26 +1,23 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import AccountForm from "./AccountForm";
 import { connect } from "react-redux";
-import { getAccounts } from "../../actions/accountActions";
+import { getAccounts, setAccountModal } from "../../actions/accountActions";
 import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
 import AccountList from "./AccountList";
 
-const Accounts = ({ accounts: { accounts, current }, getAccounts }) => {
-  const [showForm, setShowForm] = useState(false);
-  const [formTitle, setFormTitle] = useState("");
-
-  const handleClose = () => setShowForm(false);
-  const handleShow = () => setShowForm(true);
-
+const Accounts = ({
+  accounts: { accounts, current, modal },
+  getAccounts,
+  setAccountModal,
+}) => {
   useEffect(() => {
     getAccounts();
     //eslint-disable-next-line
   }, []);
 
   const showAddAccountModal = () => {
-    setFormTitle("Új számla hozzáadása");
-    handleShow();
+    setAccountModal({ title: "Új számla hozzáadása", open: true });
   };
 
   return (
@@ -32,11 +29,7 @@ const Accounts = ({ accounts: { accounts, current }, getAccounts }) => {
         </Button>
       </div>
 
-      <AccountForm
-        show={showForm}
-        handleClose={handleClose}
-        title={formTitle}
-      />
+      <AccountForm />
 
       {accounts && accounts.length > 0 ? (
         <AccountList accounts={accounts} />
@@ -50,10 +43,13 @@ const Accounts = ({ accounts: { accounts, current }, getAccounts }) => {
 Accounts.propTypes = {
   accounts: PropTypes.object.isRequired,
   getAccounts: PropTypes.func.isRequired,
+  setAccountModal: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   accounts: state.accounts,
 });
 
-export default connect(mapStateToProps, { getAccounts })(Accounts);
+export default connect(mapStateToProps, { getAccounts, setAccountModal })(
+  Accounts
+);
