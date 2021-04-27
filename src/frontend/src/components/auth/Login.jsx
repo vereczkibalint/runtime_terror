@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { Col, Form, Row, Button, Spinner } from "react-bootstrap";
+import { Col, Form, Row, Button } from "react-bootstrap";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";

@@ -8,6 +8,7 @@ import {
   CLEAR_CURRENT_ACCOUNT,
   ACCOUNT_ERROR,
   SET_LOADING,
+  SET_ACCOUNT_MODAL,
 } from "./types";
 import api from "../utils/api";
 import { setAlert } from "./alertActions";
@@ -62,15 +63,11 @@ export const deleteAccount = (id) => async (dispatch) => {
 };
 
 export const updateAccount = (account) => async (dispatch) => {
+  const body = JSON.stringify(account);
   try {
     setLoading();
-    const res = await fetch(`/accounts/${account.id}`, {
-      method: "PUT",
-      body: JSON.stringify(account),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    console.log(`Log from axios: ${body}`);
+    await api.put(`/accounts/${account._id}`, body);
 
     dispatch({
       type: UPDATE_ACCOUNT,
@@ -82,7 +79,7 @@ export const updateAccount = (account) => async (dispatch) => {
       type: ACCOUNT_ERROR,
       payload: err.response.statusText,
     });
-    dispatch(setAlert(err, "danger"));
+    dispatch(setAlert("Hiba a számla frissítése közben", "danger"));
   }
 };
 
@@ -118,5 +115,19 @@ export const clearCurrent = () => {
 export const setLoading = () => {
   return {
     type: SET_LOADING,
+  };
+};
+
+export const setAccountModal = (modal) => {
+  return {
+    type: SET_ACCOUNT_MODAL,
+    payload: modal,
+  };
+};
+
+export const closeAccountModal = () => {
+  return {
+    type: SET_ACCOUNT_MODAL,
+    payload: { title: "", open: false },
   };
 };

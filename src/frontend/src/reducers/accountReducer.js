@@ -8,12 +8,17 @@ import {
   CLEAR_CURRENT_ACCOUNT,
   ACCOUNT_ERROR,
   SET_LOADING,
+  SET_ACCOUNT_MODAL,
 } from "../actions/types";
 
 const initialState = {
   accounts: [],
   current: null,
   loading: false,
+  modal: {
+    open: false,
+    title: "",
+  },
   error: null,
 };
 
@@ -49,7 +54,7 @@ const accountReducer = (state = initialState, action) => {
       return {
         ...state,
         accounts: state.accounts.map((account) =>
-          account.id === action.payload.id ? action.payload : account
+          account._id === action.payload._id ? action.payload : account
         ),
         loading: false,
       };
@@ -68,6 +73,11 @@ const accountReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+      };
+    case SET_ACCOUNT_MODAL:
+      return {
+        ...state,
+        modal: action.payload,
       };
     case ACCOUNT_ERROR:
       console.error(action.payload);
