@@ -26,7 +26,7 @@ export const addMilestone = (milestone) => async (dispatch) => {
   const body = JSON.stringify({
     owner: "6063570f325f8331d0d2d4dc",
     name: "string",
-    goalPrice: -5000,
+    goalPrice: 5000,
     deadline: "2021-06-27T13:44:21.395Z",
   });
   try {
@@ -40,7 +40,7 @@ export const addMilestone = (milestone) => async (dispatch) => {
     });
     dispatch(setAlert("Mérföldkő hozzáadva", "success"));
   } catch (err) {
-    console.log(err);
+    console.log(err.response);
     dispatch({
       type: MILESTONE_ERROR,
       payload: err.response.data.errors,

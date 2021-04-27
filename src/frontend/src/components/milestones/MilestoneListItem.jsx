@@ -9,15 +9,14 @@ const MilestoneListItem = ({ milestone, setCurrent, deleteMilestone }) => {
   return (
     <tr key={milestone.id}>
       <td>{milestone.name}</td>
-      <td>
-        {milestone.type === "cash"
-          ? "Készpénz"
-          : milestone.type === "bank" && "Bank"}
-      </td>
+      
       <td>
         <input type="color" value={milestone.color} disabled />
       </td>
-      <td>{moneyFormatter(milestone.balance)}</td>
+      <td>{moneyFormatter(milestone.goalPrice)}</td>
+      <td>
+        {new Date(milestone.deadline).toLocaleDateString(undefined, {  year: 'numeric', month: 'numeric',  hour: '2-digit', minute:'2-digit',day: 'numeric',})}
+      </td>
       <td>
         <Button
           className="mr-1"
@@ -36,6 +35,7 @@ const MilestoneListItem = ({ milestone, setCurrent, deleteMilestone }) => {
           <i class="fas fa-trash-alt" />
         </Button>
       </td>
+      
     </tr>
   );
 };
