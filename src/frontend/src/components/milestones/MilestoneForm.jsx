@@ -8,13 +8,14 @@ import {
   addMilestone,
   updateMilestone,
   clearCurrent,
+  getMilestones
 } from "../../actions/milestoneActions";
 
 const MilestoneForm = ({
   show,
   handleClose,
-  addAccount,
-  updateAccount,
+  addMilestone,
+  updateMilestone,
   clearCurrent,
   current,
   title,
@@ -82,7 +83,7 @@ const MilestoneForm = ({
         <Formik
           validationSchema={validationSchema}
           onSubmit={(values) => handleFormSubmit(values)}
-          initialValues={account}
+          initialValues={milestone}
         >
           {({
             handleSubmit,
@@ -183,11 +184,11 @@ const MilestoneForm = ({
   );
 };
 
-AccountForm.propTypes = {
+MilestoneForm.propTypes = {
   show: PropTypes.bool,
   handleClose: PropTypes.func,
-  addAccount: PropTypes.func.isRequired,
-  updateAccount: PropTypes.func.isRequired,
+  addMilestone: PropTypes.func.isRequired,
+  updateMilestone: PropTypes.func.isRequired,
   clearCurrent: PropTypes.func.isRequired,
   current: PropTypes.object,
   userId: PropTypes.string.isRequired,

@@ -1,55 +1,49 @@
 //Fő komponense a milestone-oknak
-import React, { useEffect } from "react";
-import MilestoneItem from "./MilestoneItem";
+import React, { useEffect,useState } from "react";
+import MilestoneForm from "./MilestoneForm";
 import { connect } from "react-redux";
 import { getMilestones } from "../../actions/milestoneActions";
 import PropTypes from "prop-types";
+import {Button} from "react-bootstrap";
+import MilestoneList from "./MilestoneList";
 
-const Milestones = ({ milestone: { milestones, loading }, getMilestones }) => {
+const Milestones = ({ milestone: { milestones, current }, getMilestones }) => {
+  const [showForm, setShowForm] = useState(false);
+  const [formTitle, setFormTitle] = useState("");
+
+  const handleClose = () => setShowForm(false);
+  const handleShow = () => setShowForm(true);
+ 
+ 
+ 
   useEffect(() => {
     getMilestones();
     //eslint-disable-next-line
   }, []);
+  const showAddMilestoneModal = () => {
+    setFormTitle("Új mérföldkő hozzáadása");
+    handleShow();
+  };
 
   return (
     <div>
-      <div className="d-flex justify-content-between">
+      <div className="d-flex justify-content-between my-3">
         <h1>Mérföldkövek</h1>
+        <Button variant="success" onClick={showAddMilestoneModal}>
+          Mérföldkő hozzáadása
+        </Button>
       </div>
-      <button className="btn btn-primary">Cél kitűzése</button>
 
-      {loading || milestones === null ? (
-        <h1>Töltés...</h1>
+      <MilestoneForm
+        show={showForm}
+        handleClose={handleClose}
+        title={formTitle}
+      />
+
+      {milestones && milestones.length > 0 ? (
+        <MilestoneList milestones={milestones} />
       ) : (
-        <div class="table-responsive">
-          <table class="table table-hover">
-            <thead>
-              <tr className="bg-primary text-light">
-                <th scope="col">#</th>
-                <th scope="col">Megnevezés</th>
-                <th scope="col">Ár</th>
-                <th scope="col">...</th>
-              </tr>
-            </thead>
-            {milestones !== null && milestones.length !== 0 ? (
-              milestones.map((milestone) => (
-                <MilestoneItem key={milestone.id} milestone={milestone} />
-              ))
-            ) : (
-              <h3>Adjon hozzá új célt!</h3>
-            )}
-          </table>
-          {/*<ul>
-          {milestones !== null && milestones.length !== 0 ? (
-            milestones.map((milestone) => (
-              <MilestoneItem key={milestone.id} milestone={milestone} />
-            
-            ))
-          ) : (
-            <h3>Adjon hozzá új célt!</h3>
-          )}
-          </ul>*/}
-        </div>
+        <h3>Nincs megjelenítendő Mérföldkő</h3>
       )}
     </div>
   );
