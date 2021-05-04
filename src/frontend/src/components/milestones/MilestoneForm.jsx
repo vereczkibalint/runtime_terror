@@ -8,7 +8,6 @@ import {
   addMilestone,
   updateMilestone,
   clearCurrent,
-  getMilestones
 } from "../../actions/milestoneActions";
 
 const MilestoneForm = ({
@@ -21,18 +20,11 @@ const MilestoneForm = ({
   title,
   userId,
 }) => {
-  const randomColor = () =>
-    "#" +
-    Math.floor(Math.random() * 2 ** 24)
-      .toString(16)
-      .padStart(0, 6);
-
   const [milestone, setMilestone] = useState({
     owner: userId,
-    type: "cash",
     name: "",
-    color: randomColor(),
-    balance: 1,
+    goalPrice: 1,
+    deadLine: null,
   });
 
   useEffect(() => {
@@ -41,10 +33,9 @@ const MilestoneForm = ({
     } else {
       setMilestone({
         owner: userId,
-        type: "cash",
         name: "",
-        color: randomColor(),
-        balance: 1,
+        goalPrice: null,
+        deadLine: null,
       });
     }
   }, [current, show, userId]);
@@ -52,10 +43,9 @@ const MilestoneForm = ({
   const handleFormSubmit = (values) => {
     const newMilestone = {
       owner: userId,
-      type: values.type,
       name: values.name,
-      color: values.color,
-      balance: values.balance,
+      goalPrice: values.goalPrice,
+      deadLine: values.deadline,
     };
     if (current) {
       updateMilestone(newMilestone);
@@ -67,11 +57,14 @@ const MilestoneForm = ({
 
   const validationSchema = yup.object({
     name: yup.string().required("A név megadása kötelező"),
-    color: yup.string().required("A szín megadása kötelező"),
-    balance: yup
+    goalPrice: yup
       .number()
-      .positive("Az egyenlegnek 0-nál nagyobbnak kell lennie")
-      .required("Az egyenleg megadása kötelező"),
+      .positive("A célösszegnek 0-nál nagyobbnak kell lennie")
+      .required("Az célösszeg megadása kötelező"),
+    deadLine: yup
+      .date()
+      .min(new Date(), "A legkorábbi dátum a következő nap")
+      .required("A határidő megadása kötelező"),
   });
 
   return (
@@ -115,47 +108,33 @@ const MilestoneForm = ({
                 </Form.Control.Feedback>
               </Form.Group>
 
-              <Form.Group>
-                <Form.Label>Típus</Form.Label>
+              <Form.Group controlId="balance">
+                <Form.Label>Célösszeg</Form.Label>
                 <Form.Control
-                  as="select"
-                  name={"type"}
+                  type="number"
+                  value={values.goalPrice}
                   onChange={handleChange}
-                  required
-                >
-                  <option value="cash">Készpénz</option>
-                  <option value="bank">Bank</option>
-                </Form.Control>
-              </Form.Group>
-
-              <Form.Group>
-                <Form.Label>Szín</Form.Label>
-                <Form.Control
-                  type="color"
-                  title="Válasszon színt"
-                  name="color"
-                  value={values.color}
-                  onChange={handleChange}
-                  isValid={touched.color && !errors.color}
-                  isInvalid={errors.color}
+                  name="goalPrice"
+                  isValid={touched.goalPrice && !errors.goalPrice}
+                  isInvalid={errors.goalPrice}
                 />
                 <Form.Control.Feedback type="invalid">
-                  {errors.color}
+                  {errors.goalPrice}
                 </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group controlId="balance">
-                <Form.Label>Egyenleg</Form.Label>
+                <Form.Label>Határidő</Form.Label>
                 <Form.Control
-                  type="number"
-                  value={values.balance}
+                  type="date"
+                  value={values.deadline}
                   onChange={handleChange}
-                  name="balance"
-                  isValid={touched.balance && !errors.balance}
-                  isInvalid={errors.balance}
+                  name="deadLine"
+                  isValid={touched.deadLine && !errors.deadLine}
+                  isInvalid={errors.deadLine}
                 />
                 <Form.Control.Feedback type="invalid">
-                  {errors.balance}
+                  {errors.deadLine}
                 </Form.Control.Feedback>
               </Form.Group>
               <hr />

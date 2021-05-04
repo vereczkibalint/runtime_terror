@@ -36,11 +36,15 @@ export const addAccount = (account) => async (dispatch) => {
     dispatch(setAlert("Számla hozzáadva", "success"));
   } catch (err) {
     console.log(err);
-    dispatch({
-      type: ACCOUNT_ERROR,
-      payload: err.response.errors,
-    });
-    dispatch(setAlert("Hibás adat", "danger"));
+    dispatch(
+      {
+        type: ACCOUNT_ERROR,
+        payload: err.response.data.errors,
+      },
+      err.response.data.errors.forEach((error) => {
+        setAlert(error.message, "alert");
+      })
+    );
   }
 };
 
