@@ -2,27 +2,23 @@ Tesztelési terv
 
 Program neve
 
-
 Minősítés: (állapot)
 (tervezet, jóváhagyott, stb.)			
 Verziószám:					V1.0
-Projekt név:					HotelLite
-Utolsó mentés kelte:				2019.12.03
+Projekt név:					Házipénztár
+Utolsó mentés kelte:				2021.05.04
 Dokumentum célja:				Tesztterv elkészítése
 
  
 
- 
-Változtatások jegyzéke
-Verzió	Dátum	Készítette	Megjegyzés
-0.5	2019.11.26	valaki  	a projekt osztályain javítottam
-0.7	2019.11.30	valaki1 	a projekt adatbázisa át lett szerkesztve
+
+
 
 
 1	Bevezetés
 
 Ebben a fejezetben a tesztterv célja, hatóköre és felépítése található.
-1.1	Tesztelési terv hatóköre, célja 
+
 
 A tesztelési terv célja stb..
 
@@ -36,13 +32,13 @@ A tesztelési terv célja stb..
 2	Szükséges erőforrások
 
 Ez a fejezet a teszteléshez szükséges erőforrásokat fejti ki. 
-2.1	Feladatkörök és felelősségek (HotelLite tesztcsapat)
+2.1	Feladatkörök és felelősségek (Házipénztár tesztcsapat)
 
 Feladatkörök és felelősségek
 
-Back-end:
+Back-end: Vereczki Bálint, Somogyi Dávid
 
-Front-end: 
+Front-end:  Bessenyei Ferenc, Oravecz Zsolt
 
 
 
@@ -82,16 +78,14 @@ Ez a fejezet leírja a teszt típusát, a metodológiáját és a riport készí
 A fejlesztői tesztelés célja a rendszer alapvető funkcióinak ellenőrzése, a hibakezelés és az alapvető funkciók működésének vizsgálata. Módszere:
 
 Teszt kódja		Funkció			Teszter			Dátum		Megjegyzés
-000			bejelentkeztetés	....		2019.11.29	a login rész kiválóan működik
+000			bejelentkeztetés	....		2021.05.02	a login rész kiválóan működik
 											hamis adatokkal használhatatlan 
 											a szoftver összes funkciója
 
-001			adatbevitel		    ....	2019.12.02	Az adatbevitel részben volt sikeres,
+001			adatbevitel		    ....	2021.05.02	Az adatbevitel részben volt sikeres,
 											melynek apróbb hibáit sikerült kijavítani
 
-002			adatbázis		    .....   	2019.12.03	Az adatbázis-kezelő rendszer tesztelése
-											sikeres volt, adatokat csak különféle 
-											megszorításokkal lehet felvinni
+
 
 
 
@@ -102,7 +96,7 @@ A prototípustesztelés (vagy másik nevén modultesztelés) célja a rendszer m
 
 A prototípusunk unit tesztelésen esett át, melyben főbb feladatunk volt,
 
-	
+
 tesztelve:
 - Windows PC
 - Windows notebook
@@ -122,14 +116,15 @@ az adatokat kezelő funkciók helyességét. Módszere:
 
 Az elfogadási teszt (angolul User Acceptance Test) célja a rendszer teljes funkcionalitásának vizsgálata a felhasználók szemszögéből. Módszere:
 
-	
+
 ************************************************************************************************************************************************
 3.5	Terheléses teszt 
 A terheléses teszt célja a tervezett kapacitások, valamint a rendelkezésre álló növekedési potenciál meghatározása. Módszere:
 
 	kód		teszter				mellék		megjegyzés
 
-	
+
+​	
 
 
 
@@ -144,7 +139,8 @@ Biztonsági tesztelésre akkor van szükség, ha a rendszer szenzitív (pl. szem
 
 	Béta verzió megnevezése		kód		felhasználó			funkció			megjegyzés
 
-	
+
+​	
 
 
 ************************************************************************************************************************************************
