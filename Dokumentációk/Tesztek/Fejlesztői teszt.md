@@ -21,6 +21,7 @@ fejlesztőknek.
 Készítette: Oravecz Zsolt
 
 Teszt kódja		Funkció			Teszter							Dátum		Megjegyzés
+
 000				bejelentkeztetés	Oravecz Zsolt			2021.05.03    a login rész kiválóan működik hamis adatokkal használhatatlan a szoftver összes funkciója
 
 *******************************************************************************************************************************************************************
