@@ -13,25 +13,22 @@ import {
 const MilestoneForm = ({
   show,
   handleClose,
-  addAccount,
-  updateAccount,
+  addMilestone,
+  updateMilestone,
   clearCurrent,
   current,
   title,
   userId,
 }) => {
-  const randomColor = () =>
-    "#" +
-    Math.floor(Math.random() * 2 ** 24)
-      .toString(16)
-      .padStart(0, 6);
+  // Helper variable for date
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
 
   const [milestone, setMilestone] = useState({
     owner: userId,
-    type: "cash",
     name: "",
-    color: randomColor(),
-    balance: 1,
+    goalPrice: 1,
+    deadLine: new Date(),
   });
 
   useEffect(() => {
@@ -40,10 +37,9 @@ const MilestoneForm = ({
     } else {
       setMilestone({
         owner: userId,
-        type: "cash",
         name: "",
-        color: randomColor(),
-        balance: 1,
+        goalPrice: 1,
+        deadLine: new Date(),
       });
     }
   }, [current, show, userId]);
@@ -51,10 +47,9 @@ const MilestoneForm = ({
   const handleFormSubmit = (values) => {
     const newMilestone = {
       owner: userId,
-      type: values.type,
       name: values.name,
-      color: values.color,
-      balance: values.balance,
+      goalPrice: values.goalPrice,
+      deadLine: values.deadline,
     };
     if (current) {
       updateMilestone(newMilestone);
@@ -66,11 +61,14 @@ const MilestoneForm = ({
 
   const validationSchema = yup.object({
     name: yup.string().required("A név megadása kötelező"),
-    color: yup.string().required("A szín megadása kötelező"),
-    balance: yup
+    goalPrice: yup
       .number()
-      .positive("Az egyenlegnek 0-nál nagyobbnak kell lennie")
-      .required("Az egyenleg megadása kötelező"),
+      .positive("A célösszegnek 0-nál nagyobbnak kell lennie")
+      .required("Az célösszeg megadása kötelező"),
+    deadLine: yup
+      .date("Kérjük adja meg a dátumot")
+      .min(new Date(), "A legkorábbi dátum a következő nap")
+      .required("A határidő megadása kötelező"),
   });
 
   return (
@@ -82,7 +80,7 @@ const MilestoneForm = ({
         <Formik
           validationSchema={validationSchema}
           onSubmit={(values) => handleFormSubmit(values)}
-          initialValues={account}
+          initialValues={milestone}
         >
           {({
             handleSubmit,
@@ -114,47 +112,33 @@ const MilestoneForm = ({
                 </Form.Control.Feedback>
               </Form.Group>
 
-              <Form.Group>
-                <Form.Label>Típus</Form.Label>
+              <Form.Group controlId="balance">
+                <Form.Label>Célösszeg</Form.Label>
                 <Form.Control
-                  as="select"
-                  name={"type"}
+                  type="number"
+                  value={values.goalPrice}
                   onChange={handleChange}
-                  required
-                >
-                  <option value="cash">Készpénz</option>
-                  <option value="bank">Bank</option>
-                </Form.Control>
-              </Form.Group>
-
-              <Form.Group>
-                <Form.Label>Szín</Form.Label>
-                <Form.Control
-                  type="color"
-                  title="Válasszon színt"
-                  name="color"
-                  value={values.color}
-                  onChange={handleChange}
-                  isValid={touched.color && !errors.color}
-                  isInvalid={errors.color}
+                  name="goalPrice"
+                  isValid={touched.goalPrice && !errors.goalPrice}
+                  isInvalid={errors.goalPrice}
                 />
                 <Form.Control.Feedback type="invalid">
-                  {errors.color}
+                  {errors.goalPrice}
                 </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group controlId="balance">
-                <Form.Label>Egyenleg</Form.Label>
+                <Form.Label>Határidő</Form.Label>
                 <Form.Control
-                  type="number"
-                  value={values.balance}
+                  type="date"
+                  value={values.deadline}
                   onChange={handleChange}
-                  name="balance"
-                  isValid={touched.balance && !errors.balance}
-                  isInvalid={errors.balance}
+                  name="deadLine"
+                  isValid={touched.deadLine && !errors.deadLine}
+                  isInvalid={errors.deadLine}
                 />
                 <Form.Control.Feedback type="invalid">
-                  {errors.balance}
+                  {errors.deadLine}
                 </Form.Control.Feedback>
               </Form.Group>
               <hr />
@@ -183,11 +167,11 @@ const MilestoneForm = ({
   );
 };
 
-AccountForm.propTypes = {
+MilestoneForm.propTypes = {
   show: PropTypes.bool,
   handleClose: PropTypes.func,
-  addAccount: PropTypes.func.isRequired,
-  updateAccount: PropTypes.func.isRequired,
+  addMilestone: PropTypes.func.isRequired,
+  updateMilestone: PropTypes.func.isRequired,
   clearCurrent: PropTypes.func.isRequired,
   current: PropTypes.object,
   userId: PropTypes.string.isRequired,

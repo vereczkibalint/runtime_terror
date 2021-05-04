@@ -9,10 +9,8 @@ const MilestoneList = ({ milestones }) => {
       <thead>
         <tr>
           <th>Név</th>
-          <th>Típus</th>
-          <th>Szín</th>
-          <th>Egyenleg</th>
-          <th>Lehetőségek</th>
+          <th>Cél összeg</th>
+          <th>Határidő</th>
         </tr>
       </thead>
       <tbody>

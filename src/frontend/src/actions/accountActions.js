@@ -36,11 +36,15 @@ export const addAccount = (account) => async (dispatch) => {
     dispatch(setAlert("Számla hozzáadva", "success"));
   } catch (err) {
     console.log(err);
-    dispatch({
-      type: ACCOUNT_ERROR,
-      payload: err.response.errors,
-    });
-    dispatch(setAlert("Hibás adat", "danger"));
+    dispatch(
+      {
+        type: ACCOUNT_ERROR,
+        payload: err.response.data.errors,
+      },
+      err.response.data.errors.forEach((error) => {
+        setAlert(error.message, "alert");
+      })
+    );
   }
 };
 
@@ -66,7 +70,7 @@ export const updateAccount = (account) => async (dispatch) => {
   const body = JSON.stringify(account);
   try {
     setLoading();
-    console.log(body);
+    console.log(`Log from axios: ${body}`);
     await api.put(`/accounts/${account._id}`, body);
 
     dispatch({
