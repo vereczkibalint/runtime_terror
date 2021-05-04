@@ -8,15 +8,14 @@ Tesztkörnyezetek
 milyen hozzáféréssel végezzék a tesztelést.
 
 Tesztkörnyezet
-|Környezet neve és feladata|A hozzáférés módja|Konfiguráció|Kapcsolattartó személyek|
+
+| Környezet neve és feladata | A hozzáférés módja | Konfiguráció                                   | Kapcsolattartó személyek |
+| -------------------------- | ------------------ | ---------------------------------------------- | ------------------------ |
+| fejlesztői                 | publikus           | projekt módosítás                              | Oravecz Zsolt            |
+| teszt                      | publikus           | projekt metódusainak, függvényeinek vizsgálata | Oravecz Zsolt            |
+| teszt                      | publikus           | tesztterv készítése                            | Oravecz Zsolt            |
+
 ********************************************************************************************************************************
 
 
 
-fejlesztői		|		publikus		|	projekt módosítás		Sass-Gyarmati Norbert
-			|					|	Adatbázis módosítás
-			|					|
-teszt			|		publikus		|	projekt metódusok vizsgálata	Sass-Gyarmati Norbert
-			|					|					Oravecz Zsolt
-			|					|					Járomi Dávid Antal
-teszt			|		publikus		|	tesztterv készítése		Sass-Gyarmati Norbert
