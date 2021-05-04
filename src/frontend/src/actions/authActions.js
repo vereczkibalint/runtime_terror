@@ -62,7 +62,7 @@ export const login = ({ email, password }) => async (dispatch) => {
       type: LOGIN_SUCCESS,
       payload: res.data,
     });
-    dispatch(setAlert("Logged in", "success"));
+    dispatch(setAlert("Sikeresen bejelentkeztél!", "success"));
   } catch (err) {
     const error = err.response.data.message;
     dispatch(setAlert(error, "danger"));
