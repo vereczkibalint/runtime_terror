@@ -20,11 +20,15 @@ const MilestoneForm = ({
   title,
   userId,
 }) => {
+  // Helper variable for date
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+
   const [milestone, setMilestone] = useState({
     owner: userId,
     name: "",
     goalPrice: 1,
-    deadLine: null,
+    deadLine: new Date(),
   });
 
   useEffect(() => {
@@ -34,8 +38,8 @@ const MilestoneForm = ({
       setMilestone({
         owner: userId,
         name: "",
-        goalPrice: null,
-        deadLine: null,
+        goalPrice: 1,
+        deadLine: new Date(),
       });
     }
   }, [current, show, userId]);
@@ -62,7 +66,7 @@ const MilestoneForm = ({
       .positive("A célösszegnek 0-nál nagyobbnak kell lennie")
       .required("Az célösszeg megadása kötelező"),
     deadLine: yup
-      .date()
+      .date("Kérjük adja meg a dátumot")
       .min(new Date(), "A legkorábbi dátum a következő nap")
       .required("A határidő megadása kötelező"),
   });
