@@ -5,7 +5,6 @@ import { TypegooseModule } from "nestjs-typegoose";
 import { ConfigModule } from "@nestjs/config";
 import { UsersModule } from './users/users.module';
 import { AccountsModule } from './accounts/accounts.module';
-import { SourcesModule } from './sources/sources.module';
 import { CategoriesModule } from "./categories/categories.module";
 import { MilestonesModule } from './milestones/milestones.module';
 import { TransactionsModule } from "./transactions/transactions.module";
@@ -19,7 +18,7 @@ import { AuthModule } from './auth/auth.module';
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useFindAndModify: false
-  }), UsersModule, AccountsModule, SourcesModule, CategoriesModule, MilestonesModule, TransactionsModule, AuthModule],
+  }), UsersModule, AccountsModule,  CategoriesModule, MilestonesModule, TransactionsModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
