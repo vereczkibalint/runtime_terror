@@ -1,0 +1,31 @@
+# Mérföldkő modul teszt jegyzőkönyv
+
+| Teszteset ID             | Merfoldko-letrehozas-1                         |                      |                        |
+| ------------------------ | ---------------------------------------------- | -------------------- | ---------------------- |
+| **Teszteset leírása**    | Mérföldkő létrehozás funkcionalitás tesztelése | **Teszt prioritása** | Fontos                 |
+| **Előzetes követelmény** | Regisztrált, belépett felhasználó              | **Teszt készítő**    | Vereczki Bálint Zoltán |
+
+| Sorszám | Művelet                                            | Bemenet                                                      | Elvárt eredmény                                              | Kapott eredmény                                              | Tesztelő környezet | Eredmény                                 | Megjegyzések           |
+| ------- | -------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------ | ---------------------------------------- | ---------------------- |
+| 1       | Mérföldkő létrehozása helytelen bemeneti adatokkal | owner: abcdef<br />name: a<br />goalPrice: 0<br />deadline: 2021-01-01 | Minden mezőre hibaüzenet. Sikertelen mérföldkő létrehozás.   | Minden mezőre hibaüzenet érkezett a nem megfelelő adatok miatt. A mérföldkő létrehozása sikertelen volt. | Postman            | <span style="color:green">Sikeres</span> | 2021.05.05.<br />21:51 |
+| 2       | Mérföldkő létrehozása helyes bemeneti adatokkal    | owner: 603e5a70d5484939e331b55d<br />name: Autó<br />goalPrice: 2000000<br />deadline: 2022-01-01 | Minden mező megfelel a követelményeknek. Sikeres mérföldkő létrehozás.<br/>Mérföldkő objektum. | A mérföldkő létrehozása sikeres volt. Mérföldkő objektum megérkezett a válaszban. Mérföldkő létrehozva az adatbázisban. | Postman            | <span style="color:green">Sikeres</span> | 2021.05.05<br />21:59  |
+
+| Teszteset ID             | Merfoldko-frissites-1                                    |                      |                        |
+| ------------------------ | -------------------------------------------------------- | -------------------- | ---------------------- |
+| **Teszteset leírása**    | Mérföldkő frissítés funkcionalitás tesztelése            | **Teszt prioritása** | Fontos                 |
+| **Előzetes követelmény** | Regisztrált, belépett felhasználó, létrehozott mérföldkő | **Teszt készítő**    | Vereczki Bálint Zoltán |
+
+| Sorszám | Művelet                                           | Bemenet                                                   | Elvárt eredmény                                              | Kapott eredmény                                              | Tesztelő környezet | Eredmény                                 | Megjegyzések           |
+| ------- | ------------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------ | ---------------------------------------- | ---------------------- |
+| 1       | Mérföldkő frissítése helytelen bemeneti adatokkal | name: a<br />goalPrice: 0<br />deadline: 2021-01-01       | Minden mezőre hibaüzenet. Sikertelen mérföldkő frissítés.    | Minden mezőre hibaüzenet érkezett a nem megfelelő adatok miatt. A mérföldkő frissítése sikertelen volt. | Postman            | <span style="color:green">Sikeres</span> | 2021.05.05.<br />22:07 |
+| 2       | Mérföldkő frissítése helyes bemeneti adatokkal    | name: PC<br />goalPrice: 300000<br />deadline: 2021-12-24 | Minden mező megfelel a követelményeknek. Sikeres mérföldkő frissítés.<br/>Frissített mérföldkő objektum. | A mérföldkő frissítése sikeres volt. Frissített mérföldkő objektum megérkezett a válaszban. Mérföldkő frissítve az adatbázisban. | Postman            | <span style="color:green">Sikeres</span> | 2021.05.05<br />22:15  |
+
+| Teszteset ID             | Merfoldko-torles-1                                       |                      |                        |
+| ------------------------ | -------------------------------------------------------- | -------------------- | ---------------------- |
+| **Teszteset leírása**    | Mérföldkő törlés funkcionalitás tesztelése               | **Teszt prioritása** | Fontos                 |
+| **Előzetes követelmény** | Regisztrált, belépett felhasználó, létrehozott mérföldkő | **Teszt készítő**    | Vereczki Bálint Zoltán |
+
+| Sorszám | Művelet                                        | Bemenet                                  | Elvárt eredmény                                              | Kapott eredmény                                              | Tesztelő környezet | Eredmény                                 | Megjegyzések           |
+| ------- | ---------------------------------------------- | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------ | ---------------------------------------- | ---------------------- |
+| 1       | Mérföldkő törlése helytelen bemeneti adatokkal | URL Query<br />/notexistingid            | Üres válasz. Az adatbázisban nem történik változás.          | Üres válasz érkezett, az adatbázisban nem módosult egyik adat sem. | Postman            | <span style="color:green">Sikeres</span> | 2021.05.05.<br />22:24 |
+| 2       | Mérföldkő törlése helyes bemeneti adatokkal    | URL Query<br />/603e5a70d5484939e331b55d | Törölt mérföldkő objektum. A mérföldkő törlésre kerül az adatbázisból, ha az az adott felhasználóhoz tartozik. | A mérföldkő törlése sikeres volt. Törölt mérföldkő objektum megérkezett a válaszban. Mérföldkő törölve az adatbázisból. | Postman            | <span style="color:green">Sikeres</span> | 2021.05.05<br />22:33  |
