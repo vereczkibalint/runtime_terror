@@ -22,13 +22,13 @@ export const getMilestones = () => async (dispatch) => {
 };
 
 export const addMilestone = (milestone) => async (dispatch) => {
-  //const body = JSON.stringify(milestone);
-  const body = JSON.stringify({
+  const body = JSON.stringify(milestone);
+  /*const body = JSON.stringify({
     owner: "6063570f325f8331d0d2d4dc",
     name: "string",
     goalPrice: 5000,
     deadline: "2021-06-27T13:44:21.395Z",
-  });
+  });*/
   try {
     setLoading();
     const res = await api.post(`/milestones/create`, body);

@@ -10,6 +10,7 @@ const MilestoneItem = ({ milestone }) => {
               <th scope="row">1</th>
               <td>{name}</td>
               <td>{goalPrice}</td>
+              <td>{deadLine}</td>
               <td>....</td>
             </tr>
           </tbody>

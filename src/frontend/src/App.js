@@ -12,6 +12,7 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./routing/PrivateRoute";
 import Accounts from "./components/accounts/Accounts";
+
 import Alerts from "./components/layout/Alerts";
 import { connect } from "react-redux";
 import api from "./utils/api";
@@ -36,6 +37,7 @@ const App = ({ auth: { isAuthenticated, token } }) => {
               path={`${PREFIX}/accounts`}
               component={Accounts}
             />
+            
             <PrivateRoute
               exact
               path={`${PREFIX}/expenditures`}
