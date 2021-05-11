@@ -18,7 +18,6 @@ const AccountForm = ({
   updateAccount,
   clearCurrent,
   current,
-  title,
   userId,
   modal,
   setAccountModal,

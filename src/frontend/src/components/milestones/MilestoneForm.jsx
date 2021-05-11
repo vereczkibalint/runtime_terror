@@ -8,17 +8,19 @@ import {
   addMilestone,
   updateMilestone,
   clearCurrent,
+  setMilestoneModal,
+  closeMilestoneModal,
 } from "../../actions/milestoneActions";
 
 const MilestoneForm = ({
-  show,
-  handleClose,
   addMilestone,
   updateMilestone,
   clearCurrent,
   current,
-  title,
   userId,
+  modal,
+  setMilestoneModal,
+  closeMilestoneModal,
 }) => {
   // Helper variable for date
   const tomorrow = new Date();
@@ -28,7 +30,7 @@ const MilestoneForm = ({
     owner: userId,
     name: "",
     goalPrice: 1,
-    deadine: new Date(),
+    deadline: new Date(),
   });
 
   useEffect(() => {
@@ -42,7 +44,7 @@ const MilestoneForm = ({
         deadline: new Date(),
       });
     }
-  }, [current, show, userId]);
+  }, [current, modal, userId]);
 
   const handleFormSubmit = (values) => {
     const newMilestone = {
@@ -56,7 +58,7 @@ const MilestoneForm = ({
     } else {
       addMilestone(newMilestone);
     }
-    handleClose();
+    setMilestoneModal({ title: "", open: false });
   };
 
   const validationSchema = yup.object({
@@ -72,15 +74,19 @@ const MilestoneForm = ({
   });
 
   return (
-    <Modal show={show} onHide={handleClose}>
+    <Modal
+      show={modal.open}
+      onHide={closeMilestoneModal}
+      onExited={clearCurrent}
+    >
       <Modal.Header closeButton>
-        <Modal.Title>{title}</Modal.Title>
+        <Modal.Title>{modal.title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Formik
           validationSchema={validationSchema}
           onSubmit={(values) => handleFormSubmit(values)}
-          initialValues={milestone}
+          initialValues={current ?? milestone}
         >
           {({
             handleSubmit,
@@ -146,7 +152,7 @@ const MilestoneForm = ({
               <div className="d-flex justify-content-between">
                 <Button
                   variant="secondary"
-                  onClick={handleClose}
+                  onClick={closeMilestoneModal}
                   disabled={isSubmitting}
                 >
                   Bezárás
@@ -168,17 +174,18 @@ const MilestoneForm = ({
 };
 
 MilestoneForm.propTypes = {
-  show: PropTypes.bool,
-  handleClose: PropTypes.func,
   addMilestone: PropTypes.func.isRequired,
   updateMilestone: PropTypes.func.isRequired,
   clearCurrent: PropTypes.func.isRequired,
   current: PropTypes.object,
   userId: PropTypes.string.isRequired,
+  setMilestoneModal: PropTypes.func.isRequired,
+  closeMilestoneModal: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  current: state.accounts.current,
+  modal: state.milestone.modal,
+  current: state.milestone.current,
   userId: state.auth.user.user._id,
 });
 
@@ -186,4 +193,6 @@ export default connect(mapStateToProps, {
   addMilestone,
   updateMilestone,
   clearCurrent,
+  setMilestoneModal,
+  closeMilestoneModal,
 })(MilestoneForm);

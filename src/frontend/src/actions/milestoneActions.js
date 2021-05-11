@@ -7,6 +7,7 @@ import {
   CLEAR_CURRENT_MILESTONE,
   MILESTONE_ERROR,
   SET_LOADING,
+  SET_MILESTONE_MODAL,
 } from "./types";
 
 import api from "../utils/api";
@@ -120,5 +121,19 @@ export const clearCurrent = () => {
 export const setLoading = () => {
   return {
     type: SET_LOADING,
+  };
+};
+
+export const setMilestoneModal = (modal) => {
+  return {
+    type: SET_MILESTONE_MODAL,
+    payload: modal,
+  };
+};
+
+export const closeMilestoneModal = () => {
+  return {
+    type: SET_MILESTONE_MODAL,
+    payload: { title: "", open: false },
   };
 };

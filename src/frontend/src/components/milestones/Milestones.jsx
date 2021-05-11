@@ -1,28 +1,27 @@
 //Fő komponense a milestone-oknak
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import MilestoneForm from "./MilestoneForm";
 import { connect } from "react-redux";
-import { getMilestones } from "../../actions/milestoneActions";
+import {
+  getMilestones,
+  setMilestoneModal,
+} from "../../actions/milestoneActions";
 import PropTypes from "prop-types";
-import {Button} from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import MilestoneList from "./MilestoneList";
 
-const Milestones = ({ milestone: { milestones, current }, getMilestones }) => {
-  const [showForm, setShowForm] = useState(false);
-  const [formTitle, setFormTitle] = useState("");
-
-  const handleClose = () => setShowForm(false);
-  const handleShow = () => setShowForm(true);
- 
- 
- 
+const Milestones = ({
+  milestone: { milestones, current },
+  getMilestones,
+  setMilestoneModal,
+}) => {
   useEffect(() => {
     getMilestones();
     //eslint-disable-next-line
   }, []);
+
   const showAddMilestoneModal = () => {
-    setFormTitle("Új mérföldkő hozzáadása");
-    handleShow();
+    setMilestoneModal({ title: "Új mérföldkő hozzáadása", open: true });
   };
 
   return (
@@ -34,11 +33,7 @@ const Milestones = ({ milestone: { milestones, current }, getMilestones }) => {
         </Button>
       </div>
 
-      <MilestoneForm
-        show={showForm}
-        handleClose={handleClose}
-        title={formTitle}
-      />
+      <MilestoneForm />
 
       {milestones && milestones.length > 0 ? (
         <MilestoneList milestones={milestones} />
@@ -52,10 +47,13 @@ const Milestones = ({ milestone: { milestones, current }, getMilestones }) => {
 Milestones.propTypes = {
   milestone: PropTypes.object.isRequired,
   getMilestones: PropTypes.func.isRequired,
+  setMilestoneModal: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   milestone: state.milestone,
 });
 
-export default connect(mapStateToProps, { getMilestones })(Milestones);
+export default connect(mapStateToProps, { getMilestones, setMilestoneModal })(
+  Milestones
+);

@@ -7,16 +7,21 @@ import {
   CLEAR_CURRENT_MILESTONE,
   MILESTONE_ERROR,
   SET_LOADING,
+  SET_MILESTONE_MODAL,
 } from "../actions/types";
 
 const initialState = {
   milestones: null,
   current: null,
   error: null,
+  modal: {
+    open: false,
+    title: "",
+  },
   loading: false,
 };
 
-export default (state = initialState, action) => {
+const milestoneReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_MILESTONES:
       return {
@@ -62,6 +67,11 @@ export default (state = initialState, action) => {
         ...state,
         error: action.payload,
       };
+    case SET_MILESTONE_MODAL:
+      return {
+        ...state,
+        modal: action.payload,
+      };
     case SET_LOADING:
       return {
         ...state,
@@ -71,3 +81,5 @@ export default (state = initialState, action) => {
       return state;
   }
 };
+
+export default milestoneReducer;
