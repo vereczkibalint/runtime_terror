@@ -34,6 +34,7 @@ export const addMilestone = (milestone) => async (dispatch) => {
       payload: data,
     });
     dispatch(setAlert("Mérföldkő hozzáadva", "success"));
+    dispatch(getMilestones());
   } catch (err) {
     console.log(err.response);
     dispatch({
@@ -65,15 +66,10 @@ export const deleteMilestone = (id) => async (dispatch) => {
 };
 
 export const updateMilestone = (milestone) => async (dispatch) => {
+  const body = JSON.stringify(milestone);
   try {
     setLoading();
-    const res = await fetch(`/milestones/${milestone.id}`, {
-      method: "PUT",
-      body: JSON.stringify(milestone),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    await api.put(`/milestones/${milestone._id}`, body);
 
     dispatch({
       type: UPDATE_MILESTONE,

@@ -48,6 +48,7 @@ const MilestoneForm = ({
 
   const handleFormSubmit = (values) => {
     const newMilestone = {
+      _id: values._id ?? null,
       owner: userId,
       name: values.name,
       goalPrice: values.goalPrice,
@@ -146,6 +147,10 @@ const MilestoneForm = ({
                 <Form.Control.Feedback type="invalid">
                   {errors.deadline}
                 </Form.Control.Feedback>
+              </Form.Group>
+
+              <Form.Group>
+                <Form.Control type="text" value={values._id} readOnly />
               </Form.Group>
               <hr />
 

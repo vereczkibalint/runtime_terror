@@ -39,7 +39,7 @@ const milestoneReducer = (state = initialState, action) => {
       return {
         ...state,
         milestones: state.milestones.filter(
-          (milestone) => milestone.id !== action.payload
+          (milestone) => milestone._id !== action.payload
         ),
         loading: false,
       };
@@ -47,7 +47,7 @@ const milestoneReducer = (state = initialState, action) => {
       return {
         ...state,
         milestones: state.milestones.map((milestone) =>
-          milestone.id === action.payload.id ? action.payload : milestone
+          milestone._id === action.payload._id ? action.payload : milestone
         ),
         loading: false,
       };
