@@ -28,4 +28,9 @@ Tesztelendő elemek:
 | Oravecz Zsolt | 2021.05.02 | Számla hozzáadása |        ECF        |       I        |      -       |     -      |
 | Oravecz Zsolt | 2021.05.02 | Számla módosítása |        ECF        |       I        |      -       |     -      |
 | Oravecz Zsolt | 2021.05.02 |  Számla törlése   |        ECF        |       I        |      -       |     -      |
+| Besenyei Ferenc | 2021.05.11 |  *Regisztráció*   | Google Chrome Verzió: 90.0.4430.93 |       I        |      -       |     -      |
+| Besenyei Ferenc | 2021.05.11 |  *Bejelentkezés*  | Google Chrome Verzió: 90.0.4430.93 |       I        |      -       |     -      |
+| Besenyei Ferenc | 2021.05.11 | Számla hozzáadása | Google Chrome Verzió: 90.0.4430.93 |       I        |      -       |     -      |
+| Besenyei Ferenc | 2021.05.11 | Számla módosítása | Google Chrome Verzió: 90.0.4430.93 |       I        |      -       |     -      |
+| Besenyei Ferenc | 2021.05.11 |  Számla törlése   | Google Chrome Verzió: 90.0.4430.93 |       I        |      -       |     -      |
 
