@@ -7,6 +7,7 @@ import {
   CLEAR_CURRENT_MILESTONE,
   MILESTONE_ERROR,
   SET_LOADING,
+  SET_MILESTONE_MODAL,
 } from "./types";
 
 import api from "../utils/api";
@@ -22,13 +23,7 @@ export const getMilestones = () => async (dispatch) => {
 };
 
 export const addMilestone = (milestone) => async (dispatch) => {
-  //const body = JSON.stringify(milestone);
-  const body = JSON.stringify({
-    owner: "6063570f325f8331d0d2d4dc",
-    name: "string",
-    goalPrice: 5000,
-    deadline: "2021-06-27T13:44:21.395Z",
-  });
+  const body = JSON.stringify(milestone);
   try {
     setLoading();
     const res = await api.post(`/milestones/create`, body);
@@ -39,6 +34,7 @@ export const addMilestone = (milestone) => async (dispatch) => {
       payload: data,
     });
     dispatch(setAlert("Mérföldkő hozzáadva", "success"));
+    dispatch(getMilestones());
   } catch (err) {
     console.log(err.response);
     dispatch({
@@ -70,15 +66,10 @@ export const deleteMilestone = (id) => async (dispatch) => {
 };
 
 export const updateMilestone = (milestone) => async (dispatch) => {
+  const body = JSON.stringify(milestone);
   try {
     setLoading();
-    const res = await fetch(`/milestones/${milestone.id}`, {
-      method: "PUT",
-      body: JSON.stringify(milestone),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    await api.put(`/milestones/${milestone._id}`, body);
 
     dispatch({
       type: UPDATE_MILESTONE,
@@ -126,5 +117,19 @@ export const clearCurrent = () => {
 export const setLoading = () => {
   return {
     type: SET_LOADING,
+  };
+};
+
+export const setMilestoneModal = (modal) => {
+  return {
+    type: SET_MILESTONE_MODAL,
+    payload: modal,
+  };
+};
+
+export const closeMilestoneModal = () => {
+  return {
+    type: SET_MILESTONE_MODAL,
+    payload: { title: "", open: false },
   };
 };

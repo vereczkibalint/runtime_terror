@@ -18,7 +18,6 @@ const AccountForm = ({
   updateAccount,
   clearCurrent,
   current,
-  title,
   userId,
   modal,
   setAccountModal,
@@ -57,7 +56,6 @@ const AccountForm = ({
       balance: values.balance,
     };
     if (current) {
-      console.log(`Log from account form: ${JSON.stringify(newAccount)}`);
       updateAccount(newAccount);
     } else {
       addAccount(newAccount);

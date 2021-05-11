@@ -8,17 +8,19 @@ import {
   addMilestone,
   updateMilestone,
   clearCurrent,
+  setMilestoneModal,
+  closeMilestoneModal,
 } from "../../actions/milestoneActions";
 
 const MilestoneForm = ({
-  show,
-  handleClose,
   addMilestone,
   updateMilestone,
   clearCurrent,
   current,
-  title,
   userId,
+  modal,
+  setMilestoneModal,
+  closeMilestoneModal,
 }) => {
   // Helper variable for date
   const tomorrow = new Date();
@@ -28,7 +30,7 @@ const MilestoneForm = ({
     owner: userId,
     name: "",
     goalPrice: 1,
-    deadLine: new Date(),
+    deadline: new Date(),
   });
 
   useEffect(() => {
@@ -39,24 +41,25 @@ const MilestoneForm = ({
         owner: userId,
         name: "",
         goalPrice: 1,
-        deadLine: new Date(),
+        deadline: new Date(),
       });
     }
-  }, [current, show, userId]);
+  }, [current, modal, userId]);
 
   const handleFormSubmit = (values) => {
     const newMilestone = {
+      _id: values._id ?? null,
       owner: userId,
       name: values.name,
       goalPrice: values.goalPrice,
-      deadLine: values.deadline,
+      deadline: values.deadline,
     };
     if (current) {
       updateMilestone(newMilestone);
     } else {
       addMilestone(newMilestone);
     }
-    handleClose();
+    setMilestoneModal({ title: "", open: false });
   };
 
   const validationSchema = yup.object({
@@ -65,22 +68,26 @@ const MilestoneForm = ({
       .number()
       .positive("A célösszegnek 0-nál nagyobbnak kell lennie")
       .required("Az célösszeg megadása kötelező"),
-    deadLine: yup
+    deadline: yup
       .date("Kérjük adja meg a dátumot")
       .min(new Date(), "A legkorábbi dátum a következő nap")
       .required("A határidő megadása kötelező"),
   });
 
   return (
-    <Modal show={show} onHide={handleClose}>
+    <Modal
+      show={modal.open}
+      onHide={closeMilestoneModal}
+      onExited={clearCurrent}
+    >
       <Modal.Header closeButton>
-        <Modal.Title>{title}</Modal.Title>
+        <Modal.Title>{modal.title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Formik
           validationSchema={validationSchema}
           onSubmit={(values) => handleFormSubmit(values)}
-          initialValues={milestone}
+          initialValues={current ?? milestone}
         >
           {({
             handleSubmit,
@@ -133,20 +140,24 @@ const MilestoneForm = ({
                   type="date"
                   value={values.deadline}
                   onChange={handleChange}
-                  name="deadLine"
-                  isValid={touched.deadLine && !errors.deadLine}
-                  isInvalid={errors.deadLine}
+                  name="deadline"
+                  isValid={touched.deadline && !errors.deadline}
+                  isInvalid={errors.deadline}
                 />
                 <Form.Control.Feedback type="invalid">
-                  {errors.deadLine}
+                  {errors.deadline}
                 </Form.Control.Feedback>
+              </Form.Group>
+
+              <Form.Group>
+                <Form.Control type="text" value={values._id} readOnly />
               </Form.Group>
               <hr />
 
               <div className="d-flex justify-content-between">
                 <Button
                   variant="secondary"
-                  onClick={handleClose}
+                  onClick={closeMilestoneModal}
                   disabled={isSubmitting}
                 >
                   Bezárás
@@ -168,17 +179,18 @@ const MilestoneForm = ({
 };
 
 MilestoneForm.propTypes = {
-  show: PropTypes.bool,
-  handleClose: PropTypes.func,
   addMilestone: PropTypes.func.isRequired,
   updateMilestone: PropTypes.func.isRequired,
   clearCurrent: PropTypes.func.isRequired,
   current: PropTypes.object,
   userId: PropTypes.string.isRequired,
+  setMilestoneModal: PropTypes.func.isRequired,
+  closeMilestoneModal: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  current: state.accounts.current,
+  modal: state.milestone.modal,
+  current: state.milestone.current,
   userId: state.auth.user.user._id,
 });
 
@@ -186,4 +198,6 @@ export default connect(mapStateToProps, {
   addMilestone,
   updateMilestone,
   clearCurrent,
+  setMilestoneModal,
+  closeMilestoneModal,
 })(MilestoneForm);

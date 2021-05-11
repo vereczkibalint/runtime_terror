@@ -34,6 +34,7 @@ export const addAccount = (account) => async (dispatch) => {
       payload: data,
     });
     dispatch(setAlert("Számla hozzáadva", "success"));
+    dispatch(getAccounts());
   } catch (err) {
     console.log(err);
     dispatch(
@@ -70,7 +71,6 @@ export const updateAccount = (account) => async (dispatch) => {
   const body = JSON.stringify(account);
   try {
     setLoading();
-    console.log(`Log from axios: ${body}`);
     await api.put(`/accounts/${account._id}`, body);
 
     dispatch({
