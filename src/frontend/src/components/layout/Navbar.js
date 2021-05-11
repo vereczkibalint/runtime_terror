@@ -34,7 +34,7 @@ const Navbar = ({ auth, logout }) => {
               >
                 Számlák
               </Button>
-
+              {/*
               <DropdownButton
                 className="my-1"
                 as={ButtonGroup}
@@ -58,17 +58,8 @@ const Navbar = ({ auth, logout }) => {
                 <Dropdown.Item eventKey="2">Futó hónap</Dropdown.Item>
                 <Dropdown.Item eventKey="3">Előző hónap</Dropdown.Item>
               </DropdownButton>
-
-              <DropdownButton
-                className="my-1"
-                as={ButtonGroup}
-                title="Statisztika"
-                id="bg-vertical-dropdown-1"
-              >
-                <Dropdown.Item  eventKey="2">Futó hónap</Dropdown.Item>
-                <Dropdown.Item eventKey="3">Előző hónap</Dropdown.Item>
-                <Dropdown.Item eventKey="3">Egyéb</Dropdown.Item>
-              </DropdownButton>
+              */}
+              
               <Button
                 className="my-1"
                 as={NavLink}
@@ -77,6 +68,7 @@ const Navbar = ({ auth, logout }) => {
               >
                 Mérföldkövek
               </Button>
+              {/*
               <Button
                 className="my-1"
                 as={NavLink}
@@ -85,6 +77,7 @@ const Navbar = ({ auth, logout }) => {
               >
                 Beállítások
               </Button>
+              */}
               <Button className="my-1" onClick={onLogout}>
                 Kijelentkezés <i className="fas fa-sign-out-alt"></i>
               </Button>

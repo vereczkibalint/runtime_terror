@@ -28,7 +28,7 @@ const MilestoneForm = ({
     owner: userId,
     name: "",
     goalPrice: 1,
-    deadLine: new Date(),
+    deadine: new Date(),
   });
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const MilestoneForm = ({
         owner: userId,
         name: "",
         goalPrice: 1,
-        deadLine: new Date(),
+        deadline: new Date(),
       });
     }
   }, [current, show, userId]);
@@ -49,7 +49,7 @@ const MilestoneForm = ({
       owner: userId,
       name: values.name,
       goalPrice: values.goalPrice,
-      deadLine: values.deadline,
+      deadline: values.deadline,
     };
     if (current) {
       updateMilestone(newMilestone);
@@ -65,7 +65,7 @@ const MilestoneForm = ({
       .number()
       .positive("A célösszegnek 0-nál nagyobbnak kell lennie")
       .required("Az célösszeg megadása kötelező"),
-    deadLine: yup
+    deadline: yup
       .date("Kérjük adja meg a dátumot")
       .min(new Date(), "A legkorábbi dátum a következő nap")
       .required("A határidő megadása kötelező"),
@@ -133,12 +133,12 @@ const MilestoneForm = ({
                   type="date"
                   value={values.deadline}
                   onChange={handleChange}
-                  name="deadLine"
-                  isValid={touched.deadLine && !errors.deadLine}
-                  isInvalid={errors.deadLine}
+                  name="deadline"
+                  isValid={touched.deadline && !errors.deadline}
+                  isInvalid={errors.deadline}
                 />
                 <Form.Control.Feedback type="invalid">
-                  {errors.deadLine}
+                  {errors.deadline}
                 </Form.Control.Feedback>
               </Form.Group>
               <hr />
