@@ -34,6 +34,7 @@ export const addAccount = (account) => async (dispatch) => {
       payload: data,
     });
     dispatch(setAlert("Számla hozzáadva", "success"));
+    dispatch(getAccounts());
   } catch (err) {
     console.log(err);
     dispatch(
