@@ -23,14 +23,14 @@ Tesztelendő elemek:
 
 | Tesztelő neve |   Dátum    | Tesztelt funkció  | Használt böngésző | Helyes működés | Hiba leírása | Megjegyzés |
 | :-----------: | :--------: | :---------------: | :---------------: | :------------: | :----------: | :--------: |
-| Oravecz Zsolt | 2021.05.01 |  *Regisztráció*   |        ECF        |       I        |      -       |     -      |
-| Oravecz Zsolt | 2021.05.02 |  *Bejelentkezés*  |        ECF        |       I        |      -       |     -      |
-| Oravecz Zsolt | 2021.05.02 | Számla hozzáadása |        ECF        |       I        |      -       |     -      |
-| Oravecz Zsolt | 2021.05.02 | Számla módosítása |        ECF        |       I        |      -       |     -      |
-| Oravecz Zsolt | 2021.05.02 |  Számla törlése   |        ECF        |       I        |      -       |     -      |
-| Besenyei Ferenc | 2021.05.11 |  *Regisztráció*   | Google Chrome Verzió: 90.0.4430.93 |       I        |      -       |     -      |
-| Besenyei Ferenc | 2021.05.11 |  *Bejelentkezés*  | Google Chrome Verzió: 90.0.4430.93 |       I        |      -       |     -      |
-| Besenyei Ferenc | 2021.05.11 | Számla hozzáadása | Google Chrome Verzió: 90.0.4430.93 |       I        |      -       |     -      |
-| Besenyei Ferenc | 2021.05.11 | Számla módosítása | Google Chrome Verzió: 90.0.4430.93 |       I        |      -       |     -      |
-| Besenyei Ferenc | 2021.05.11 |  Számla törlése   | Google Chrome Verzió: 90.0.4430.93 |       I        |      -       |     -      |
+| Oravecz Zsolt | 2021.05.01 |  *Regisztráció*   |        ECF        |       [x]        |      -       |     -      |
+| Oravecz Zsolt | 2021.05.02 |  *Bejelentkezés*  |        ECF        |       [x]        |      -       |     -      |
+| Oravecz Zsolt | 2021.05.02 | Számla hozzáadása |        ECF        |       [x]        |      -       |     -      |
+| Oravecz Zsolt | 2021.05.02 | Számla módosítása |        ECF        |       [x]        |      -       |     -      |
+| Oravecz Zsolt | 2021.05.02 |  Számla törlése   |        ECF        |       [x]        |      -       |     -      |
+| Besenyei Ferenc | 2021.05.11 |  *Regisztráció*   | Google Chrome Verzió: 90.0.4430.93 |       [x]        |      -       |     -      |
+| Besenyei Ferenc | 2021.05.11 |  *Bejelentkezés*  | Google Chrome Verzió: 90.0.4430.93 |       [x]        |      -       |     -      |
+| Besenyei Ferenc | 2021.05.11 | Számla hozzáadása | Google Chrome Verzió: 90.0.4430.93 |       [x]        |      -       |     -      |
+| Besenyei Ferenc | 2021.05.11 | Számla módosítása | Google Chrome Verzió: 90.0.4430.93 |       [x]        |      -       |     -      |
+| Besenyei Ferenc | 2021.05.11 |  Számla törlése   | Google Chrome Verzió: 90.0.4430.93 |       [x]        |      -       |     -      |
 
